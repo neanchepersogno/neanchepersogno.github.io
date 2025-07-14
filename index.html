@@ -5,26 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neanche Per Sogno</title>
   <style>
-    body {
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-   img {
+   body {
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Stile base: logo più piccolo (per smartphone) */
+img {
   cursor: pointer;
-  max-width: 300px;
+  max-width: 200px;
   height: auto;
   animation: pulse 1.5s infinite ease-in-out;
 }
 
+/* Per schermi larghi (desktop) aumento la dimensione */
+@media (min-width: 768px) {
+  img {
+    max-width: 400px; /* più grande su desktop */
+  }
+}
+
 @keyframes pulse {
   0%   { opacity: 1; }
-  50%  { opacity: 0.3; }
+  50%  { opacity: 0.4; }
   100% { opacity: 1; }
 }
+
 
 
   </style>
