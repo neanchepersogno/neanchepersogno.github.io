@@ -20,7 +20,6 @@
       min-height: 100vh;
     }
 
-    /* Desktop top bar */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -49,7 +48,7 @@
     .links a {
       text-decoration: underline;
       color: black;
-      font-size: 0.8rem;
+      font-size: 1rem;
       text-transform: lowercase;
       transition: color 0.2s ease;
     }
@@ -58,7 +57,6 @@
       color: gray;
     }
 
-    /* Logo grande e centrato desktop */
     .logo-center {
       flex-grow: 1;
       display: flex;
@@ -72,15 +70,12 @@
       display: block;
     }
 
-    /* --- Mobile layout --- */
     @media (max-width: 768px) {
-      /* Nascondi brand e logo grande */
       .brand-name,
       .logo-center {
         display: none;
       }
 
-      /* Top bar diventa colonna, ma senza brand */
       .top-bar {
         flex-direction: column;
         align-items: center;
@@ -88,10 +83,10 @@
         gap: 15px;
       }
 
-      /* Mostra logo piccolo sopra i link */
       .mobile-logo {
         display: block;
         max-width: 150px;
+        margin-bottom: 40px; /* spazio sotto logo */
       }
 
       .links {
@@ -118,7 +113,6 @@
       <a href="index.html">Neanche Per Sogno</a>
     </div>
 
-    <!-- Logo piccolo per mobile -->
     <img src="NXS LOGO.png" alt="Logo" class="mobile-logo" style="display:none" />
 
     <nav class="links">
@@ -136,7 +130,6 @@
   </div>
 
   <script>
-    // JS semplice per mostrare solo il logo mobile su schermi piccoli
     function toggleMobileLogo() {
       const mobileLogo = document.querySelector('.mobile-logo');
       if (window.innerWidth <= 768) {
