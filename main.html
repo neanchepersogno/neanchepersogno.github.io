@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neanche Per Sogno</title>
-  
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
 
   <style>
@@ -23,24 +22,27 @@
       min-height: 100vh;
     }
 
+    /* === BARRA NERA ALTA CON LINK === */
     .top-bar {
+      background-color: black;
+      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 30px;
-    }
-
-    .brand-name {
-      font-size: 0.8rem;
-      text-decoration: underline;
-      color: black;
-      text-transform: lowercase;
+      padding: 10px 30px;
+      height: 45px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
     }
 
     .brand-name a {
-      color: black;
+      font-size: 0.8rem;
       text-decoration: underline;
-      font-weight: normal;
+      color: white;
+      text-transform: lowercase;
     }
 
     .links {
@@ -50,7 +52,7 @@
 
     .links a {
       text-decoration: underline;
-      color: black;
+      color: white;
       font-size: 0.8rem;
       text-transform: lowercase;
       transition: color 0.2s ease;
@@ -61,6 +63,7 @@
     }
 
     .logo-center {
+      margin-top: 80px;
       flex-grow: 1;
       display: flex;
       justify-content: center;
@@ -80,24 +83,20 @@
       100% { opacity: 1; }
     }
 
+    .mobile-logo {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .brand-name,
       .logo-center {
         display: none;
       }
 
-      .top-bar {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px 20px;
-        gap: 15px;
-      }
-
       .mobile-logo {
         display: block;
         max-width: 200px;
-        margin-top: 90px;
-        margin-bottom: 100px;
+        margin: 90px auto 100px auto;
         animation: pulse 3s infinite ease-in-out;
       }
 
@@ -105,107 +104,64 @@
         flex-direction: column;
         gap: 12px;
         align-items: center;
-        width: 100%;
-        max-width: 300px;
-        margin: 0;
       }
 
-      .links a {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        padding: 2px 0;
+      .top-bar {
+        flex-direction: column;
+        padding: 10px 0;
+        height: auto;
       }
     }
 
-    /* ===== Scroll Bar EP ===== */
+    /* === SCROLLING TEXT BAR === */
     .scroll-bar {
       position: fixed;
-      background: black;
-      color: white;
-      font-size: 0.8rem;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      z-index: 9999;
-    }
-
-    .scroll-bar a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .scroll-text {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-left 15s linear infinite;
-    }
-
-    .scroll-text span {
-      padding-right: 3rem;
-    }
-
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    /* Desktop: orizzontale in basso */
-    .scroll-bar.horizontal {
       bottom: 0;
       left: 0;
       width: 100%;
       height: 25px;
+      background-color: black;
+      overflow: hidden;
+      z-index: 9999;
       display: flex;
       align-items: center;
     }
 
-    /* Mobile: verticale a sinistra */
-    @media (max-width: 768px) {
-      .scroll-bar.horizontal { display: none; }
-
-      .scroll-bar.vertical {
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 20px;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-      }
-
-      .scroll-text {
-        padding-left: 0;
-        padding-top: 100%;
-        animation: scroll-up 15s linear infinite;
-      }
-
-      .scroll-text span {
-        display: block;
-        padding-bottom: 3rem;
-      }
-
-      @keyframes scroll-up {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-100%); }
-      }
+    .scroll-container {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 20s linear infinite;
     }
 
-    @media (min-width: 769px) {
-      .scroll-bar.vertical { display: none; }
+    .scroll-container span {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      white-space: nowrap;
+      padding-right: 3rem;
+    }
+
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .scroll-bar {
+        top: 45px;
+        bottom: auto;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- BARRA IN ALTO CON LINK -->
   <div class="top-bar">
     <div class="brand-name">
       <a href="index.html">Neanche Per Sogno</a>
     </div>
-
-    <img src="NXS LOGO.png" alt="Logo" class="mobile-logo" style="display:none" />
-
+    <img src="NXS LOGO.png" alt="Logo" class="mobile-logo" />
     <nav class="links">
       <a href="chi.html">about</a>
       <a href="lavori.html">releases</a>
@@ -216,71 +172,26 @@
     </nav>
   </div>
 
+  <!-- LOGO CENTRALE -->
   <div class="logo-center">
     <img src="NXS LOGO.png" alt="Logo" />
   </div>
 
-  <!-- BARRA SCORREVOLE DESKTOP -->
-  <div class="scroll-bar horizontal">
-    <a href="https://example.com" class="scroll-text" target="_blank">
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
+  <!-- SCROLL BAR BASSA (continua) -->
+  <div class="scroll-bar">
+    <a href="https://example.com" target="_blank" style="text-decoration:none;">
+      <div class="scroll-container">
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+      </div>
     </a>
   </div>
-
-  <!-- BARRA SCORREVOLE MOBILE -->
-  <div class="scroll-bar horizontal">
-    <a href="https://example.com" class="scroll-text" target="_blank">
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-      <span>Aposematic EP by Martenot OUT NOW! </span>
-    </a>
-  </div>
-
-  <script>
-    function toggleMobileLogo() {
-      const mobileLogo = document.querySelector('.mobile-logo');
-      if (window.innerWidth <= 768) {
-        mobileLogo.style.display = 'block';
-      } else {
-        mobileLogo.style.display = 'none';
-      }
-    }
-    window.addEventListener('load', toggleMobileLogo);
-    window.addEventListener('resize', toggleMobileLogo);
-  </script>
 
 </body>
 </html>
