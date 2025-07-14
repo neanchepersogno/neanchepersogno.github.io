@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neanche Per Sogno</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden; /* niente scroll */
       font-family: Arial, sans-serif;
       background-color: white;
+      overflow: hidden;
     }
 
-    /* Contenitore generale */
     .top-bar {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      right: 30px;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 30px 40px;
-      box-sizing: border-box;
-      height: 100%;
+      align-items: center;
     }
 
-    .logo {
-      height: 50px;
-      object-fit: contain;
+    .brand {
+      font-size: 1.2rem;
+      text-decoration: underline;
+      color: black;
     }
 
     .links {
       display: flex;
       gap: 25px;
-      align-items: flex-start;
     }
 
     .links a {
@@ -40,43 +38,59 @@
       color: black;
       font-size: 1rem;
       text-transform: lowercase;
+      transition: all 0.2s ease;
     }
 
     .links a:hover {
       color: gray;
     }
 
-    /* MOBILE */
+    .logo-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 200px;
+      height: auto;
+    }
+
+    /* Responsive (smartphone) */
     @media (max-width: 768px) {
       .top-bar {
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 40px 20px 20px;
-        gap: 30px;
+        align-items: flex-start;
+        gap: 10px;
+        left: 20px;
+        right: 20px;
+        top: 15px;
       }
 
-      .logo {
-        height: 70px;
-        margin-top: 20px;
+      .brand {
+        font-size: 0.9rem;
+      }
+
+      .logo-center {
+        top: 40%;
+        max-width: 220px;
       }
 
       .links {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
         align-items: center;
-      }
-
-      .links a {
-        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Barra in alto -->
   <div class="top-bar">
-    <img src="NXS LOGO.png" alt="logo" class="logo" />
+    <a href="index.html" class="brand">Neanche Per Sogno</a>
     <nav class="links">
       <a href="chi.html">about</a>
       <a href="lavori.html">releases</a>
@@ -86,6 +100,9 @@
       <a href="contatti.html">contacts</a>
     </nav>
   </div>
+
+  <!-- Logo al centro -->
+  <img src="NXS LOGO.png" alt="Logo" class="logo-center" />
 
 </body>
 </html>
