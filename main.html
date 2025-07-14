@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neanche Per Sogno</title>
+  
+  <!-- Qui la favicon che appare nella barra indirizzi -->
+  <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
+
   <style>
     html, body {
       margin: 0;
@@ -27,25 +31,17 @@
       padding: 20px 30px;
     }
 
-    /* Brand con favicon piccolo e testo */
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: black;
-    }
-
-    .brand-logo {
-      height: 24px;
-      width: auto;
-    }
-
     .brand-name {
       font-size: 0.8rem;
       text-decoration: underline;
       color: black;
       text-transform: lowercase;
+    }
+
+    .brand-name a {
+      color: black;
+      text-decoration: underline;
+      font-weight: normal;
     }
 
     .links {
@@ -73,9 +69,10 @@
     }
 
     .logo-center img {
-      max-width: 600px;
+      max-width: 600px; /* più grande di prima */
       height: auto;
       display: block;
+
       animation: pulse 3s infinite ease-in-out;
     }
 
@@ -86,7 +83,6 @@
     }
 
     @media (max-width: 768px) {
-      /* Nascondiamo la scritta e logo grande nella top-bar su mobile */
       .brand-name,
       .logo-center {
         display: none;
@@ -102,8 +98,9 @@
       .mobile-logo {
         display: block;
         max-width: 200px;
-        margin-top: 90px;
-        margin-bottom: 100px;
+        margin-top: 90px; /* sposta il logo verso il basso */
+        margin-bottom: 100px; /* spazio sotto il logo */
+
         animation: pulse 3s infinite ease-in-out;
       }
 
@@ -127,10 +124,11 @@
 <body>
 
   <div class="top-bar">
-    <a href="index.html" class="brand">
-      <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" alt="Logo" class="brand-logo" />
-      <span class="brand-name">Neanche Per Sogno</span>
-    </a>
+    <div class="brand-name">
+      <a href="index.html">Neanche Per Sogno</a>
+    </div>
+
+    <img src="NXS LOGO.png" alt="Logo" class="mobile-logo" style="display:none" />
 
     <nav class="links">
       <a href="chi.html">about</a>
@@ -143,10 +141,8 @@
   </div>
 
   <div class="logo-center">
-    <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/NXS%20LOGO.png?raw=true" alt="Logo" />
+    <img src="NXS LOGO.png" alt="Logo" />
   </div>
-
-  <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/NXS%20LOGO.png?raw=true" alt="Logo" class="mobile-logo" style="display:none" />
 
   <script>
     function toggleMobileLogo() {
@@ -163,5 +159,4 @@
 
 </body>
 </html>
-
 
