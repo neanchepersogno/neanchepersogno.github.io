@@ -12,19 +12,15 @@
       overflow: hidden;
     }
 
-    /* Top bar */
+    /* Barra superiore */
     .top-bar {
-      position: absolute;
-      top: 20px;
-      left: 30px;
-      right: 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 10;
+      padding: 20px 30px;
     }
 
-    .brand {
+    .brand-name {
       font-size: 1.2rem;
       text-decoration: underline;
       color: black;
@@ -48,57 +44,61 @@
       color: gray;
     }
 
-    /* Logo centrale - default (desktop) */
     .logo-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .logo-center img {
+      max-width: 300px;
       height: auto;
     }
 
-    /* --- SMARTPHONE --- */
+    /* --- Layout Mobile --- */
     @media (max-width: 768px) {
       .top-bar {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-        top: 10px;
-        left: 20px;
-        right: 20px;
+        gap: 10px;
+        padding: 15px 20px;
       }
 
-      .brand {
-        font-size: 0.9rem;
+      .brand-name {
+        font-size: 1rem;
       }
 
       .logo-center {
-        top: 38%;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+
+      .logo-center img {
         max-width: 180px;
       }
 
       .links {
-        position: absolute;
-        bottom: 25px;
-        left: 50%;
-        transform: translateX(-50%);
         flex-direction: column;
-        align-items: center;
         gap: 8px;
+        align-items: flex-start;
+        margin-left: 20px;
       }
 
       .links a {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        line-height: 1.4;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top bar -->
+  <!-- Top bar con brand e link -->
   <div class="top-bar">
-    <a href="index.html" class="brand">Neanche Per Sogno</a>
+    <div class="brand-name">
+      <a href="index.html" style="text-decoration: underline; color: black;">Neanche Per Sogno</a>
+    </div>
     <nav class="links">
       <a href="chi.html">about</a>
       <a href="lavori.html">releases</a>
@@ -109,8 +109,10 @@
     </nav>
   </div>
 
-  <!-- Logo centrale -->
-  <img src="NXS LOGO.png" alt="Logo" class="logo-center" />
+  <!-- Logo al centro (desktop) -->
+  <div class="logo-center">
+    <img src="NXS LOGO.png" alt="Logo" />
+  </div>
 
 </body>
 </html>
