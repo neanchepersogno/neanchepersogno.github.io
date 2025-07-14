@@ -17,12 +17,19 @@
       cursor: pointer;
       max-width: 300px;
       height: auto;
+      animation: pulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%   { opacity: 1; }
+      50%  { opacity: 0.6; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <a href="main.html">
-    <img src="logo-main.png" alt="Logo" />
+    <img src="logo.png" alt="Logo" />
   </a>
 </body>
 </html>
