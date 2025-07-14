@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neanche Per Sogno</title>
   <style>
     body {
@@ -12,6 +12,7 @@
       overflow: hidden;
     }
 
+    /* Barra top */
     .top-bar {
       position: absolute;
       top: 20px;
@@ -20,12 +21,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 10;
     }
 
     .brand {
-      font-size: 1.2rem;
+      font-size: 1rem;
       text-decoration: underline;
       color: black;
+      text-transform: lowercase;
     }
 
     .links {
@@ -45,16 +48,17 @@
       color: gray;
     }
 
+    /* Logo centrale desktop */
     .logo-center {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      max-width: 200px;
+      max-width: 400px; /* logo molto più grande */
       height: auto;
     }
 
-    /* Responsive (smartphone) */
+    /* --- SMARTPHONE --- */
     @media (max-width: 768px) {
       .top-bar {
         flex-direction: column;
@@ -62,7 +66,7 @@
         gap: 10px;
         left: 20px;
         right: 20px;
-        top: 15px;
+        top: 10px;
       }
 
       .brand {
@@ -71,24 +75,28 @@
 
       .logo-center {
         top: 40%;
-        max-width: 220px;
+        max-width: 250px;
       }
 
       .links {
-        flex-direction: column;
-        gap: 10px;
         position: absolute;
-        bottom: 40px;
+        bottom: 30px;
         left: 50%;
         transform: translateX(-50%);
+        flex-direction: column;
         align-items: center;
+        gap: 10px;
+      }
+
+      .links a {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra in alto -->
+  <!-- Top bar -->
   <div class="top-bar">
     <a href="index.html" class="brand">Neanche Per Sogno</a>
     <nav class="links">
@@ -101,7 +109,7 @@
     </nav>
   </div>
 
-  <!-- Logo al centro -->
+  <!-- Logo centrale -->
   <img src="NXS LOGO.png" alt="Logo" class="logo-center" />
 
 </body>
