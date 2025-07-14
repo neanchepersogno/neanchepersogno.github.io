@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neanche Per Sogno</title>
   
-  <!-- Qui la favicon che appare nella barra indirizzi -->
+  <!-- Favicon -->
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
 
   <style>
@@ -22,6 +22,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      padding-bottom: 60px; /* spazio barra link desktop */
     }
 
     .top-bar {
@@ -44,9 +45,23 @@
       font-weight: normal;
     }
 
+    /* Barra link desktop: fissa in basso, orizzontale con animazione scorrimento */
     .links {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
       display: flex;
       gap: 25px;
+      padding: 15px 30px;
+      border-top: 1px solid #ccc;
+      z-index: 1000;
+      overflow: hidden;
+      white-space: nowrap;
+
+      /* animazione scorrimento orizzontale */
+      animation: scroll-horizontal 20s linear infinite;
     }
 
     .links a {
@@ -55,6 +70,8 @@
       font-size: 0.8rem;
       text-transform: lowercase;
       transition: color 0.2s ease;
+      display: inline-block;
+      padding-right: 50px; /* spazio tra link per scorrimento */
     }
 
     .links a:hover {
@@ -66,13 +83,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-top: 40px;
     }
 
     .logo-center img {
-      max-width: 600px; /* più grande di prima */
+      max-width: 600px;
       height: auto;
       display: block;
-
       animation: pulse 3s infinite ease-in-out;
     }
 
@@ -82,10 +99,20 @@
       100% { opacity: 1; }
     }
 
+    /* Animazione scorrimento orizzontale */
+    @keyframes scroll-horizontal {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     @media (max-width: 768px) {
-      .brand-name,
-      .logo-center {
-        display: none;
+      body {
+        padding-bottom: 0;
+        padding-left: 60px; /* spazio per barra verticale */
       }
 
       .top-bar {
@@ -95,28 +122,57 @@
         gap: 15px;
       }
 
+      .brand-name,
+      .logo-center {
+        display: none;
+      }
+
       .mobile-logo {
         display: block;
         max-width: 200px;
-        margin-top: 90px; /* sposta il logo verso il basso */
-        margin-bottom: 100px; /* spazio sotto il logo */
-
+        margin-top: 90px;
+        margin-bottom: 100px;
         animation: pulse 3s infinite ease-in-out;
       }
 
+      /* Barra link mobile: fissa a sinistra, verticale, scorre verticalmente */
       .links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 60px;
         flex-direction: column;
-        gap: 12px;
+        gap: 30px;
         align-items: center;
-        width: 100%;
-        max-width: 300px;
-        margin: 0;
+        padding: 20px 0;
+        border-right: 1px solid #ccc;
+        background: white;
+        z-index: 1000;
+        overflow: hidden;
+
+        /* animazione scorrimento verticale */
+        animation: scroll-vertical 20s linear infinite;
       }
 
       .links a {
         font-size: 0.9rem;
         line-height: 1.5;
-        padding: 2px 0;
+        padding: 0;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        text-align: center;
+        display: inline-block;
+      }
+    }
+
+    /* Animazione scorrimento verticale */
+    @keyframes scroll-vertical {
+      0% {
+        transform: translateY(0%);
+      }
+      100% {
+        transform: translateY(-50%);
       }
     }
   </style>
@@ -159,4 +215,3 @@
 
 </body>
 </html>
-
