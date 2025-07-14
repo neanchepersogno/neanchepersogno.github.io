@@ -22,8 +22,6 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      padding-bottom: 50px; /* spazio per la barra scorrevole in basso desktop */
-      padding-left: 0; /* default no padding sinistro */
     }
 
     .top-bar {
@@ -68,7 +66,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 40px;
     }
 
     .logo-center img {
@@ -84,25 +81,25 @@
       100% { opacity: 1; }
     }
 
-    /* BARRA SCORREVOLE - Desktop (orizzontale in basso) */
+    /* BARRA SCORREVOLE */
     .scroll-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 40px;
+      height: 25px; /* sottile */
       background-color: black;
       color: white;
       display: flex;
       align-items: center;
       overflow: hidden;
-      z-index: 1100;
-      padding-left: 100%; /* parte fuori schermo a destra */
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 0.9rem;
       white-space: nowrap;
+      z-index: 1100;
 
-      animation: scroll-left 15s linear infinite;
+      animation: scroll-left 12s linear infinite;
+      padding-left: 100%;
     }
 
     .scroll-bar a {
@@ -122,9 +119,9 @@
     }
 
     @media (max-width: 768px) {
-      body {
-        padding-bottom: 0;
-        padding-left: 50px; /* spazio per barra verticale a sinistra */
+      .brand-name,
+      .logo-center {
+        display: none;
       }
 
       .top-bar {
@@ -132,11 +129,6 @@
         align-items: center;
         padding: 15px 20px;
         gap: 15px;
-      }
-
-      .brand-name,
-      .logo-center {
-        display: none;
       }
 
       .mobile-logo {
@@ -147,22 +139,35 @@
         animation: pulse 3s infinite ease-in-out;
       }
 
-      /* BARRA SCORREVOLE - Mobile (verticale a sinistra) */
+      .links {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin: 0;
+      }
+
+      .links a {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 2px 0;
+      }
+
+      /* Barra scorrevole verticale a sinistra, più sottile */
       .scroll-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 50px;
+        width: 25px;
         height: 100vh;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: auto;
         padding-left: 0;
-        padding-top: 100%; /* parte fuori schermo in basso */
+        padding-top: 100%;
         writing-mode: vertical-rl;
         text-orientation: mixed;
-        font-size: 1rem;
-        font-weight: bold;
-        animation: scroll-up 15s linear infinite;
-        overflow: hidden;
+        font-size: 0.9rem;
+        animation: scroll-up 12s linear infinite;
         justify-content: center;
       }
 
@@ -205,7 +210,7 @@
     <img src="NXS LOGO.png" alt="Logo" />
   </div>
 
-  <!-- Barra scorrevole nuova -->
+  <!-- BARRA SCORREVOLE -->
   <div class="scroll-bar">
     <a href="https://linktobuyorlisten.com" target="_blank" rel="noopener noreferrer">
       Aposematic EP by Martenot OUT NOW!
