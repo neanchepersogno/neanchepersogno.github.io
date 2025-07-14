@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neanche Per Sogno</title>
   
-  <!-- Favicon -->
+  <!-- Qui la favicon che appare nella barra indirizzi -->
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
 
   <style>
@@ -69,7 +69,7 @@
     }
 
     .logo-center img {
-      max-width: 600px;
+      max-width: 600px; /* più grande di prima */
       height: auto;
       display: block;
       animation: pulse 3s infinite ease-in-out;
@@ -79,43 +79,6 @@
       0%   { opacity: 1; }
       50%  { opacity: 0.5; }
       100% { opacity: 1; }
-    }
-
-    /* BARRA SCORREVOLE */
-    .scroll-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 25px; /* sottile */
-      background-color: black;
-      color: white;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      font-weight: bold;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      z-index: 1100;
-
-      animation: scroll-left 12s linear infinite;
-      padding-left: 100%;
-    }
-
-    .scroll-bar a {
-      color: white;
-      text-decoration: none;
-      padding-right: 2rem;
-      display: inline-block;
-    }
-
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
     }
 
     @media (max-width: 768px) {
@@ -134,8 +97,8 @@
       .mobile-logo {
         display: block;
         max-width: 200px;
-        margin-top: 90px;
-        margin-bottom: 100px;
+        margin-top: 90px; /* sposta il logo verso il basso */
+        margin-bottom: 100px; /* spazio sotto il logo */
         animation: pulse 3s infinite ease-in-out;
       }
 
@@ -153,27 +116,71 @@
         line-height: 1.5;
         padding: 2px 0;
       }
+    }
 
-      /* Barra scorrevole verticale a sinistra, più sottile */
+    /* BARRA NERA SCORREVOLE */
+
+    .scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 25px;
+      background-color: black;
+      color: white;
+      overflow: hidden;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      z-index: 1100;
+    }
+
+    .scroll-text {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: scroll-left 15s linear infinite;
+    }
+
+    .scroll-text span {
+      padding-right: 3rem; /* spazio tra le ripetizioni */
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @media (max-width: 768px) {
       .scroll-bar {
-        width: 25px;
-        height: 100vh;
         top: 0;
         bottom: 0;
         left: 0;
-        right: auto;
-        padding-left: 0;
-        padding-top: 100%;
+        width: 25px;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
         writing-mode: vertical-rl;
         text-orientation: mixed;
-        font-size: 0.9rem;
-        animation: scroll-up 12s linear infinite;
-        justify-content: center;
+        font-size: 0.7rem;
+        padding: 0;
       }
 
-      .scroll-bar a {
-        padding-right: 0;
-        padding-bottom: 2rem;
+      .scroll-text {
+        padding-left: 0;
+        padding-top: 100%;
+        animation: scroll-up 15s linear infinite;
+      }
+
+      .scroll-text span {
+        display: block;
+        padding-bottom: 3rem; /* spazio tra le ripetizioni */
       }
 
       @keyframes scroll-up {
@@ -210,10 +217,12 @@
     <img src="NXS LOGO.png" alt="Logo" />
   </div>
 
-  <!-- BARRA SCORREVOLE -->
   <div class="scroll-bar">
-    <a href="https://linktobuyorlisten.com" target="_blank" rel="noopener noreferrer">
-      Aposematic EP by Martenot OUT NOW!
+    <a href="https://example.com" class="scroll-text" target="_blank" rel="noopener noreferrer" aria-label="Aposematic EP by Martenot OUT NOW!">
+      <span>Aposematic EP by Martenot OUT NOW! </span>
+      <span>Aposematic EP by Martenot OUT NOW! </span>
+      <span>Aposematic EP by Martenot OUT NOW! </span>
+      <span>Aposematic EP by Martenot OUT NOW! </span>
     </a>
   </div>
 
@@ -232,3 +241,4 @@
 
 </body>
 </html>
+
