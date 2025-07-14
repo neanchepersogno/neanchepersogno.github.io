@@ -65,11 +65,18 @@
     }
 
     .logo-center img {
-  max-width: 600px; /* più grande di prima */
-  height: auto;
-  display: block;
-}
+      max-width: 600px; /* più grande di prima */
+      height: auto;
+      display: block;
 
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%   { opacity: 1; }
+      50%  { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
 
     @media (max-width: 768px) {
       .brand-name,
@@ -84,13 +91,14 @@
         gap: 15px;
       }
 
-     .mobile-logo {
-  display: block;
-  max-width: 200px;
-  margin-top: 90px; /* sposta il logo verso il basso */
-  margin-bottom: 100px; /* spazio sotto il logo */
-}
+      .mobile-logo {
+        display: block;
+        max-width: 200px;
+        margin-top: 90px; /* sposta il logo verso il basso */
+        margin-bottom: 100px; /* spazio sotto il logo */
 
+        animation: pulse 1.5s infinite ease-in-out;
+      }
 
       .links {
         flex-direction: column;
@@ -147,4 +155,3 @@
 
 </body>
 </html>
-
