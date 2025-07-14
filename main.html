@@ -7,35 +7,37 @@
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
 
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
       font-family: Arial, sans-serif;
-      background-color: white;
+      background: white;
       overflow-x: hidden;
     }
 
-    /* === SCROLLING TEXT BAR (TOP - MOBILE & DESKTOP) === */
-    .scroll-bar-top {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* ==== BARRA SCORREVOLE TOP/BOTTOM ==== */
+    .scroll-bar {
       width: 100%;
       height: 25px;
-      background-color: black;
-      z-index: 9999;
+      background: black;
       overflow: hidden;
       display: flex;
       align-items: center;
+      z-index: 9999;
     }
 
-    .scroll-bar-top .scroll-container {
+    .scroll-content {
       display: flex;
       width: max-content;
       animation: scroll-left 20s linear infinite;
     }
 
-    .scroll-bar-top span {
+    .scroll-bar span {
       color: white;
       font-size: 0.8rem;
       font-weight: bold;
@@ -44,18 +46,19 @@
     }
 
     @keyframes scroll-left {
-      0%   { transform: translateX(0); }
+      0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* === NAVBAR (DESKTOP) === */
-    .top-bar {
+    /* ==== DESKTOP TOP BAR (LINK FISSI) ==== */
+    .top-fixed-bar {
       position: fixed;
-      top: 25px; /* sotto la scroll bar */
+      top: 0;
       left: 0;
-      right: 0;
-      height: 25px; /* identica alla barra inferiore */
+      width: 100%;
+      height: 25px;
       background-color: black;
+      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -63,123 +66,114 @@
       z-index: 9998;
     }
 
-    .brand-name a {
+    .top-fixed-bar .brand-name a,
+    .top-fixed-bar .links a {
       color: white;
       font-size: 0.8rem;
       text-transform: lowercase;
       text-decoration: underline;
     }
 
-    .links {
+    .top-fixed-bar .links {
       display: flex;
       gap: 25px;
     }
 
-    .links a {
-      color: white;
-      font-size: 0.8rem;
-      text-transform: lowercase;
-      text-decoration: underline;
-      transition: color 0.2s ease;
-    }
-
-    .links a:hover {
-      color: gray;
-    }
-
-    /* === LOGO === */
-    .logo-center {
-      margin-top: 80px;
+    /* ==== LOGO CENTERED ==== */
+    .main-content {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px 30px;
+      text-align: center;
+      padding: 60px 20px;
+      min-height: calc(100vh - 50px); /* meno barre */
+      margin-top: 25px; /* spazio per barra alta */
+      margin-bottom: 25px; /* spazio per barra bassa */
     }
 
-    .logo-center img {
+    .main-content img {
       max-width: 600px;
       height: auto;
       animation: pulse 3s infinite ease-in-out;
     }
 
     @keyframes pulse {
-      0%   { opacity: 1; }
-      50%  { opacity: 0.5; }
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
       100% { opacity: 1; }
     }
 
-    /* === FOOTER SCROLL BAR (BOTTOM) === */
-    .scroll-bar-bottom {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 25px;
-      background-color: black;
-      z-index: 9999;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-
-    .scroll-bar-bottom .scroll-container {
-      display: flex;
-      width: max-content;
-      animation: scroll-left 20s linear infinite;
-    }
-
-    .scroll-bar-bottom span {
-      color: white;
-      font-size: 0.8rem;
-      font-weight: bold;
-      white-space: nowrap;
-      padding-right: 3rem;
-    }
-
-    /* === RESPONSIVE === */
+    /* ==== MOBILE LAYOUT ==== */
     @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 0;
-        top: 25px;
+      .top-fixed-bar {
+        display: none;
       }
 
-      .logo-center {
-        margin-top: 60px;
-        padding: 30px 10px 20px;
+      .scroll-bar.top {
+        position: fixed;
+        top: 0;
       }
 
-      .links {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+      .scroll-bar.bottom {
+        position: fixed;
+        bottom: 0;
       }
 
-      .logo-center img {
+      .main-content {
+        padding: 90px 20px 90px;
+        min-height: auto;
+      }
+
+      .main-content img {
         max-width: 250px;
+        margin-bottom: 30px;
+      }
+
+      .mobile-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .mobile-links a {
+        font-size: 0.9rem;
+        color: black;
+        text-decoration: underline;
+        text-transform: lowercase;
       }
     }
+
+    /* ==== DESKTOP ONLY: scroll-bar positions ==== */
+    @media (min-width: 769px) {
+      .scroll-bar.top,
+      .mobile-links {
+        display: none;
+      }
+
+      .scroll-bar.bottom {
+        position: fixed;
+        bottom: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- BARRA SCORREVOLE SUPERIORE -->
-  <div class="scroll-bar-top">
-    <a href="https://example.com" target="_blank" style="text-decoration:none;">
-      <div class="scroll-container">
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-      </div>
-    </a>
+  <!-- ✅ TOP SCROLL BAR (SOLO MOBILE) -->
+  <div class="scroll-bar top">
+    <div class="scroll-content">
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+    </div>
   </div>
 
-  <!-- BARRA NERA CON LINK -->
-  <div class="top-bar">
+  <!-- ✅ TOP FIXED BAR (SOLO DESKTOP) -->
+  <div class="top-fixed-bar">
     <div class="brand-name">
       <a href="index.html">Neanche Per Sogno</a>
     </div>
@@ -193,23 +187,29 @@
     </nav>
   </div>
 
-  <!-- LOGO -->
-  <div class="logo-center">
+  <!-- ✅ MAIN CONTENT -->
+  <div class="main-content">
     <img src="NXS LOGO.png" alt="Logo" />
+    
+    <!-- SOLO MOBILE: LINK -->
+    <div class="mobile-links">
+      <a href="chi.html">about</a>
+      <a href="lavori.html">releases</a>
+      <a href="lavori.html">mixtapes</a>
+      <a href="lavori.html">events</a>
+      <a href="lavori.html">buy</a>
+      <a href="contatti.html">contacts</a>
+    </div>
   </div>
 
-  <!-- BARRA SCORREVOLE INFERIORE -->
-  <div class="scroll-bar-bottom">
-    <a href="https://example.com" target="_blank" style="text-decoration:none;">
-      <div class="scroll-container">
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-        <span>Aposematic EP by Martenot OUT NOW! </span>
-      </div>
-    </a>
+  <!-- ✅ BOTTOM SCROLL BAR (SEMPRE VISIBILE) -->
+  <div class="scroll-bar bottom">
+    <div class="scroll-content">
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <span>Aposematic EP by Martenot OUT NOW!</span>
+    </div>
   </div>
 
 </body>
