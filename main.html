@@ -53,16 +53,19 @@
     }
 
     .links a {
-      display: block;
-      margin: 10px 0;
-      text-decoration: underline;
-      color: black;
-      font-size: 1.2rem;
-    }
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;      /* Niente sottolineatura iniziale */
+  color: black;
+  font-size: 1rem;            /* Dimensione del font */
+  transition: all 0.2s ease;  /* Animazione leggera */
+}
 
-    .links a:hover {
-      color: gray;
-    }
+.links a:hover {
+  text-decoration: underline; /* Sottolinea al passaggio */
+  color: gray;                /* (opzionale) cambia colore al passaggio */
+}
+
   </style>
 </head>
 <body>
@@ -78,8 +81,9 @@
   <div class="links">
     <a href="chi.html">About</a>
     <a href="lavori.html">Releases</a>
-    <a href="lavori.html">Shop</a>
+    <a href="lavori.html">Mixtapes</a>
     <a href="lavori.html">Events</a>
+    <a href="lavori.html">Buy</a>
     <a href="contatti.html">Contacts</a>
   </div>
 
