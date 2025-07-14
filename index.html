@@ -17,21 +17,21 @@
 /* Stile base: logo più piccolo (per smartphone) */
 img {
   cursor: pointer;
-  max-width: 200px;
+  max-width: 400px;
   height: auto;
-  animation: pulse 1.5s infinite ease-in-out;
+  animation: pulse 1.5s infinite linear;
 }
 
 /* Per schermi larghi (desktop) aumento la dimensione */
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
   img {
-    max-width: 800px; /* più grande su desktop */
+    max-width: 400px; /* più grande su desktop */
   }
 }
 
 @keyframes pulse {
   0%   { opacity: 1; }
-  50%  { opacity: 0.4; }
+  50%  { opacity: 0; }
   100% { opacity: 1; }
 }
 
