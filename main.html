@@ -20,7 +20,7 @@
       overflow-x: hidden;
     }
 
-    /* ==== BARRA SCORREVOLE TOP/BOTTOM ==== */
+    /* ==== BARRA SCORREVOLE BASE ==== */
     .scroll-bar {
       width: 100%;
       height: 25px;
@@ -31,12 +31,6 @@
       z-index: 9999;
     }
 
-    .scroll-content {
-      display: flex;
-      width: max-content;
-      animation: scroll-left 20s linear infinite;
-    }
-
     .scroll-bar span {
       color: white;
       font-size: 0.8rem;
@@ -45,12 +39,32 @@
       padding-right: 3rem;
     }
 
+    .scroll-content {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .scroll-wrapper {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-left 20s linear infinite;
+    }
+
+    .scroll-wrapper.reverse {
+      animation: scroll-right 20s linear infinite;
+    }
+
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* ==== DESKTOP TOP BAR (LINK FISSI) ==== */
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ==== TOP FIXED BAR (DESKTOP) ==== */
     .top-fixed-bar {
       position: fixed;
       top: 0;
@@ -70,6 +84,7 @@
     .top-fixed-bar .links a {
       color: white;
       font-size: 0.8rem;
+      font-weight: bold;
       text-transform: lowercase;
       text-decoration: underline;
     }
@@ -87,9 +102,9 @@
       align-items: center;
       text-align: center;
       padding: 60px 20px;
-      min-height: calc(100vh - 50px); /* meno barre */
-      margin-top: 25px; /* spazio per barra alta */
-      margin-bottom: 25px; /* spazio per barra bassa */
+      min-height: calc(100vh - 50px);
+      margin-top: 25px;
+      margin-bottom: 25px;
     }
 
     .main-content img {
@@ -139,6 +154,7 @@
 
       .mobile-links a {
         font-size: 0.9rem;
+        font-weight: bold;
         color: black;
         text-decoration: underline;
         text-transform: lowercase;
@@ -162,13 +178,23 @@
 </head>
 <body>
 
-  <!-- ✅ TOP SCROLL BAR (SOLO MOBILE) -->
+  <!-- ✅ SCROLL BAR TOP (SOLO MOBILE) -->
   <div class="scroll-bar top">
     <div class="scroll-content">
-      <span>Aposematic EP by Martenot OUT NOW!</span>
-      <span>Aposematic EP by Martenot OUT NOW!</span>
-      <span>Aposematic EP by Martenot OUT NOW!</span>
-      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <div class="scroll-wrapper reverse">
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+      </div>
+      <div class="scroll-wrapper reverse" aria-hidden="true">
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+      </div>
     </div>
   </div>
 
@@ -202,15 +228,26 @@
     </div>
   </div>
 
-  <!-- ✅ BOTTOM SCROLL BAR (SEMPRE VISIBILE) -->
+  <!-- ✅ SCROLL BAR BOTTOM (TUTTI I DEVICE) -->
   <div class="scroll-bar bottom">
     <div class="scroll-content">
-      <span>Aposematic EP by Martenot OUT NOW!</span>
-      <span>Aposematic EP by Martenot OUT NOW!</span>
-      <span>Aposematic EP by Martenot OUT NOW!</span>
-      <span>Aposematic EP by Martenot OUT NOW!</span>
+      <div class="scroll-wrapper">
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+      </div>
+      <div class="scroll-wrapper" aria-hidden="true">
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+        <span>Aposematic EP by Martenot OUT NOW! </span>
+      </div>
     </div>
   </div>
 
 </body>
 </html>
+
