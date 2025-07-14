@@ -1,91 +1,81 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neanche Per Sogno</title>
+  <!-- Font sostitutivo a Suisse Works Medium -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: white;
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding-top: 40px; /* spazio per la barra nera */
+      background-color: white;
+      font-family: 'Merriweather', serif;
+    }
+
+    header {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      height: 100vh;
+      padding: 10px 20px;
     }
 
-    /* Barra nera scorrevole */
-    .news-bar {
-      position: fixed;
-      top: 0;
-      width: 100%;
+    .logo {
       height: 40px;
-      background-color: black;
-      overflow: hidden;
-      z-index: 1000;
     }
 
-    .news-bar a {
-      color: white;
-      text-decoration: none;
-      display: inline-block;
-      white-space: nowrap;
-      animation: scroll-left 15s linear infinite;
-      font-size: 16px;
-      line-height: 40px;
-      padding-left: 100%;
+    .nav-links {
+      display: flex;
+      gap: 20px;
     }
 
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    /* Link centrati */
-    .links {
-      text-align: center;
-    }
-
-    .links a {
-      display: block;
-      margin: 10px 0;
-      text-decoration: none;      
-      color: black;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-    }
-
-    .links a:hover {
+    .nav-links a {
       text-decoration: underline;
+      color: black;
+      font-size: 0.9rem;
+      text-transform: lowercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
       color: gray;
+    }
+
+    /* Layout per smartphone */
+    @media (max-width: 767px) {
+      header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo {
+        height: 50px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!--
-  <div class="news-bar">
-    <a href="https://neanchepersogno.github.io" target="_blank">
-      Aposematic EP by Martenot OUT NOW!
-    </a>
-  </div>
-  -->
-
-  <div class="links">
-    <a href="chi.html">About</a>
-    <a href="lavori.html">Releases</a>
-    <a href="lavori.html">Mixtapes</a>
-    <a href="lavori.html">Events</a>
-    <a href="lavori.html">Buy</a>
-    <a href="contatti.html">Contacts</a>
-  </div>
+  <header>
+    <img src="NXS LOGO.png" alt="NXS Logo" class="logo" />
+    <nav class="nav-links">
+      <a href="chi.html">about</a>
+      <a href="lavori.html">releases</a>
+      <a href="lavori.html">mixtapes</a>
+      <a href="lavori.html">events</a>
+      <a href="lavori.html">buy</a>
+      <a href="contatti.html">contacts</a>
+    </nav>
+  </header>
 
 </body>
 </html>
+
 
