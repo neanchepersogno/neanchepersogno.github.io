@@ -27,7 +27,7 @@
       padding: 20px 30px;
     }
 
-    /* Nuovo brand con logo e testo */
+    /* Brand con favicon piccolo e testo */
     .brand {
       display: flex;
       align-items: center;
@@ -37,7 +37,7 @@
     }
 
     .brand-logo {
-      height: 30px;
+      height: 24px;
       width: auto;
     }
 
@@ -73,7 +73,7 @@
     }
 
     .logo-center img {
-      max-width: 600px; /* più grande di prima */
+      max-width: 600px;
       height: auto;
       display: block;
       animation: pulse 3s infinite ease-in-out;
@@ -86,7 +86,7 @@
     }
 
     @media (max-width: 768px) {
-      /* Nascondiamo la scritta nella top-bar e il logo grande */
+      /* Nascondiamo la scritta e logo grande nella top-bar su mobile */
       .brand-name,
       .logo-center {
         display: none;
@@ -102,8 +102,8 @@
       .mobile-logo {
         display: block;
         max-width: 200px;
-        margin-top: 90px; /* sposta il logo verso il basso */
-        margin-bottom: 100px; /* spazio sotto il logo */
+        margin-top: 90px;
+        margin-bottom: 100px;
         animation: pulse 3s infinite ease-in-out;
       }
 
@@ -128,7 +128,7 @@
 
   <div class="top-bar">
     <a href="index.html" class="brand">
-      <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/NXS%20LOGO.png?raw=true" alt="Logo" class="brand-logo" />
+      <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" alt="Logo" class="brand-logo" />
       <span class="brand-name">Neanche Per Sogno</span>
     </a>
 
@@ -142,12 +142,10 @@
     </nav>
   </div>
 
-  <!-- logo grande al centro desktop -->
   <div class="logo-center">
     <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/NXS%20LOGO.png?raw=true" alt="Logo" />
   </div>
 
-  <!-- logo mobile -->
   <img src="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/NXS%20LOGO.png?raw=true" alt="Logo" class="mobile-logo" style="display:none" />
 
   <script>
@@ -165,4 +163,5 @@
 
 </body>
 </html>
+
 
