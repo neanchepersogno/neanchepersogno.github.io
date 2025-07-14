@@ -25,8 +25,10 @@ img {
 /* Per schermi larghi (desktop) aumento la dimensione */
 @media (min-width: 768px) {
   img {
-    max-width: 400px; /* più grande su desktop */
-  }
+  cursor: pointer;
+  max-width: 200px;
+  height: auto;
+  animation: pulse 1s infinite linear;
 }
 
 @keyframes pulse {
@@ -34,8 +36,6 @@ img {
   50%  { opacity: 0; }
   100% { opacity: 1; }
 }
-
-
 
   </style>
 </head>
