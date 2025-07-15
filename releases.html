@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Releases – Neanche Per Sogno</title>
+  <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: Arial, sans-serif;
+      background: white;
+      overflow-x: hidden;
+      color: black;
+    }
+
+    /* ==== TOP FIXED BAR (DESKTOP) ==== */
+    .top-fixed-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 9998;
+    }
+
+    .top-fixed-bar .brand-name a {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .top-fixed-bar .links a {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: lowercase;
+      text-decoration: underline;
+    }
+
+    .top-fixed-bar .links {
+      display: flex;
+      gap: 25px;
+    }
+
+    /* ==== BRAND MOBILE IN ALTO ==== */
+    .mobile-header {
+      display: none;
+      padding: 15px 20px 0;
+    }
+
+    .mobile-header a {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: black;
+      text-decoration: underline;
+    }
+
+    /* ==== LAYOUT CONTENUTO DESKTOP ==== */
+    .content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 80px auto 60px;
+      padding: 20px;
+      gap: 40px;
+    }
+
+    .content-text {
+      flex: 1;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .content-text h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .content-text p {
+      margin-bottom: 20px;
+    }
+
+    .content-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .content-image img {
+      max-width: 100%;
+      max-height: 500px;
+      width: auto;
+      height: auto;
+    }
+
+    /* ==== MOBILE STYLES ==== */
+    @media (max-width: 768px) {
+      .top-fixed-bar {
+        display: none;
+      }
+
+      .mobile-header {
+        display: block;
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+        margin-top: 30px;
+        padding: 20px;
+      }
+
+      .content-text {
+        order: 1;
+        text-align: left;
+        font-size: 1rem;
+      }
+
+      .content-text h1 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+
+      .content-image {
+        order: 2;
+        margin-top: 25px;
+      }
+
+      .content-image img {
+        max-width: 80%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ TOP BAR DESKTOP -->
+  <div class="top-fixed-bar">
+    <div class="brand-name">
+      <a href="main.html">Neanche Per Sogno</a>
+    </div>
+    <nav class="links">
+      <a href="about.html">about</a>
+      <a href="releases.html">releases</a>
+      <a href="mixtapes.html">mixtapes</a>
+      <a href="events.html">events</a>
+      <a href="buy.html">buy</a>
+      <a href="contacts.html">contacts</a>
+    </nav>
+  </div>
+
+  <!-- ✅ BRAND MOBILE -->
+  <div class="mobile-header">
+    <a href="main.html">Neanche Per Sogno</a>
+  </div>
+
+  <!-- ✅ CONTENUTO PRINCIPALE -->
+  <div class="content-wrapper">
+    <div class="content-text">
+      <h1>neanche per sogno</h1>
+      <p>Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.</p>
+    </div>
+    <div class="content-image">
+      <img src="NXS LOGO.png" alt="Logo Neanche Per Sogno" />
+    </div>
+  </div>
+
+</body>
+</html>
+
+
