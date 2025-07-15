@@ -84,12 +84,23 @@
       justify-content: space-between;
     }
 
+    /* Aggiunta ombra alle immagini + pointer e transizione */
     .release img {
       width: 450px;
       height: 450px;
       object-fit: cover;
       border: none;
       order: 2;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .release img:hover, .release img:focus {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      outline: none;
     }
 
     .release-info {
@@ -146,6 +157,58 @@
         order: 1;
       }
     }
+
+    /* MODAL per ingrandimento immagine */
+    .modal {
+      display: none; /* nascosto di default */
+      position: fixed;
+      z-index: 10000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+      animation: zoomIn 0.3s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s ease;
+      z-index: 10001;
+    }
+
+    .modal-close:hover {
+      color: #ddd;
+    }
   </style>
 </head>
 <body>
@@ -171,7 +234,7 @@
   <div class="page-content">
 
     <div class="release">
-      <img src="gu-lefka-split.png" alt="Gu / Lefka – Split">
+      <img src="gu-lefka-split.png" alt="Gu / Lefka – Split" tabindex="0">
       <div class="release-info">
         <div class="release-title">Guglielmo Diana / Lefka – Split</div>
         <div class="release-text">
@@ -194,7 +257,7 @@
     </div>
 
     <div class="release">
-      <img src="face-shopping-rmx.png" alt="Faceshopping RMX">
+      <img src="face-shopping-rmx.png" alt="Faceshopping RMX" tabindex="0">
       <div class="release-info">
         <div class="release-title">Martenot - Faceshopping RMX </div>
         <div class="release-text">
@@ -217,7 +280,7 @@
     </div>
 
     <div class="release">
-      <img src="sfilate-spaziali.png" alt="Sfilate Spaziali">
+      <img src="sfilate-spaziali.png" alt="Sfilate Spaziali" tabindex="0">
       <div class="release-info">
         <div class="release-title">Martenot - Sfilate Spaziali</div>
         <div class="release-text">
@@ -241,6 +304,55 @@
       </div>
     </div>
   </div>
+
+  <!-- MODAL per immagine ingrandita -->
+  <div id="imgModal" class="modal" tabindex="-1" aria-modal="true" role="dialog" aria-label="Immagine ingrandita">
+    <span class="modal-close" role="button" aria-label="Chiudi">&times;</span>
+    <img class="modal-content" id="modalImg" alt="">
+  </div>
+
+  <script>
+    // Seleziona tutte le immagini delle release
+    const images = document.querySelectorAll('.release img');
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalClose = document.querySelector('.modal-close');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'block';
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalClose.focus();
+      });
+
+      // Supporto anche per tastiera (invio o spazio)
+      img.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          img.click();
+        }
+      });
+    });
+
+    // Chiudi modal cliccando sulla X o fuori immagine
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Chiudi modal con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 
 </body>
 </html>
