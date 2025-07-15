@@ -69,18 +69,11 @@
       text-decoration: underline;
     }
 
-    /* ==== LAYOUT CONTENUTO DESKTOP ==== */
+    /* ==== CONTENUTO PRINCIPALE ==== */
     .content-wrapper {
       max-width: 1100px;
       margin: 80px auto 60px;
       padding: 20px;
-    }
-
-    .soundcloud-embed {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 10px;
     }
 
     .sc-credit {
@@ -91,7 +84,7 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      font-family: sans-serif;
+      font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
       font-weight: 100;
       margin-top: 10px;
     }
@@ -99,6 +92,12 @@
     .sc-credit a {
       color: #cccccc;
       text-decoration: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
     }
 
     /* ==== MOBILE STYLES ==== */
@@ -116,7 +115,7 @@
         padding: 20px;
       }
 
-      .soundcloud-embed {
+      iframe {
         height: 400px;
       }
     }
@@ -146,15 +145,11 @@
 
   <!-- ✅ CONTENUTO PRINCIPALE -->
   <div class="content-wrapper">
-    <iframe class="soundcloud-embed"
-      scrolling="no"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1940725367&color=%23b4b4b4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-    </iframe>
+    <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1940725367&color=%23b4b4b4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
 
     <div class="sc-credit">
-      <a href="https://soundcloud.com/neanche-per-sogno" target="_blank">Neanche Per Sogno</a> ·
-      <a href="https://soundcloud.com/neanche-per-sogno/sets/neanche-per-sogno-mixes" target="_blank">Mixtape Archive</a>
+      <a href="https://soundcloud.com/neanche-per-sogno" title="Neanche Per Sogno" target="_blank">Neanche Per Sogno</a> ·
+      <a href="https://soundcloud.com/neanche-per-sogno/sets/neanche-per-sogno-mixes" title="Mixtape Archive" target="_blank">Mixtape Archive</a>
     </div>
   </div>
 
