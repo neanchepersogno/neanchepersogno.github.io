@@ -7,8 +7,6 @@
 
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
     body {
       background: white;
       display: flex;
@@ -17,8 +15,8 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      color: #222;
+      font-family: Arial, sans-serif;
+      color: black;
     }
 
     a {
@@ -33,37 +31,27 @@
       height: auto;
       opacity: 0;
       animation: fadeIn 2s forwards;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      filter: none;
+      box-shadow: none;
+      border: none;
       transition: transform 0.3s ease;
     }
 
     img:hover, img:focus {
       transform: scale(1.05);
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
     }
 
-    /* Scritta Enter con fade-in ritardato */
+    /* Scritta Enter semplice e sobria */
     .enter-text {
-      margin-top: 25px;
-      font-size: 1.4rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: #555;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: black;
       opacity: 0;
       animation: fadeIn 2s 2.2s forwards;
       user-select: none;
       cursor: default;
-      text-transform: uppercase;
-      border-bottom: 2px solid #555;
-      padding-bottom: 6px;
-      transition: color 0.3s ease, border-color 0.3s ease;
-      width: max-content;
-    }
-
-    a:hover + .enter-text,
-    a:focus + .enter-text {
-      color: #000;
-      border-color: #000;
+      text-transform: lowercase;
     }
 
     /* Per schermi larghi (desktop) */
@@ -72,11 +60,11 @@
         max-width: 400px;
       }
       .enter-text {
-        font-size: 2rem;
+        font-size: 0.9rem;
       }
     }
 
-    /* Animazioni */
+    /* Animazione fade-in */
     @keyframes fadeIn {
       to {
         opacity: 1;
@@ -88,7 +76,7 @@
   <a href="main.html" aria-label="Entra nella home page">
     <img src="logo-main.png" alt="Logo Neanche Per Sogno" />
   </a>
-  <div class="enter-text">Enter</div>
+  <div class="enter-text">enter</div>
 </body>
 </html>
 
