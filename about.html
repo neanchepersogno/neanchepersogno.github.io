@@ -75,6 +75,9 @@
       max-width: 1000px;
       margin: 80px auto 60px;
       padding: 20px;
+    }
+
+    .about {
       display: flex;
       flex-direction: row;
       gap: 30px;
@@ -82,28 +85,28 @@
       justify-content: space-between;
     }
 
-    .content-text {
+    .about-text {
       flex: 1;
-      font-size: 1rem;
+      font-size: 0.85rem;
       line-height: 1.3;
       text-align: justify;
     }
 
-    .content-text p {
+    .about-text p {
       margin-bottom: 12px;
     }
 
-    .content-text strong {
+    .about-text strong {
       font-weight: bold;
     }
 
-    .content-image {
+    .about-image {
       flex: 1;
       display: flex;
       justify-content: center;
     }
 
-    .content-image img {
+    .about-image img {
       width: 450px;
       height: 450px;
       object-fit: contain;
@@ -127,18 +130,19 @@
         align-items: center;
       }
 
-      .content-text {
-        order: 1;
-        text-align: justify;
+      .about {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .about-text {
         font-size: 0.8rem;
         margin-bottom: 25px;
+        text-align: justify;
       }
 
-      .content-image {
-        order: 2;
-      }
-
-      .content-image img {
+      .about-image img {
         width: 300px;
         height: 300px;
       }
@@ -166,13 +170,16 @@
   </div>
 
   <div class="page-content">
-    <div class="content-text">
-      <p><strong>Neanche Per Sogno</strong> is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.<br>Established by Simone Gottardi in 2022</p>
-    </div>
-    <div class="content-image">
-      <img src="logo-main2.png" alt="Logo Neanche Per Sogno" />
+    <div class="about">
+      <div class="about-text">
+        <p><strong>Neanche Per Sogno</strong> is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.<br>Established by Simone Gottardi in 2022</p>
+      </div>
+      <div class="about-image">
+        <img src="logo-main2.png" alt="Logo Neanche Per Sogno" />
+      </div>
     </div>
   </div>
 
 </body>
 </html>
+
