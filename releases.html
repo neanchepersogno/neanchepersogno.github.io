@@ -84,17 +84,19 @@
       justify-content: space-between;
     }
 
+    /* Immagini con ombra e cursore pointer */
     .release img {
       width: 450px;
       height: 450px;
       object-fit: cover;
       border: none;
       order: 2;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
 
+    /* Effetto hover: leggero ingrandimento */
     .release img:hover {
       transform: scale(1.05);
     }
@@ -154,26 +156,68 @@
       }
     }
 
-    /* MODAL STYLES */
+    /* Modal per immagine ingrandita */
     .modal {
-      display: none; /* hidden by default */
+      display: none;
       position: fixed;
       z-index: 10000;
       left: 0;
       top: 0;
       width: 100vw;
       height: 100vh;
-      background-color: white; /* <-- qui sfondo bianco */
+      background-color: rgba(255, 255, 255, 0.9); /* sfondo bianco semi-trasparente */
+      backdrop-filter: blur(8px); /* sfocatura dietro */
       justify-content: center;
       align-items: center;
+      padding: 20px;
+    }
+
+    .modal.open {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
 
     .modal-content {
       max-width: 90vw;
       max-height: 90vh;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      cursor: zoom-out;
-      object-fit: contain;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* Bottone chiusura */
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 20px;
+      line-height: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(0,0,0,0.8);
     }
   </style>
 </head>
@@ -200,7 +244,7 @@
   <div class="page-content">
 
     <div class="release">
-      <img src="gu-lefka-split.png" alt="Gu / Lefka – Split" class="zoomable">
+      <img src="gu-lefka-split.png" alt="Gu / Lefka – Split" />
       <div class="release-info">
         <div class="release-title">Guglielmo Diana / Lefka – Split</div>
         <div class="release-text">
@@ -223,7 +267,7 @@
     </div>
 
     <div class="release">
-      <img src="face-shopping-rmx.png" alt="Faceshopping RMX" class="zoomable">
+      <img src="face-shopping-rmx.png" alt="Faceshopping RMX" />
       <div class="release-info">
         <div class="release-title">Martenot - Faceshopping RMX </div>
         <div class="release-text">
@@ -246,7 +290,7 @@
     </div>
 
     <div class="release">
-      <img src="sfilate-spaziali.png" alt="Sfilate Spaziali" class="zoomable">
+      <img src="sfilate-spaziali.png" alt="Sfilate Spaziali" />
       <div class="release-info">
         <div class="release-title">Martenot - Sfilate Spaziali</div>
         <div class="release-text">
@@ -271,30 +315,57 @@
     </div>
   </div>
 
-  <!-- Modal for zoomed image -->
-  <div id="modal" class="modal" onclick="closeModal()">
-    <img id="modal-img" class="modal-content" src="" alt="Immagine ingrandita">
+  <!-- Modal immagine -->
+  <div id="imgModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Chiudi immagine">&times;</button>
+      <img src="" alt="Immagine ingrandita" />
+    </div>
   </div>
 
   <script>
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
-    const zoomableImages = document.querySelectorAll('.zoomable');
+    const modal = document.getElementById('imgModal');
+    const modalImg = modal.querySelector('img');
+    const modalClose = modal.querySelector('.modal-close');
 
-    zoomableImages.forEach(img => {
+    // Quando si clicca sull'immagine di release
+    document.querySelectorAll('.release img').forEach(img => {
       img.addEventListener('click', () => {
-        modal.style.display = 'flex';
         modalImg.src = img.src;
         modalImg.alt = img.alt;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
       });
     });
 
-    function closeModal() {
-      modal.style.display = 'none';
+    // Chiudi modal cliccando sulla X
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
       modalImg.src = '';
       modalImg.alt = '';
-    }
+    });
+
+    // Chiudi modal cliccando fuori dall'immagine
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
+        modalImg.alt = '';
+      }
+    });
+
+    // Optional: chiudi modal con ESC
+    document.addEventListener('keydown', (e) => {
+      if(e.key === "Escape" && modal.classList.contains('open')) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
+        modalImg.alt = '';
+      }
+    });
   </script>
+
 </body>
 </html>
-
