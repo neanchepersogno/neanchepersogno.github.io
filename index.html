@@ -24,8 +24,7 @@
       outline: none;
     }
 
-    /* Logo con fade-in da 0 a 100% opacity */
-    img {
+    .logo-link img {
       cursor: pointer;
       max-width: 200px;
       height: auto;
@@ -37,57 +36,66 @@
       transition: transform 0.3s ease;
     }
 
-    img:hover, img:focus {
+    .logo-link img:hover,
+    .logo-link img:focus {
       transform: scale(1.05);
     }
 
-    /* Scritta Enter con fade-in e poi oscillazione opacità */
-    .enter-text {
-      margin-top: 20px;
+    /* Bottone Enter */
+    .enter-button {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: Arial, sans-serif;
       font-size: 0.85rem;
       font-weight: bold;
       color: black;
-      opacity: 0;
-      animation: fadeIn 2s 2.2s forwards, pulseOpacity 2s 4.2s infinite alternate;
-      user-select: none;
-      cursor: default;
-      text-transform: none; /* Per lasciare la E maiuscola */
       text-decoration: underline;
+      cursor: pointer;
+      opacity: 0;
+      user-select: none;
+      animation:
+        fadeIn 2s forwards,
+        pulseOpacity 2s infinite alternate;
+      animation-delay: 2.2s, 4.2s;
+      transition: color 0.3s ease;
     }
 
-    /* Per schermi larghi (desktop) */
+    .enter-button:hover,
+    .enter-button:focus {
+      color: #555;
+      outline: none;
+    }
+
     @media (min-width: 768px) {
-      img {
+      .logo-link img {
         max-width: 400px;
       }
-      .enter-text {
+      .enter-button {
         font-size: 0.9rem;
       }
     }
 
-    /* Animazione fade-in */
     @keyframes fadeIn {
       to {
         opacity: 1;
       }
     }
 
-    /* Oscillazione opacità tra 1 e 0.5 */
     @keyframes pulseOpacity {
-      0% {
+      from {
         opacity: 1;
       }
-      100% {
+      to {
         opacity: 0.5;
       }
     }
   </style>
 </head>
 <body>
-  <a href="main.html" aria-label="Entra nella home page">
+  <a href="main.html" aria-label="Entra nella home page" class="logo-link">
     <img src="logo-main.png" alt="Logo Neanche Per Sogno" />
   </a>
-  <div class="enter-text">Enter</div>
+  <a href="main.html" aria-label="Enter" class="enter-button">Enter</a>
 </body>
 </html>
 
