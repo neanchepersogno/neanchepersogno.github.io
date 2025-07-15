@@ -80,27 +80,30 @@
       gap: 30px;
       margin-bottom: 60px;
       align-items: flex-start;
+      justify-content: space-between;
     }
 
     .release img {
-      width: 220px;
-      height: 220px;
+      width: 350px;
+      height: 350px;
       object-fit: cover;
-      border: 1px solid #000;
+      border: none;
+      order: 2;
     }
 
     .release-info {
       flex: 1;
+      order: 1;
     }
 
     .release-title {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: bold;
       margin-bottom: 10px;
     }
 
     .release-text {
-      font-size: 1rem;
+      font-size: 0.85rem;
       margin-bottom: 10px;
       line-height: 1.5;
     }
@@ -108,7 +111,7 @@
     .release-link a {
       color: black;
       text-decoration: underline;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
     }
 
     @media (max-width: 768px) {
@@ -126,8 +129,15 @@
         text-align: center;
       }
 
+      .release img {
+        width: 220px;
+        height: 220px;
+        order: 0;
+      }
+
       .release-info {
         margin-top: 20px;
+        order: 1;
       }
     }
   </style>
