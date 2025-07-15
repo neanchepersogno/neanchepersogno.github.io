@@ -1,21 +1,146 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Arial; -webkit-text-stroke: #000000}
-    p.p3 {margin: 0.0px 0.0px 10.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #ffffff}
-    span.s1 {text-decoration: underline ; font-kerning: none}
-    span.s2 {font-kerning: none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – Neanche Per Sogno</title>
+  <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: Arial, sans-serif;
+      background: white;
+      overflow-x: hidden;
+      color: black;
+    }
+
+    /* ==== TOP FIXED BAR (DESKTOP) ==== */
+    .top-fixed-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 9998;
+    }
+
+    .top-fixed-bar .brand-name a {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .top-fixed-bar .links a {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: lowercase;
+      text-decoration: underline;
+    }
+
+    .top-fixed-bar .links {
+      display: flex;
+      gap: 25px;
+    }
+
+    /* ==== MAIN CONTENT ==== */
+    .content {
+      max-width: 800px;
+      margin: 80px auto 60px;
+      padding: 20px;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .content h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      margin-bottom: 20px;
+    }
+
+    .content a {
+      text-decoration: underline;
+      color: black;
+    }
+
+    /* ==== MOBILE LAYOUT ==== */
+    @media (max-width: 768px) {
+      .top-fixed-bar {
+        display: none;
+      }
+
+      .mobile-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px;
+      }
+
+      .mobile-links a {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: black;
+        text-decoration: underline;
+        text-transform: lowercase;
+      }
+
+      .content {
+        margin-top: 40px;
+        padding: 20px;
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1"><a href="file:///Users/simonegottardi/Downloads/index.html">← Torna alla home</a></span></p>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Arial; -webkit-text-stroke: #000000"><span class="s2"><b>Neanche Per Sogno</b></span></h1>
-<p class="p3"><span class="s2">Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.</span></p>
+
+  <!-- ✅ TOP BAR DESKTOP -->
+  <div class="top-fixed-bar">
+    <div class="brand-name">
+      <a href="index.html">Neanche Per Sogno</a>
+    </div>
+    <nav class="links">
+      <a href="about.html">about</a>
+      <a href="releases.html">releases</a>
+      <a href="mixtapes.html">mixtapes</a>
+      <a href="events.html">events</a>
+      <a href="buy.html">buy</a>
+      <a href="contacts.html">contacts</a>
+    </nav>
+  </div>
+
+  <!-- ✅ LINK MOBILE -->
+  <div class="mobile-links">
+    <a href="about.html">about</a>
+    <a href="releases.html">releases</a>
+    <a href="mixtapes.html">mixtapes</a>
+    <a href="events.html">events</a>
+    <a href="buy.html">buy</a>
+    <a href="contacts.html">contacts</a>
+  </div>
+
+  <!-- ✅ CONTENUTO ABOUT -->
+  <div class="content">
+    <h1>neanche per sogno</h1>
+    <p>Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.</p>
+    <p><a href="index.html">← torna alla home</a></p>
+  </div>
+
 </body>
 </html>
