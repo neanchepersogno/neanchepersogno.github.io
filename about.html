@@ -8,19 +8,18 @@
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    html, body {
+    body {
       font-family: Arial, sans-serif;
       background: white;
-      overflow-x: hidden;
       color: black;
     }
 
-    /* ==== TOP FIXED BAR (DESKTOP) ==== */
+    /* 🔝 Top bar desktop */
     .top-fixed-bar {
       position: fixed;
       top: 0;
@@ -56,7 +55,7 @@
       gap: 25px;
     }
 
-    /* ==== BRAND MOBILE IN ALTO ==== */
+    /* 📱 Header mobile */
     .mobile-header {
       display: none;
       padding: 15px 20px 0;
@@ -69,46 +68,47 @@
       text-decoration: underline;
     }
 
-    /* ==== LAYOUT CONTENUTO DESKTOP ==== */
-    .content-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1100px;
+    /* 🧱 Layout contenuti */
+    .page-content {
+      max-width: 1000px;
       margin: 80px auto 60px;
       padding: 20px;
-      gap: 40px;
     }
 
-    .content-text {
-      flex: 1;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .content-text h1 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-    }
-
-    .content-text p {
-      margin-bottom: 20px;
-    }
-
-    .content-image {
-      flex: 1;
+    .about-section {
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+      gap: 40px;
+      align-items: flex-start;
+      justify-content: space-between;
     }
 
-    .content-image img {
-      max-width: 100%;
-      max-height: 500px;
-      width: auto;
-      height: auto;
+    .about-image {
+      width: 450px;
+      height: 450px;
+      object-fit: contain;
+      order: 2;
     }
 
-    /* ==== MOBILE STYLES ==== */
+    .about-text {
+      flex: 1;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      text-align: justify;
+      order: 1;
+    }
+
+    .about-text h1 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
     @media (max-width: 768px) {
       .top-fixed-bar {
         display: none;
@@ -118,38 +118,35 @@
         display: block;
       }
 
-      .content-wrapper {
+      .about-section {
         flex-direction: column;
-        margin-top: 30px;
-        padding: 20px;
+        align-items: center;
+        text-align: center;
       }
 
-      .content-text {
-        order: 1;
-        text-align: left;
-        font-size: 1rem;
-      }
-
-      .content-text h1 {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-      }
-
-      .content-image {
-        order: 2;
-        margin-top: 25px;
-      }
-
-      .content-image img {
-        max-width: 80%;
+      .about-image {
+        width: 300px;
         height: auto;
+        margin-bottom: 25px;
+        order: 0;
+      }
+
+      .about-text {
+        order: 1;
+        text-align: justify;
+        font-size: 0.95rem;
+      }
+
+      .about-text h1 {
+        font-size: 0.9rem;
+        text-align: left;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ TOP BAR DESKTOP -->
+  <!-- 🔝 Top bar desktop -->
   <div class="top-fixed-bar">
     <div class="brand-name">
       <a href="main.html">Neanche Per Sogno</a>
@@ -164,23 +161,26 @@
     </nav>
   </div>
 
-  <!-- ✅ BRAND MOBILE -->
+  <!-- 📱 Mobile header -->
   <div class="mobile-header">
     <a href="main.html">Neanche Per Sogno</a>
   </div>
 
-  <!-- ✅ CONTENUTO PRINCIPALE -->
-  <div class="content-wrapper">
-    <div class="content-text">
-      <h1>neanche per sogno</h1>
-      <p>Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.
-<br>Established by Simone Gottardi in 2022</p>
-    </div>
-    <div class="content-image">
-      <img src="NXS LOGO.png" alt="Logo Neanche Per Sogno" />
+  <!-- ℹ️ Contenuto -->
+  <div class="page-content">
+    <div class="about-section">
+      <img src="logo-main.png" alt="Logo Neanche Per Sogno" class="about-image" />
+      <div class="about-text">
+        <h1>neanche per sogno</h1>
+        <p>
+          Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.
+        </p>
+        <p>
+          Established by Simone Gottardi in 2022.
+        </p>
+      </div>
     </div>
   </div>
 
 </body>
 </html>
-
