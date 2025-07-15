@@ -41,17 +41,18 @@
       transform: scale(1.05);
     }
 
-    /* Scritta Enter semplice e sobria */
+    /* Scritta Enter con fade-in e poi oscillazione opacità */
     .enter-text {
       margin-top: 20px;
       font-size: 0.85rem;
       font-weight: bold;
       color: black;
       opacity: 0;
-      animation: fadeIn 2s 2.2s forwards;
+      animation: fadeIn 2s 2.2s forwards, pulseOpacity 2s 4.2s infinite alternate;
       user-select: none;
       cursor: default;
-      text-transform: lowercase;
+      text-transform: none; /* Per lasciare la E maiuscola */
+      text-decoration: underline;
     }
 
     /* Per schermi larghi (desktop) */
@@ -70,13 +71,23 @@
         opacity: 1;
       }
     }
+
+    /* Oscillazione opacità tra 1 e 0.5 */
+    @keyframes pulseOpacity {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
   </style>
 </head>
 <body>
   <a href="main.html" aria-label="Entra nella home page">
     <img src="logo-main.png" alt="Logo Neanche Per Sogno" />
   </a>
-  <div class="enter-text"><u>Enter<u></div>
+  <div class="enter-text">Enter</div>
 </body>
 </html>
 
