@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About – Neanche Per Sogno</title>
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
-  <a href="about.html" class="active">about</a>
 
   <style>
     * {
@@ -42,6 +41,11 @@
       text-decoration: underline;
     }
 
+    .top-fixed-bar .links {
+      display: flex;
+      gap: 25px;
+    }
+
     .top-fixed-bar .links a {
       color: white;
       font-size: 0.8rem;
@@ -50,9 +54,9 @@
       text-decoration: underline;
     }
 
-    .top-fixed-bar .links {
-      display: flex;
-      gap: 25px;
+    .top-fixed-bar .links a.active {
+      color: #888888;
+      pointer-events: none;
     }
 
     .mobile-header {
@@ -148,7 +152,7 @@
       <a href="main.html">Neanche Per Sogno</a>
     </div>
     <nav class="links">
-      <a href="about.html">about</a>
+      <a href="about.html" class="active">about</a>
       <a href="releases.html">releases</a>
       <a href="mixtapes.html">mixtapes</a>
       <a href="events.html">events</a>
