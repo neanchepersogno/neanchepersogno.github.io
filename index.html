@@ -4,44 +4,91 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neanche Per Sogno</title>
-  
-  <!-- Qui la favicon che appare nella barra indirizzi -->
+
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
     body {
       background: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #222;
     }
 
-    /* Stile base: logo più piccolo (per smartphone) */
+    a {
+      text-decoration: none;
+      outline: none;
+    }
+
+    /* Logo con fade-in da 0 a 100% opacity */
     img {
       cursor: pointer;
       max-width: 200px;
       height: auto;
-      animation: pulse 2s infinite linear;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      transition: transform 0.3s ease;
     }
 
-    /* Per schermi larghi (desktop) aumento la dimensione */
+    img:hover, img:focus {
+      transform: scale(1.05);
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+    }
+
+    /* Scritta Enter con fade-in ritardato */
+    .enter-text {
+      margin-top: 25px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #555;
+      opacity: 0;
+      animation: fadeIn 2s 2.2s forwards;
+      user-select: none;
+      cursor: default;
+      text-transform: uppercase;
+      border-bottom: 2px solid #555;
+      padding-bottom: 6px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+      width: max-content;
+    }
+
+    a:hover + .enter-text,
+    a:focus + .enter-text {
+      color: #000;
+      border-color: #000;
+    }
+
+    /* Per schermi larghi (desktop) */
     @media (min-width: 768px) {
       img {
         max-width: 400px;
       }
+      .enter-text {
+        font-size: 2rem;
+      }
     }
 
-    @keyframes pulse {
-      0%   { opacity: 1; }
-      50%  { opacity: 0.5; }
-      100% { opacity: 1; }
+    /* Animazioni */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="main.html">
-    <img src="logo-main.png" alt="Logo" />
+  <a href="main.html" aria-label="Entra nella home page">
+    <img src="logo-main.png" alt="Logo Neanche Per Sogno" />
   </a>
+  <div class="enter-text">Enter</div>
 </body>
 </html>
+
