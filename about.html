@@ -56,54 +56,93 @@
       gap: 25px;
     }
 
-    /* ==== MAIN CONTENT ==== */
-    .content {
-      max-width: 800px;
-      margin: 80px auto 60px;
-      padding: 20px;
-      line-height: 1.6;
-      font-size: 1rem;
+    /* ==== BRAND MOBILE IN ALTO ==== */
+    .mobile-header {
+      display: none;
+      padding: 15px 20px 0;
     }
 
-    .content h1 {
+    .mobile-header a {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: black;
+      text-decoration: underline;
+    }
+
+    /* ==== LAYOUT CONTENUTO DESKTOP ==== */
+    .content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 80px auto 60px;
+      padding: 20px;
+      gap: 40px;
+    }
+
+    .content-text {
+      flex: 1;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .content-text h1 {
       font-size: 1.8rem;
       margin-bottom: 20px;
     }
 
-    .content p {
+    .content-text p {
       margin-bottom: 20px;
     }
 
-    .content a {
-      text-decoration: underline;
-      color: black;
+    .content-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
     }
 
-    /* ==== MOBILE LAYOUT ==== */
+    .content-image img {
+      max-width: 100%;
+      max-height: 500px;
+      width: auto;
+      height: auto;
+    }
+
+    /* ==== MOBILE STYLES ==== */
     @media (max-width: 768px) {
       .top-fixed-bar {
         display: none;
       }
 
-      .mobile-links {
-        display: flex;
+      .mobile-header {
+        display: block;
+      }
+
+      .content-wrapper {
         flex-direction: column;
-        gap: 15px;
-        margin: 20px;
-      }
-
-      .mobile-links a {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: black;
-        text-decoration: underline;
-        text-transform: lowercase;
-      }
-
-      .content {
-        margin-top: 40px;
+        margin-top: 30px;
         padding: 20px;
+      }
+
+      .content-text {
+        order: 1;
+        text-align: left;
         font-size: 1rem;
+      }
+
+      .content-text h1 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+
+      .content-image {
+        order: 2;
+        margin-top: 25px;
+      }
+
+      .content-image img {
+        max-width: 80%;
+        height: auto;
       }
     }
   </style>
@@ -113,7 +152,7 @@
   <!-- ✅ TOP BAR DESKTOP -->
   <div class="top-fixed-bar">
     <div class="brand-name">
-      <a href="index.html">Neanche Per Sogno</a>
+      <a href="main.html">Neanche Per Sogno</a>
     </div>
     <nav class="links">
       <a href="about.html">about</a>
@@ -125,22 +164,22 @@
     </nav>
   </div>
 
-  <!-- ✅ LINK MOBILE -->
-  <div class="mobile-links">
-    <a href="about.html">about</a>
-    <a href="releases.html">releases</a>
-    <a href="mixtapes.html">mixtapes</a>
-    <a href="events.html">events</a>
-    <a href="buy.html">buy</a>
-    <a href="contacts.html">contacts</a>
+  <!-- ✅ BRAND MOBILE -->
+  <div class="mobile-header">
+    <a href="main.html">Neanche Per Sogno</a>
   </div>
 
-  <!-- ✅ CONTENUTO ABOUT -->
-  <div class="content">
-    <h1>neanche per sogno</h1>
-    <p>Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.</p>
-    <p><a href="index.html">← torna alla home</a></p>
+  <!-- ✅ CONTENUTO PRINCIPALE -->
+  <div class="content-wrapper">
+    <div class="content-text">
+      <h1>neanche per sogno</h1>
+      <p>Neanche Per Sogno is an independent platform that consistently adopts a multi-perspective approach, working in collaboration with artists through releases, performances, and in-depth activities related to the ongoing development of new practices, both within and beyond the realm of sound.</p>
+    </div>
+    <div class="content-image">
+      <img src="NXS LOGO.png" alt="Logo Neanche Per Sogno" />
+    </div>
   </div>
 
 </body>
 </html>
+
