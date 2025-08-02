@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mixtapes – Neanche Per Sogno</title>
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
-
   <style>
     * {
       margin: 0;
@@ -20,7 +19,6 @@
       color: black;
     }
 
-    /* ==== TOP FIXED BAR (DESKTOP) ==== */
     .top-fixed-bar {
       position: fixed;
       top: 0;
@@ -36,13 +34,7 @@
       z-index: 9998;
     }
 
-    .top-fixed-bar .brand-name a {
-      color: white;
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
+    .top-fixed-bar .brand-name a,
     .top-fixed-bar .links a {
       color: white;
       font-size: 0.8rem;
@@ -56,74 +48,68 @@
       gap: 25px;
     }
 
-    /* ==== BRAND MOBILE IN ALTO ==== */
-    .mobile-header {
-      display: none;
-      padding: 15px 20px 0;
-    }
-
-    .mobile-header a {
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: black;
-      text-decoration: underline;
-    }
-
-    /* ==== CONTENUTO PRINCIPALE ==== */
     .content-wrapper {
       max-width: 1100px;
-      margin: 80px auto 60px;
+      margin: 30px auto 60px; /* Ridotto spazio in alto */
       padding: 20px;
+      padding-top: 40px; /* Aggiunto per non far coprire la barra fissa */
     }
 
-    .sc-credit {
-      font-size: 10px;
-      color: #cccccc;
-      line-break: anywhere;
-      word-break: normal;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-      font-weight: 100;
-      margin-top: 10px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
 
-    .sc-credit a {
-      color: #cccccc;
-      text-decoration: none;
-    }
-
-    iframe {
+    .grid-item {
       width: 100%;
-      height: 450px;
-      border: none;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
     }
 
-    /* ==== MOBILE STYLES ==== */
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .grid-item img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Rimosso: nascondeva la barra su mobile */
+    /* .mobile-header {
+      display: none;
+    } */
+
     @media (max-width: 768px) {
+      /* Mantieni visibile la top-fixed-bar */
       .top-fixed-bar {
-        display: none;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 5px 15px;
       }
 
-      .mobile-header {
-        display: block;
+      .top-fixed-bar .links {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .top-fixed-bar .brand-name {
+        width: 100%;
       }
 
       .content-wrapper {
-        margin-top: 30px;
-        padding: 20px;
-      }
-
-      iframe {
-        height: 400px;
+        padding-top: 60px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- ✅ TOP BAR DESKTOP -->
   <div class="top-fixed-bar">
     <div class="brand-name">
       <a href="main.html">Neanche Per Sogno</a>
@@ -138,20 +124,86 @@
     </nav>
   </div>
 
-  <!-- ✅ BRAND MOBILE -->
-  <div class="mobile-header">
-    <a href="main.html">Neanche Per Sogno</a>
-  </div>
-
-  <!-- ✅ CONTENUTO PRINCIPALE -->
   <div class="content-wrapper">
-    <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1940725367&color=%23b4b4b4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-
-    <div class="sc-credit">
-      <a href="https://soundcloud.com/neanche-per-sogno" title="Neanche Per Sogno" target="_blank">Neanche Per Sogno</a> ·
-      <a href="https://soundcloud.com/neanche-per-sogno/sets/neanche-per-sogno-mixes" title="Mixtape Archive" target="_blank">Mixtape Archive</a>
+    <div class="grid">
+      <!-- tutte le immagini/link rimangono invariati -->
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/UwMnZBjn2ergw8XOzv" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/elenarivoltini.png" alt="Elenarivoltini" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/zpUDA7AYkPkaZ4oi8b" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/sarapersico.png" alt="Sarapersico" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/fCKdznoWchKoBeFDWk" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/giuliarae.png" alt="Giuliarae" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/A9KgP6K7tNoHEgUtpu" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/holysimilaun.png" alt="Holysimilaun" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/w8KhqqvvvLnEKo6R9k" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/zannunzio.png" alt="Zannunzio" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/jAqIWptMcIWuGiKpsa" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/kratu.png" alt="Kratu" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/QSY4RVjtJu4ayL1auH" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/andreamarazzi.png" alt="Andreamarazzi" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/NBWpRMZe4UynwjCbCa" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/iii.png" alt="III" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/xuH7r1Dt4FZfEwUFUm" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/Kudd.png" alt="Kudd" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/kVDh7GMbEGEkjFvC3H" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/lefka.png" alt="Lefka" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/dYYd6PqZAfzNfvMVxv" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/maurizioberta.png" alt="Maurizio Berta" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/suh6Y8CtYHsW2uhnOe" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/ggg.png" alt="GGG" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/uyvckGDBxr8GoR8Bj0" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/dayana.png" alt="Dayana" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/I6mSH9UNMXvbgU9zPu" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/matteomartino.png" alt="Matteo Martino" />
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://on.soundcloud.com/4oqT2jhvt9awh9UvP3" target="_blank" rel="noopener noreferrer">
+          <img src="immagini/kohlhaas.png" alt="Kohlhaas" />
+        </a>
+      </div>
     </div>
   </div>
-
 </body>
 </html>
+
