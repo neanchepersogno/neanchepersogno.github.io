@@ -21,7 +21,7 @@
     }
 
     #dynamic-content-container {
-      padding: 40px 20px 240px;
+      padding: 40px 20px 200px;
       max-width: 1000px;
       margin: 0 auto;
       line-height: 1.6;
@@ -96,14 +96,14 @@
 
     .logo-credit {
       margin-top: 6px;
-      font-size: 0.65rem;
-      color: rgb(160, 160, 160);
+      font-size: 0.6rem;
+      color: #ccc;
       font-family: Helvetica, Arial, sans-serif;
       text-transform: lowercase;
     }
 
     .logo-credit a {
-      color: rgb(160, 160, 160);
+      color: #ccc;
       text-decoration: none;
     }
 
@@ -123,18 +123,17 @@
     }
 
     .bottom-links {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 8px;
-}
-
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
 
     .bottom-links-row {
       display: flex;
       gap: 16px;
       justify-content: flex-start;
+      flex-wrap: wrap;
     }
 
     .bottom-links a {
@@ -159,13 +158,7 @@
     .newsletter-wrapper {
       display: flex;
       flex-direction: column;
-      margin-top: 8px;
-    }
-
-    .newsletter-label {
-      font-size: 0.7rem;
-      margin-bottom: 6px;
-      color: rgb(120, 120, 120);
+      margin-top: 4px;
     }
 
     .subscribe-box {
@@ -200,19 +193,11 @@
 
     @media (max-width: 768px) {
       .floating-footer {
-        position: fixed;
         bottom: 25px;
-        left: 0;
-        width: 100%;
-        background: white;
-        display: flex;
+        padding: 10px;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 10px;
-        gap: 6px;
-        text-align: center;
-        z-index: 9998;
+        gap: 8px;
       }
 
       .bottom-logo-container {
@@ -221,57 +206,44 @@
 
       .bottom-logo {
         max-width: 120px;
-        margin-bottom: 2px;
       }
 
       .logo-credit {
-        font-size: 0.5rem;
-        color: #c0c0c0;
+        font-size: 0.55rem;
         text-align: center;
-        margin-top: 0;
+        color: #c0c0c0;
         text-transform: capitalize;
       }
 
       .bottom-links-container {
-        display: flex;
-        flex-direction: column;
         align-items: center;
-        font-size: 0.65rem;
-        color: rgb(120, 120, 120);
-        gap: 2px;
+        gap: 4px;
       }
 
       .bottom-links {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 4px;
         margin-bottom: 2px;
       }
 
       .bottom-links-row {
-        display: none;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
       }
 
       .copy-email {
         font-size: 0.65rem;
-        color: rgb(120, 120, 120);
-        text-decoration: underline;
-        cursor: pointer;
-        margin-top: 0;
+        margin-top: 2px;
       }
 
       .newsletter-wrapper {
         width: 100%;
-        margin-top: 0;
       }
 
       .subscribe-box {
-        display: flex;
-        align-items: center;
-        gap: 6px;
         justify-content: center;
+        gap: 6px;
         flex-wrap: nowrap;
       }
 
@@ -286,10 +258,6 @@
         padding: 4px 10px;
       }
 
-      .newsletter-label {
-        display: none;
-      }
-
       #dynamic-content-container {
         padding-bottom: 200px;
       }
@@ -297,6 +265,7 @@
   </style>
 </head>
 <body>
+
   <div id="dynamic-content-container">
     <div id="dynamic-content"></div>
   </div>
@@ -304,22 +273,28 @@
   <div class="floating-footer">
     <div class="bottom-logo-container">
       <img class="bottom-logo" src="immagini/nxs-logo.png" alt="Logo Neanche Per Sogno" onclick="goToMain()" />
-      <div class="logo-credit">Logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a></div>
+      <div class="logo-credit">
+        Logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a>
+      </div>
     </div>
 
     <div class="bottom-links-container">
       <div class="bottom-links">
-        <a href="about.html" data-page="about.html">About</a>
-        <a href="releases.html" data-page="releases.html">Releases</a>
-        <a href="events.html" data-page="events.html">Events</a>
-        <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
-        <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
+        <div class="bottom-links-row">
+          <a href="about.html" data-page="about.html">About</a>
+          <a href="releases.html" data-page="releases.html">Releases</a>
+          <a href="events.html" data-page="events.html">Events</a>
+          <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
+          <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
+        </div>
+        <div class="copy-email" onclick="copyEmail(this)">neanchepersognorecords@gmail.com</div>
       </div>
-      <div class="copy-email" id="emailText" onclick="copyEmail()">neanchepersognorecords@gmail.com</div>
+
       <div class="newsletter-wrapper">
-        <form class="subscribe-box" onsubmit="return handleSubscribe(event)">
-          <input type="email" id="email" name="email" placeholder="Email address" required aria-label="Email address" />
+        <form id="newsletter-form" class="subscribe-box">
+          <input type="email" id="email" name="email" placeholder="Email address" required />
           <button type="submit">Subscribe</button>
+          <span id="form-status" style="margin-left: 10px; font-size: 0.7rem; color: rgb(127, 127, 127);"></span>
         </form>
       </div>
     </div>
@@ -341,23 +316,11 @@
   </div>
 
   <script>
-    function handleSubscribe(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if (!email) return false;
-      const subject = encodeURIComponent("Iscrizione Mailing List");
-      const body = encodeURIComponent(`Vorrei iscrivermi alla mailing list con questa email: ${email}`);
-      const mailto = `mailto:neanchepersognorecords@gmail.com?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
-      return false;
-    }
-
-    function copyEmail() {
-      const emailText = document.getElementById('emailText');
+    function copyEmail(el) {
       const email = "neanchepersognorecords@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
-        emailText.textContent = "Copied to clipboard";
-        emailText.style.textDecoration = "underline";
+        el.textContent = "Copied to clipboard";
+        el.style.textDecoration = "underline";
       });
     }
 
@@ -400,7 +363,43 @@
         }
       });
     });
+
+    const form = document.getElementById('newsletter-form');
+    const statusText = document.getElementById('form-status');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('email');
+      const email = emailInput.value;
+
+      if (!email) return;
+
+      const data = new FormData();
+      data.append('email', email);
+
+      try {
+        const response = await fetch('https://formspree.io/f/xnnzbwrq', {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          emailInput.value = '';
+          form.querySelector('button').style.display = 'none';
+          statusText.textContent = 'Success!';
+        } else {
+          statusText.textContent = 'Error';
+          statusText.style.color = 'red';
+        }
+      } catch (error) {
+        statusText.textContent = 'Error';
+        statusText.style.color = 'red';
+      }
+    });
   </script>
 </body>
 </html>
-
