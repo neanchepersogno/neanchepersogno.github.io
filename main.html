@@ -67,6 +67,7 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* VERSIONE DESKTOP: COME PRIMA */
     .floating-footer {
       position: fixed;
       bottom: 25px;
@@ -97,13 +98,13 @@
     .logo-credit {
       margin-top: 6px;
       font-size: 0.65rem;
-      color: #777;
+      color: rgb(120, 120, 120);
       font-family: Helvetica, Arial, sans-serif;
       text-transform: lowercase;
     }
 
     .logo-credit a {
-      color: #777;
+      color: rgb(120, 120, 120);
       text-decoration: none;
     }
 
@@ -117,7 +118,7 @@
       align-items: flex-start;
       font-size: 0.7rem;
       font-weight: 300;
-      color: #777;
+      color: rgb(120, 120, 120);
       font-family: Helvetica, Arial, sans-serif;
       text-align: left;
     }
@@ -136,7 +137,7 @@
     }
 
     .bottom-links a {
-      color: #777;
+      color: rgb(120, 120, 120);
       text-decoration: none;
       transition: color 0.3s ease;
       font-size: 0.7rem;
@@ -151,7 +152,7 @@
       text-decoration: underline;
       font-size: 0.7rem;
       margin-bottom: 10px;
-      color: #777;
+      color: rgb(120, 120, 120);
     }
 
     .newsletter-wrapper {
@@ -163,7 +164,7 @@
     .newsletter-label {
       font-size: 0.7rem;
       margin-bottom: 6px;
-      color: #777;
+      color: rgb(120, 120, 120);
     }
 
     .subscribe-box {
@@ -186,7 +187,7 @@
     .subscribe-box button {
       background: none;
       border: none;
-      color: #777;
+      color: rgb(120, 120, 120);
       font-size: 0.7rem;
       cursor: pointer;
       padding: 6px 12px;
@@ -196,41 +197,98 @@
       text-decoration: underline;
     }
 
+    /* SOLO SMARTPHONE: modifiche richieste */
     @media (max-width: 768px) {
-      .bottom-logo {
-        max-width: 130px;
-      }
-
       .floating-footer {
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 15px;
-        gap: 12px;
+        justify-content: center;
+        padding: 12px 10px;
+        gap: 10px;
         text-align: center;
+        z-index: 9998;
+      }
+
+      .bottom-logo-container {
+        align-items: center;
+      }
+
+      .bottom-logo {
+        max-width: 120px;
+        margin-bottom: 2px;
+      }
+
+      .logo-credit {
+        font-size: 0.55rem;
+        color: #c0c0c0;
+        text-align: center;
+        margin-top: 2px;
+        text-transform: capitalize;
       }
 
       .bottom-links-container {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        text-align: center;
+        font-size: 0.65rem;
+        color: rgb(120, 120, 120);
+        gap: 4px;
+      }
+
+      .bottom-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 4px;
       }
 
       .bottom-links-row {
-        flex-wrap: wrap;
+        display: flex;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
+        flex-wrap: wrap;
       }
 
-      #dynamic-content-container {
-        padding-bottom: 260px;
+      .copy-email {
+        font-size: 0.65rem;
+        color: rgb(120, 120, 120);
+        text-decoration: underline;
+        cursor: pointer;
+        margin-top: 2px;
+      }
+
+      .newsletter-wrapper {
+        margin-top: 4px;
+        width: 100%;
       }
 
       .subscribe-box {
-        flex-direction: column;
+        display: flex;
+        align-items: center;
         gap: 6px;
+        flex-wrap: nowrap;
+        justify-content: center;
       }
 
       .subscribe-box input[type="email"] {
-        width: 100%;
+        width: 140px;
+        padding: 4px 6px;
+        font-size: 0.65rem;
+      }
+
+      .subscribe-box button {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+      }
+
+      #dynamic-content-container {
+        padding-bottom: 220px;
       }
     }
   </style>
@@ -247,7 +305,7 @@
     <div class="bottom-logo-container">
       <img class="bottom-logo" src="immagini/nxs-logo.png" alt="Logo Neanche Per Sogno" onclick="goToMain()" />
       <div class="logo-credit">
-        logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a>
+        Logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a>
       </div>
     </div>
 
@@ -262,13 +320,12 @@
           <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
           <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
         </div>
+        <div class="copy-email" onclick="copyEmail()">neanchepersognorecords@gmail.com</div>
       </div>
 
-      <div class="copy-email" onclick="copyEmail()">neanchepersognorecords@gmail.com</div>
-
       <div class="newsletter-wrapper">
-        <div class="newsletter-label">Newsletter</div>
         <form class="subscribe-box" onsubmit="return handleSubscribe(event)">
+          <label class="newsletter-label" for="email">Newsletter</label>
           <input type="email" id="email" name="email" placeholder="Email address" required aria-label="Email address" />
           <button type="submit">Subscribe</button>
         </form>
