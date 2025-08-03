@@ -67,7 +67,6 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* VERSIONE DESKTOP: COME PRIMA */
     .floating-footer {
       position: fixed;
       bottom: 25px;
@@ -98,13 +97,13 @@
     .logo-credit {
       margin-top: 6px;
       font-size: 0.65rem;
-      color: rgb(120, 120, 120);
+      color: rgb(160, 160, 160);
       font-family: Helvetica, Arial, sans-serif;
       text-transform: lowercase;
     }
 
     .logo-credit a {
-      color: rgb(120, 120, 120);
+      color: rgb(160, 160, 160);
       text-decoration: none;
     }
 
@@ -124,11 +123,13 @@
     }
 
     .bottom-links {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 8px;
-    }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
 
     .bottom-links-row {
       display: flex;
@@ -197,11 +198,10 @@
       text-decoration: underline;
     }
 
-    /* SOLO SMARTPHONE: modifiche richieste */
     @media (max-width: 768px) {
       .floating-footer {
         position: fixed;
-        bottom: 10px;
+        bottom: 25px;
         left: 0;
         width: 100%;
         background: white;
@@ -209,8 +209,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 12px 10px;
-        gap: 10px;
+        padding: 10px;
+        gap: 6px;
         text-align: center;
         z-index: 9998;
       }
@@ -225,10 +225,10 @@
       }
 
       .logo-credit {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         color: #c0c0c0;
         text-align: center;
-        margin-top: 2px;
+        margin-top: 0;
         text-transform: capitalize;
       }
 
@@ -238,21 +238,20 @@
         align-items: center;
         font-size: 0.65rem;
         color: rgb(120, 120, 120);
-        gap: 4px;
+        gap: 2px;
       }
 
       .bottom-links {
         display: flex;
-        flex-direction: column;
-        gap: 4px;
-        margin-bottom: 4px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 2px;
       }
 
       .bottom-links-row {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
+        display: none;
       }
 
       .copy-email {
@@ -260,20 +259,20 @@
         color: rgb(120, 120, 120);
         text-decoration: underline;
         cursor: pointer;
-        margin-top: 2px;
+        margin-top: 0;
       }
 
       .newsletter-wrapper {
-        margin-top: 4px;
         width: 100%;
+        margin-top: 0;
       }
 
       .subscribe-box {
         display: flex;
         align-items: center;
         gap: 6px;
-        flex-wrap: nowrap;
         justify-content: center;
+        flex-wrap: nowrap;
       }
 
       .subscribe-box input[type="email"] {
@@ -287,45 +286,38 @@
         padding: 4px 10px;
       }
 
+      .newsletter-label {
+        display: none;
+      }
+
       #dynamic-content-container {
-        padding-bottom: 220px;
+        padding-bottom: 200px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- CONTENUTO DINAMICO -->
   <div id="dynamic-content-container">
     <div id="dynamic-content"></div>
   </div>
 
-  <!-- FOOTER BIANCO CON LOGO E LINK -->
   <div class="floating-footer">
     <div class="bottom-logo-container">
       <img class="bottom-logo" src="immagini/nxs-logo.png" alt="Logo Neanche Per Sogno" onclick="goToMain()" />
-      <div class="logo-credit">
-        Logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a>
-      </div>
+      <div class="logo-credit">Logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a></div>
     </div>
 
     <div class="bottom-links-container">
       <div class="bottom-links">
-        <div class="bottom-links-row">
-          <a href="about.html" data-page="about.html">About</a>
-          <a href="releases.html" data-page="releases.html">Releases</a>
-          <a href="events.html" data-page="events.html">Events</a>
-        </div>
-        <div class="bottom-links-row">
-          <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
-          <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
-        </div>
-        <div class="copy-email" onclick="copyEmail()">neanchepersognorecords@gmail.com</div>
+        <a href="about.html" data-page="about.html">About</a>
+        <a href="releases.html" data-page="releases.html">Releases</a>
+        <a href="events.html" data-page="events.html">Events</a>
+        <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
+        <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
       </div>
-
+      <div class="copy-email" id="emailText" onclick="copyEmail()">neanchepersognorecords@gmail.com</div>
       <div class="newsletter-wrapper">
         <form class="subscribe-box" onsubmit="return handleSubscribe(event)">
-          <label class="newsletter-label" for="email">Newsletter</label>
           <input type="email" id="email" name="email" placeholder="Email address" required aria-label="Email address" />
           <button type="submit">Subscribe</button>
         </form>
@@ -333,7 +325,6 @@
     </div>
   </div>
 
-  <!-- SCROLL BAR VERDE IN BASSO -->
   <div class="scroll-bar bottom">
     <div class="scroll-content">
       <div class="scroll-wrapper">
@@ -349,7 +340,6 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
   <script>
     function handleSubscribe(event) {
       event.preventDefault();
@@ -363,9 +353,11 @@
     }
 
     function copyEmail() {
+      const emailText = document.getElementById('emailText');
       const email = "neanchepersognorecords@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
-        alert("Email copiata negli appunti.");
+        emailText.textContent = "Copied to clipboard";
+        emailText.style.textDecoration = "underline";
       });
     }
 
@@ -409,6 +401,6 @@
       });
     });
   </script>
-
 </body>
 </html>
+
