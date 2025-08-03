@@ -16,23 +16,35 @@
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
-      background: rgb(255, 255, 255);
+      background: #fff;
       overflow-x: hidden;
     }
 
-    /* ==== BARRA SCORREVOLE BASE ==== */
+    #dynamic-content-container {
+      padding: 40px 20px 240px;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
     .scroll-bar {
       width: 100%;
       height: 25px;
-      background: rgb(0, 255, 64);
+      background: rgb(0, 0, 0);
       overflow: hidden;
       display: flex;
       align-items: center;
+      position: fixed;
+      left: 0;
       z-index: 9999;
     }
 
+    .scroll-bar.bottom {
+      bottom: 0;
+    }
+
     .scroll-bar span {
-      color: rgb(255, 255, 255);
+      color: #fff;
       font-size: 0.8rem;
       font-weight: bold;
       white-space: nowrap;
@@ -50,210 +62,296 @@
       animation: scroll-left 20s linear infinite;
     }
 
-    .scroll-wrapper.reverse {
-      animation: scroll-right 20s linear infinite;
-    }
-
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    @keyframes scroll-right {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-
-    /* ==== TOP FIXED BAR (DESKTOP) ==== */
-    .top-fixed-bar {
+    .floating-footer {
       position: fixed;
-      top: 0;
+      bottom: 25px;
       left: 0;
       width: 100%;
-      height: 25px;
-      background-color: rgb(255, 255, 255);
-      color: rgb(0, 0, 0);
+      background: white;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 0 30px;
+      align-items: flex-start;
+      padding: 30px 60px;
       z-index: 9998;
     }
 
-    .top-fixed-bar .brand-name a {
-      color: rgb(0, 0, 0);
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .top-fixed-bar .links a {
-      color: rgb(0, 0, 0);
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-transform: lowercase;
-      text-decoration: underline;
-    }
-
-    .top-fixed-bar .links {
-      display: flex;
-      gap: 25px;
-    }
-
-    /* ==== LOGO CENTERED ==== */
-    .main-content {
+    .bottom-logo-container {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      min-height: calc(100vh - 50px);
-      margin-top: 25px;
-      margin-bottom: 25px;
+      align-items: flex-start;
     }
 
-    .main-content img {
-      max-width: 600px;
+    .bottom-logo {
+      max-width: 200px;
       height: auto;
-      animation: pulse 3s infinite ease-in-out;
+      opacity: 0.9;
+      user-select: none;
+      cursor: pointer;
     }
 
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 1; }
-      100% { opacity: 1; }
+    .logo-credit {
+      margin-top: 6px;
+      font-size: 0.65rem;
+      color: #777;
+      font-family: Helvetica, Arial, sans-serif;
+      text-transform: lowercase;
     }
 
-    /* ==== MOBILE LAYOUT ==== */
+    .logo-credit a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    .logo-credit a:hover {
+      text-decoration: underline;
+    }
+
+    .bottom-links-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #777;
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: left;
+    }
+
+    .bottom-links {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .bottom-links-row {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+
+    .bottom-links a {
+      color: #777;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.7rem;
+    }
+
+    .bottom-links a:hover {
+      color: #000;
+    }
+
+    .copy-email {
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 0.7rem;
+      margin-bottom: 10px;
+      color: #777;
+    }
+
+    .newsletter-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+    }
+
+    .newsletter-label {
+      font-size: 0.7rem;
+      margin-bottom: 6px;
+      color: #777;
+    }
+
+    .subscribe-box {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .subscribe-box input[type="email"] {
+      padding: 5px 8px;
+      font-size: 0.7rem;
+      border: 1px solid #777;
+      border-radius: 0;
+      outline: none;
+      width: 180px;
+      background-color: transparent;
+      color: #000;
+    }
+
+    .subscribe-box button {
+      background: none;
+      border: none;
+      color: #777;
+      font-size: 0.7rem;
+      cursor: pointer;
+      padding: 6px 12px;
+    }
+
+    .subscribe-box button:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 768px) {
-      .top-fixed-bar {
-        display: none;
+      .bottom-logo {
+        max-width: 130px;
       }
 
-      .scroll-bar.top {
-        position: fixed;
-        top: 0;
-      }
-
-      .scroll-bar.bottom {
-        position: fixed;
-        bottom: 0;
-      }
-
-      .main-content {
-        padding: 90px 20px 90px;
-        min-height: auto;
-      }
-
-      .main-content img {
-        max-width: 250px;
-        margin-bottom: 40px;
-      }
-
-      .mobile-links {
-        display: flex;
+      .floating-footer {
         flex-direction: column;
-        gap: 15px;
-        margin-top: 40px;
+        align-items: center;
+        padding: 15px;
+        gap: 12px;
+        text-align: center;
       }
 
-      .mobile-links a {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: black;
-        text-decoration: underline;
-        text-transform: lowercase;
+      .bottom-links-container {
+        align-items: center;
+        text-align: center;
+      }
+
+      .bottom-links-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      #dynamic-content-container {
+        padding-bottom: 260px;
+      }
+
+      .subscribe-box {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .subscribe-box input[type="email"] {
+        width: 100%;
       }
     }
-
-    /* ==== DESKTOP ONLY: scroll-bar positions ==== */
-    @media (min-width: 769px) {
-      .scroll-bar.top,
-      .mobile-links {
-        display: none;
-      }
-
-      .scroll-bar.bottom {
-        position: fixed;
-        bottom: 0;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- ✅ SCROLL BAR TOP (SOLO MOBILE) -->
-<div class="scroll-bar top">
-  <div class="scroll-content">
-    <div class="scroll-wrapper reverse">
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-    </div>
-    <div class="scroll-wrapper reverse" aria-hidden="true">
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-    </div>
-  </div>
-</div>
-
-  <!-- ✅ TOP FIXED BAR (SOLO DESKTOP) -->
-  <div class="top-fixed-bar">
-    <div class="brand-name">
-      <a href="index.html">Neanche Per Sogno</a>
-    </div>
-    <nav class="links">
-      <a href="about.html">about</a>
-      <a href="releases.html">releases</a>
-      <a href="mixtapes.html">mixtapes</a>
-      <a href="events.html">events</a>
-      <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">buy</a>
-      <a href="contacts.html">contacts</a>
-    </nav>
+  <!-- CONTENUTO DINAMICO -->
+  <div id="dynamic-content-container">
+    <div id="dynamic-content"></div>
   </div>
 
-  <!-- ✅ MAIN CONTENT -->
-  <div class="main-content">
-    <img src="immagini/nxs-logo.png" alt="Logo" />
-    
-    <!-- SOLO MOBILE: LINK -->
-    <div class="mobile-links">
-      <a href="about.html">about</a>
-      <a href="releases.html">releases</a>
-      <a href="mixtapes.html">mixtapes</a>
-      <a href="events.html">events</a>
-      <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">buy</a>
-      <a href="contacts.html">contacts</a>
+  <!-- FOOTER BIANCO CON LOGO E LINK -->
+  <div class="floating-footer">
+    <div class="bottom-logo-container">
+      <img class="bottom-logo" src="immagini/nxs-logo.png" alt="Logo Neanche Per Sogno" onclick="goToMain()" />
+      <div class="logo-credit">
+        logo by <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">muah! studio</a>
+      </div>
+    </div>
+
+    <div class="bottom-links-container">
+      <div class="bottom-links">
+        <div class="bottom-links-row">
+          <a href="about.html" data-page="about.html">About</a>
+          <a href="releases.html" data-page="releases.html">Releases</a>
+          <a href="events.html" data-page="events.html">Events</a>
+        </div>
+        <div class="bottom-links-row">
+          <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
+          <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
+        </div>
+      </div>
+
+      <div class="copy-email" onclick="copyEmail()">neanchepersognorecords@gmail.com</div>
+
+      <div class="newsletter-wrapper">
+        <div class="newsletter-label">Newsletter</div>
+        <form class="subscribe-box" onsubmit="return handleSubscribe(event)">
+          <input type="email" id="email" name="email" placeholder="Email address" required aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
     </div>
   </div>
 
-  <!-- ✅ SCROLL BAR BOTTOM (TUTTI I DEVICE) -->
-<div class="scroll-bar bottom">
-  <div class="scroll-content">
-    <div class="scroll-wrapper">
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-    </div>
-    <div class="scroll-wrapper" aria-hidden="true">
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
-      <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+  <!-- SCROLL BAR VERDE IN BASSO -->
+  <div class="scroll-bar bottom">
+    <div class="scroll-content">
+      <div class="scroll-wrapper">
+        <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+        <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+        <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+      </div>
+      <div class="scroll-wrapper" aria-hidden="true">
+        <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+        <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+        <span><i>Aposematic</i> by Martenot OUT NOW! </span>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- SCRIPT -->
+  <script>
+    function handleSubscribe(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if (!email) return false;
+      const subject = encodeURIComponent("Iscrizione Mailing List");
+      const body = encodeURIComponent(`Vorrei iscrivermi alla mailing list con questa email: ${email}`);
+      const mailto = `mailto:neanchepersognorecords@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+      return false;
+    }
+
+    function copyEmail() {
+      const email = "neanchepersognorecords@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copiata negli appunti.");
+      });
+    }
+
+    function goToMain() {
+      window.location.href = "main.html";
+    }
+
+    const dynamicContainer = document.getElementById('dynamic-content-container');
+    const dynamicContent = document.getElementById('dynamic-content');
+    let currentPage = null;
+
+    document.querySelectorAll('.bottom-links a[data-page]').forEach(link => {
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const page = link.getAttribute('data-page');
+
+        if (currentPage === page) {
+          dynamicContent.innerHTML = '';
+          currentPage = null;
+          return;
+        }
+
+        try {
+          const response = await fetch(page);
+          if (!response.ok) throw new Error('Errore nel caricamento');
+
+          const html = await response.text();
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = html;
+
+          const bodyContent = tempDiv.querySelector('body');
+          dynamicContent.innerHTML = bodyContent ? bodyContent.innerHTML : tempDiv.innerHTML;
+          currentPage = page;
+
+          dynamicContainer.scrollIntoView({ behavior: 'smooth' });
+
+        } catch (err) {
+          dynamicContent.innerHTML = '<p style="color:red;">Errore nel caricamento del contenuto.</p>';
+          currentPage = null;
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
-

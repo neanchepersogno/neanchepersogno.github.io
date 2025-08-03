@@ -1,29 +1,149 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts - Neanche Per Sogno</title>
-    <style>
-        body {
-            background-color: white;
-            font-family: Arial, sans-serif;
-            padding: 1rem;
-            color: black;
-        }
-        a {
-            text-decoration: underline;
-            color: black;
-        }
-        a:hover {
-            color: gray;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacts – Neanche Per Sogno</title>
+  <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      color: black;
+    }
+
+    .top-fixed-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 9998;
+    }
+
+    .top-fixed-bar .brand-name a,
+    .top-fixed-bar .links a {
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-decoration: underline;
+      text-transform: lowercase;
+    }
+
+    .top-fixed-bar .links a.active {
+      color: grey;
+    }
+
+    .top-fixed-bar .links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .mobile-header {
+      display: none;
+      padding: 15px 20px 0;
+    }
+
+    .mobile-header a {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: black;
+      text-decoration: underline;
+    }
+
+    .page-content {
+      max-width: 1000px;
+      margin: 80px auto 60px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .email-box {
+      margin-top: 50px;
+      font-size: 1rem;
+      background-color: #f2f2f2;
+      padding: 15px 25px;
+      border-radius: 10px;
+      display: inline-block;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .email-box:hover {
+      background-color: #e0e0e0;
+    }
+
+    .copy-confirmation {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: gray;
+      height: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .top-fixed-bar {
+        display: none;
+      }
+
+      .mobile-header {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-    <a href="index.html">&larr; Neanche Per Sogno</a>
-    <h1></h1>
-    <p>< neanchepersognorecords@gmail.com </a> </p>
+
+  <div class="top-fixed-bar">
+    <div class="brand-name">
+      <a href="main.html">Neanche Per Sogno</a>
+    </div>
+    <nav class="links">
+      <a href="about.html">about</a>
+      <a href="releases.html">releases</a>
+      <a href="mixtapes.html">mixtapes</a>
+      <a href="events.html">events</a>
+      <a href="buy.html">buy</a>
+      <a href="contacts.html" class="active">contacts</a>
+    </nav>
+  </div>
+
+  <div class="mobile-header">
+    <a href="main.html">Neanche Per Sogno</a>
+  </div>
+
+  <div class="page-content">
+    <h1>Contact</h1>
+    <div id="email" class="email-box" onclick="copyEmail()">
+      neanchepersognorecords@gmail.com
+    </div>
+    <div id="confirmation" class="copy-confirmation"></div>
+  </div>
+
+  <script>
+    function copyEmail() {
+      const email = "neanchepersognorecords@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const confirmation = document.getElementById("confirmation");
+        confirmation.textContent = "Email copiata negli appunti!";
+        setTimeout(() => confirmation.textContent = "", 2000);
+      }).catch(err => {
+        alert("Errore durante la copia: " + err);
+      });
+    }
+  </script>
+
 </body>
 </html>
