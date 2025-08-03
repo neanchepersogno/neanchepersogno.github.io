@@ -13,12 +13,14 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Helvetica Neue", Arial, sans-serif;
       background: white;
-      color: black;
+      color: rgb(70, 70, 70);
     }
 
-    .top-fixed-bar {
+    /* BARRE SUPERIORI RIMOSSE */
+
+    /* .top-fixed-bar {
       position: fixed;
       top: 0;
       left: 0;
@@ -55,7 +57,7 @@
     .top-fixed-bar .links {
       display: flex;
       gap: 25px;
-    }
+    } */
 
     .mobile-header {
       display: none;
@@ -71,7 +73,7 @@
 
     .page-content {
       max-width: 1000px;
-      margin: 80px auto 60px;
+      margin: 20px auto 60px; /* tolto margine superiore grande */
       padding: 20px;
     }
 
@@ -128,12 +130,17 @@
     }
 
     @media (max-width: 768px) {
-      .top-fixed-bar {
+      /* Nascondo top-fixed-bar che ora non esiste */
+      /* .top-fixed-bar {
         display: none;
-      }
+      } */
 
       .mobile-header {
         display: block;
+      }
+
+      .page-content {
+        margin-top: 10px; /* margine ridotto per mobile */
       }
 
       .release {
@@ -179,19 +186,7 @@
 </head>
 <body>
 
-  <div class="top-fixed-bar">
-    <div class="brand-name">
-      <a href="main.html">Neanche Per Sogno</a>
-    </div>
-    <nav class="links">
-      <a href="about.html">about</a>
-      <a href="releases.html" class="active">releases</a>
-      <a href="mixtapes.html">mixtapes</a>
-      <a href="events.html">events</a>
-      <a href="buy.html">buy</a>
-      <a href="contacts.html">contacts</a>
-    </nav>
-  </div>
+  <!-- Barra superiore rimossa -->
 
   <div class="mobile-header">
     <a href="main.html">Neanche Per Sogno</a>
@@ -233,8 +228,7 @@
 
           This work was developed by starting with a matryoshka segmentation of the spectrum of the original track, dividing it vertically, horizontally, or in a hybrid manner into subsections, phrases, fragments, and relevant gestural micro-fragments. Subsequently, after a phase of reverse engineering, numerous related versions were created - at different degrees of proximity - synthesized from scratch using FM and Pulsar synthesis systems, primarily using Supercollider, as well as wavetable synthesis using the Serum plugin. Finally, a significant portion of the obtained signal was manipulated using the Waveset Distortion system, developed in Max/MSP by Marco Marasciuolo, expanding the expressive capacity of each of them in relation to an augmented reformulation of each articulation. </p>
 
-          A wide range of samples was carefully collected and selected, surgically assembled to create a formal architecture that respected the original sequence of sections, at times introducing dramatic variations in content and duration, and at other times emphasizing and amplifying certain original properties - fundamental elements in Martenot's work, concerning the relationship with the source material - such as the digitally hi-tech brutalist, industrial, and hyperkinetic character, as well as the dreamlike imagery resulting from the juxtapositions and overlaps of seemingly incongruous elements.</p>
-<p>Released <u>August 26, 2023</u></p>
+          <p>Released <u>August 26, 2023</u></p>
           <p><strong>Credits</strong><br>
           
           <p>Written and produced by Martenot<br>
