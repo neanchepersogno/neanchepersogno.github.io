@@ -19,25 +19,11 @@
       color: rgb(120, 120, 120);
     }
 
-    .mobile-header {
-      display: none;
-      padding: 15px 20px 0;
-    }
-
-    .mobile-header a {
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: black;
-      text-decoration: underline;
-    }
-
     .page-content {
       max-width: 1000px;
-      margin: 40px auto 60px;
+      margin: 20px auto 60px; /* margine superiore ridotto */
       padding: 20px;
     }
-
-    /* Rimosso .about-image e .about perché ora il testo occupa tutta la larghezza */
 
     .about-text {
       font-size: 0.75rem;
@@ -55,13 +41,9 @@
     }
 
     @media (max-width: 768px) {
-      .mobile-header {
-        display: block;
-      }
-
       .page-content {
         max-width: 100%;
-        margin-top: 30px;
+        margin: 10px auto 60px; /* margine superiore ancora più piccolo su mobile */
         padding: 20px;
       }
 
@@ -73,10 +55,6 @@
   </style>
 </head>
 <body>
-
-  <div class="mobile-header">
-    <a href="main.html">Neanche Per Sogno</a>
-  </div>
 
   <div class="page-content">
     <div class="about-text">

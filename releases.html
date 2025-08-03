@@ -18,54 +18,13 @@
       color: rgb(120, 120, 120);
     }
 
-    /* BARRE SUPERIORI RIMOSSE */
-
-    /* .top-fixed-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 25px;
-      background-color: black;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 30px;
-      z-index: 9998;
-    }
-
-    .top-fixed-bar .brand-name a {
-      color: white;
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .top-fixed-bar .links a {
-      color: white;
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-transform: lowercase;
-      text-decoration: underline;
-    }
-
-    .top-fixed-bar .links a.active {
-      color: grey;
-    }
-
-    .top-fixed-bar .links {
-      display: flex;
-      gap: 25px;
-    } */
-
     .mobile-header {
       display: none;
       padding: 15px 20px 0;
     }
 
     .mobile-header a {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
       font-weight: bold;
       color: black;
       text-decoration: underline;
@@ -73,7 +32,7 @@
 
     .page-content {
       max-width: 1000px;
-      margin: 20px auto 60px; /* tolto margine superiore grande */
+      margin: 20px auto 60px; /* margine superiore per desktop */
       padding: 20px;
     }
 
@@ -107,13 +66,14 @@
     }
 
     .release-title {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-weight: bold;
       margin-bottom: 10px;
     }
 
+    /* Testo corpo con font-size uguale a link main (0.9rem) */
     .release-text {
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       margin-bottom: 10px;
       line-height: 1.3;
       text-align: justify;
@@ -126,21 +86,18 @@
     .release-link a {
       color: black;
       text-decoration: underline;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
     }
 
     @media (max-width: 768px) {
-      /* Nascondo top-fixed-bar che ora non esiste */
-      /* .top-fixed-bar {
-        display: none;
-      } */
-
+      /* Nascondo la scritta in cima */
       .mobile-header {
-        display: block;
+        display: none;
       }
 
+      /* Riduco margine superiore per far partire subito contenuto */
       .page-content {
-        margin-top: 10px; /* margine ridotto per mobile */
+        margin-top: 0;
       }
 
       .release {
@@ -158,6 +115,15 @@
       .release-info {
         margin-top: 20px;
         order: 1;
+      }
+
+      /* Testo corpo su mobile con dimensione 0.9rem */
+      .release-text {
+        font-size: 0.7rem;
+      }
+
+      .release-link a {
+        font-size: 0.7rem;
       }
     }
 
@@ -249,10 +215,10 @@
         <div class="release-title">Martenot - Sfilate Spaziali</div>
         <div class="release-text">
           Italian composer Martenot and founder of Neanche Per Sogno unleashes his debut EP called <em>Sfilate Spaziali</em>, which consists of three pieces entirely based on minimal vocabulary and instrumental apparatus.
-Aiming to exploit the entire musical spectrum, they orbit around a solid sound body, which has as its main source a monophonic synthesizer that he developed in Max/MSP and gives a precise timbre direction with radical aesthetic constraints.
-Each track of the EP stands out from the others both because of the concept that is at its heart, and for the architectural-compositional setting. Each piece, in fact, has its own distinct form, deriving from the polymorphism of processes, from the intersection of these and from the search for an ever new use of the starting sound material.
-However, the feature that unites the three Sfilate Spaziali is the dichotomous alternation of rhythmically tight moments in contrast to more airy and rarefied parts. In the former, the digital material is compressed into a solid rhythmic pattern, almost claustrophobic, which evokes the rigid molecular structures of plastic materials and which leaves no space for action except for the repetition of the various components. In the freer and more irregular sections, however, the musical fabric dissolves and opens up to broader scenarios.
-This continuous succession of dense rhythms and expansions of sound gives life to the Sfilate Spaziali, finally integrated by the single titles of the tracks, which fully contribute to their existence.</p>
+Aiming to exploit the entire musical spectrum, they orbit around a solid sound body, which has as its main source a monophonic synthesizer that he developed in Max/MSP e dà una precisa direzione timbrica con vincoli estetici radicali.
+Ogni traccia dell’EP si distingue dalle altre sia per il concept che per l’architettura compositiva. Ogni pezzo, infatti, ha una forma propria, derivante dal polimorfismo dei processi, dall’incrocio degli stessi e dalla ricerca di un uso sempre nuovo del materiale sonoro iniziale.
+Tuttavia, la caratteristica che unisce le tre Sfilate Spaziali è l’alternanza dicotomica di momenti ritmicamente serrati in contrasto con parti più rarefatte e ariose. Nelle prime, il materiale digitale è compresso in uno schema ritmico solido, quasi claustrofobico, che evoca le strutture molecolari rigide dei materiali plastici e che non lascia spazio all’azione se non la ripetizione delle varie componenti. Nelle sezioni più libere e irregolari, invece, il tessuto musicale si dissolve e si apre a scenari più ampi.
+Questa successione continua di ritmi densi ed espansioni sonore dà vita alle Sfilate Spaziali, infine integrate dai singoli titoli delle tracce, che contribuiscono pienamente alla loro esistenza.</p>
 
          
           <p>Released <u>September 11, 2022</u></p>
