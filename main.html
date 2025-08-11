@@ -84,6 +84,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      min-width: 300px;
     }
 
     .bottom-logo {
@@ -114,36 +115,33 @@
     .bottom-links-container {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-end;
       font-size: 0.7rem;
       font-weight: 300;
       color: rgb(120, 120, 120);
       font-family: Helvetica, Arial, sans-serif;
-      text-align: left;
-    }
-
-    .bottom-links {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 8px;
+      text-align: right;
+      min-width: 280px;
+      gap: 8px;
     }
 
     .bottom-links-row {
       display: flex;
       gap: 16px;
-      justify-content: flex-start;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
       flex-wrap: wrap;
     }
 
-    .bottom-links a {
+    .bottom-links-row a {
       color: rgb(120, 120, 120);
       text-decoration: none;
       transition: color 0.3s ease;
       font-size: 0.7rem;
+      white-space: nowrap;
     }
 
-    .bottom-links a:hover {
+    .bottom-links-row a:hover {
       color: #000;
     }
 
@@ -151,14 +149,15 @@
       cursor: pointer;
       text-decoration: underline;
       font-size: 0.7rem;
-      margin-bottom: 10px;
       color: rgb(120, 120, 120);
+      white-space: nowrap;
     }
 
     .newsletter-wrapper {
-      display: flex;
-      flex-direction: column;
       margin-top: 4px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
 
     .subscribe-box {
@@ -173,7 +172,7 @@
       border: 1px solid #777;
       border-radius: 0;
       outline: none;
-      width: 180px;
+      width: 220px;
       background-color: transparent;
       color: #000;
     }
@@ -193,73 +192,46 @@
 
     @media (max-width: 768px) {
       .floating-footer {
-        bottom: 25px;
-        padding: 10px;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
+        bottom: 20px;
+        padding: 10px 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        font-size: 0.75rem;
+        max-width: 100vw;
+        box-sizing: border-box;
       }
 
       .bottom-logo-container {
-        align-items: center;
+        min-width: 150px;
+        max-width: 150px;
       }
 
       .bottom-logo {
-        max-width: 120px;
+        max-width: 150px;
       }
 
       .logo-credit {
-        font-size: 0.55rem;
-        text-align: center;
+        font-size: 0.6rem;
         color: #c0c0c0;
-        text-transform: capitalize;
+        margin-top: 4px;
+        text-transform: lowercase;
       }
 
       .bottom-links-container {
-        align-items: center;
-        gap: 4px;
-      }
-
-      .bottom-links {
-        flex-direction: column;
-        gap: 4px;
-        margin-bottom: 2px;
+        min-width: 220px;
+        max-width: calc(100vw - 170px);
+        text-align: right;
+        gap: 6px;
       }
 
       .bottom-links-row {
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      .copy-email {
-        font-size: 0.65rem;
-        margin-top: 2px;
-      }
-
-      .newsletter-wrapper {
-        width: 100%;
-      }
-
-      .subscribe-box {
-        justify-content: center;
-        gap: 6px;
-        flex-wrap: nowrap;
+        justify-content: flex-end;
+        gap: 10px;
       }
 
       .subscribe-box input[type="email"] {
-        width: 140px;
-        padding: 4px 6px;
-        font-size: 0.65rem;
-      }
-
-      .subscribe-box button {
-        font-size: 0.65rem;
-        padding: 4px 10px;
-      }
-
-      #dynamic-content-container {
-        padding-bottom: 200px;
+        width: 160px;
       }
     }
   </style>
@@ -279,23 +251,22 @@
     </div>
 
     <div class="bottom-links-container">
-      <div class="bottom-links">
-        <div class="bottom-links-row">
-          <a href="about.html" data-page="about.html">About</a>
-          <a href="releases.html" data-page="releases.html">Releases</a>
-          <a href="events.html" data-page="events.html">Events</a>
-          <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
-          <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
-        </div>
-        <div class="copy-email" onclick="copyEmail(this)">neanchepersognorecords@gmail.com</div>
+      <div class="bottom-links-row">
+        <a href="about.html" data-page="about.html">About</a>
+        <a href="releases.html" data-page="releases.html">Releases</a>
+        <a href="events.html" data-page="events.html">Events</a>
+        <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
+        <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
       </div>
-
-      <div class="newsletter-wrapper">
-        <form id="newsletter-form" class="subscribe-box">
-          <input type="email" id="email" name="email" placeholder="Email address" required />
-          <button type="submit">Subscribe</button>
-          <span id="form-status" style="margin-left: 10px; font-size: 0.7rem; color: rgb(127, 127, 127);"></span>
-        </form>
+      <div class="bottom-links-row">
+        <div class="copy-email" onclick="copyEmail(this)">neanchepersognorecords@gmail.com</div>
+        <div class="newsletter-wrapper">
+          <form id="newsletter-form" class="subscribe-box">
+            <input type="email" id="email" name="email" placeholder="Email address" required />
+            <button type="submit">Subscribe</button>
+            <span id="form-status" style="margin-left: 10px; font-size: 0.7rem; color: rgb(127, 127, 127);"></span>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -321,6 +292,10 @@
       navigator.clipboard.writeText(email).then(() => {
         el.textContent = "Copied to clipboard";
         el.style.textDecoration = "underline";
+        setTimeout(() => {
+          el.textContent = email;
+          el.style.textDecoration = "underline";
+        }, 2000);
       });
     }
 
@@ -332,7 +307,7 @@
     const dynamicContent = document.getElementById('dynamic-content');
     let currentPage = null;
 
-    document.querySelectorAll('.bottom-links a[data-page]').forEach(link => {
+    document.querySelectorAll('.bottom-links-row a[data-page]').forEach(link => {
       link.addEventListener('click', async (e) => {
         e.preventDefault();
         const page = link.getAttribute('data-page');
