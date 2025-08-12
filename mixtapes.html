@@ -68,6 +68,14 @@
       margin-bottom: 4px;
     }
 
+    /* Desktop: mostra i nomi con andata a capo e senza virgole */
+    .contributors-column .name-desktop {
+      display: block;
+    }
+    .contributors-column .name-mobile {
+      display: none;
+    }
+
     /* Versione compatta su mobile */
     @media (max-width: 768px) {
       .contributors-column {
@@ -75,6 +83,7 @@
         width: 100%;
         margin-bottom: 20px;
         line-height: 1.4;
+        text-align: justify;
       }
 
       .contributors-column strong {
@@ -82,9 +91,11 @@
         margin-bottom: 0;
       }
 
-      /* Mostra i nomi in riga, separati da virgole */
-      .contributors-column br {
+      .contributors-column .name-desktop {
         display: none;
+      }
+      .contributors-column .name-mobile {
+        display: inline;
       }
     }
 
@@ -101,22 +112,29 @@
     <!-- Colonna in alto a destra -->
     <div class="contributors-column">
       <strong>Friendly contributors (A–Z):</strong>
-      Andrea Marazzi,<br>
-      Elena Rivoltini,<br>
-      Francesco Toninelli,<br>
-      Gaia Ginevra Giorgi,<br>
-      Giulia Rae,<br>
-      Guglielmo Diana,<br>
-      Holy Similaun,<br>
-      iii,<br>
-      Kohlhaas Records,<br>
-      Kratu,<br>
-      kudd,<br>
-      Lefka,<br>
-      Matteo Martino,<br>
-      Maurizio Berta,<br>
-      Sara Persico,<br>
-      Zannunzio
+      <!-- Versione desktop: nomi senza virgole -->
+      <span class="name-desktop">
+        Andrea Marazzi<br>
+        Elena Rivoltini<br>
+        Francesco Toninelli<br>
+        Gaia Ginevra Giorgi<br>
+        Giulia Rae<br>
+        Guglielmo Diana<br>
+        Holy Similaun<br>
+        iii<br>
+        Kohlhaas Records<br>
+        Kratu<br>
+        kudd<br>
+        Lefka<br>
+        Matteo Martino<br>
+        Maurizio Berta<br>
+        Sara Persico<br>
+        Zannunzio
+      </span>
+      <!-- Versione mobile: nomi separati da virgola -->
+      <span class="name-mobile">
+        Andrea Marazzi, Elena Rivoltini, Francesco Toninelli, Gaia Ginevra Giorgi, Giulia Rae, Guglielmo Diana, Holy Similaun, iii, Kohlhaas Records, Kratu, kudd, Lefka, Matteo Martino, Maurizio Berta, Sara Persico, Zannunzio
+      </span>
     </div>
 
     <div class="grid">
@@ -149,7 +167,7 @@
         <a href="https://on.soundcloud.com/NBWpRMZe4UynwjCbCa" target="_blank"><img src="immagini/iii.png" alt="III" /></a>
       </div>
       <div class="grid-item">
-        <a href="https://on.soundcloud.com/xuH7r1Dt4FZfEwUFUm" target="_blank"><img src="immagini/Kudd.png" alt="Kudd" /></a>
+        <a href="https://on.soundcloud.com/xuH7r1Dt4FZfEwUFUm" target="_blank"><img src="immagini/kudd.png" alt="Kudd" /></a>
       </div>
       <div class="grid-item">
         <a href="https://on.soundcloud.com/kVDh7GMbEGEkjFvC3H" target="_blank"><img src="immagini/lefka.png" alt="Lefka" /></a>
