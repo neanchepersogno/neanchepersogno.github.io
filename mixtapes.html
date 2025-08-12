@@ -51,11 +51,11 @@
       transform: scale(1.05);
     }
 
-    /* Colonna in alto a destra */
+    /* Colonna in alto a destra (desktop) */
     .contributors-column {
       position: absolute;
-      top: 0; /* allineato con la prima riga di immagini */
-      right: -220px; /* spostato verso il centro rispetto al bordo pagina */
+      top: 0; /* allineato alla griglia */
+      right: -220px; /* avvicinato al centro */
       width: 200px;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 12px;
@@ -68,22 +68,29 @@
       margin-bottom: 4px;
     }
 
-    @media (max-width: 1200px) {
-      .contributors-column {
-        right: 0; /* si avvicina al bordo su schermi più stretti */
-      }
-    }
-
+    /* Versione compatta su mobile */
     @media (max-width: 768px) {
       .contributors-column {
         position: static;
         width: 100%;
         margin-bottom: 20px;
+        line-height: 1.4;
       }
 
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+      .contributors-column strong {
+        display: inline;
+        margin-bottom: 0;
+      }
+
+      /* Mostra i nomi in riga, separati da virgole */
+      .contributors-column br {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .contributors-column {
+        right: 0; /* su schermi medi si avvicina al bordo */
       }
     }
   </style>
@@ -94,21 +101,21 @@
     <!-- Colonna in alto a destra -->
     <div class="contributors-column">
       <strong>Friendly contributors (A–Z):</strong>
-      Andrea Marazzi<br>
-      Elena Rivoltini<br>
-      Francesco Toninelli<br>
-      Gaia Ginevra Giorgi<br>
-      Giulia Rae<br>
-      Guglielmo Diana<br>
-      Holy Similaun<br>
-      iii<br>
-      Kohlhaas Records<br>
-      Kratu<br>
-      kudd<br>
-      Lefka<br>
-      Matteo Martino<br>
-      Maurizio Berta<br>
-      Sara Persico<br>
+      Andrea Marazzi,<br>
+      Elena Rivoltini,<br>
+      Francesco Toninelli,<br>
+      Gaia Ginevra Giorgi,<br>
+      Giulia Rae,<br>
+      Guglielmo Diana,<br>
+      Holy Similaun,<br>
+      iii,<br>
+      Kohlhaas Records,<br>
+      Kratu,<br>
+      kudd,<br>
+      Lefka,<br>
+      Matteo Martino,<br>
+      Maurizio Berta,<br>
+      Sara Persico,<br>
       Zannunzio
     </div>
 
