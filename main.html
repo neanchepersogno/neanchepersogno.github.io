@@ -15,7 +15,7 @@
 
     html, body {
       height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: "Helvetica Neue", Arial, sans-serif;
       background: #fff;
       overflow-x: hidden;
     }
@@ -24,7 +24,7 @@
       padding: 40px 20px 200px;
       max-width: 1000px;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 0.8;
     }
 
     .scroll-bar {
@@ -124,7 +124,7 @@
       color: rgb(120, 120, 120);
       font-family: Helvetica, Arial, sans-serif;
       text-align: left;
-      line-height: 1.2;
+      line-height: 0.8;
       max-width: 360px;
     }
 
@@ -140,7 +140,7 @@
       gap: 16px;
       justify-content: flex-start;
       flex-wrap: wrap;
-      line-height: 1.2;
+      line-height: 0.8;
     }
 
     .bottom-links a {
@@ -148,7 +148,7 @@
       text-decoration: none;
       transition: color 0.3s ease;
       font-size: 0.7rem;
-      line-height: 1.2;
+      line-height: 0.8;
     }
 
     .bottom-links a:hover {
@@ -161,7 +161,7 @@
       font-size: 0.7rem;
       margin-bottom: 10px;
       color: rgb(120, 120, 120);
-      line-height: 1.2;
+      line-height: 0.8;
       text-align: left;
     }
 
@@ -169,7 +169,7 @@
       display: flex;
       flex-direction: column;
       margin-top: 4px;
-      line-height: 1.2;
+      line-height: 0.8;
       text-align: left;
     }
 
@@ -221,10 +221,9 @@
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        line-height: 1.2;
+        line-height: 0.8;
       }
 
-      /* Equidistanza dal centro: usiamo margin su container e flex grow per "spingere" */
       .bottom-logo-container {
         margin-right: auto;
       }
@@ -250,32 +249,32 @@
         justify-content: flex-start;
         gap: 12px;
         flex-wrap: wrap;
-        line-height: 1.2;
+        line-height: 0.8;
       }
 
       .copy-email {
         font-size: 0.65rem;
         margin-top: 2px;
         margin-bottom: 6px;
-        line-height: 1.2;
+        line-height: 0.8;
         text-align: left;
       }
 
       .newsletter-wrapper {
         width: 100%;
-        line-height: 1.2;
+        line-height: 0.8;
         text-align: left;
       }
 
       .subscribe-box {
         justify-content: flex-start;
-        gap: 6px;
+        gap: 3px;
         flex-wrap: nowrap;
       }
 
       .subscribe-box input[type="email"] {
         width: 140px;
-        padding: 4px 6px;
+        padding: 2px 6px;
         font-size: 0.65rem;
       }
 
@@ -286,6 +285,35 @@
 
       #dynamic-content-container {
         padding-bottom: 200px;
+      }
+    }
+
+    /* --- Modifiche richieste --- */
+    @media (min-width: 769px) {
+      .bottom-links-container {
+        margin-top: 40px; /* abbassato rispetto al logo */
+        line-height: 0.8; /* spazio più uniforme */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bottom-logo {
+        max-width: 150px; /* logo più grande */
+      }
+      .floating-footer {
+        align-items: center; /* centratura verticale */
+      }
+      .bottom-links-container {
+        line-height: 0.5; /* meno spazio verticale */
+      }
+      .bottom-links-row {
+        line-height: 1;
+        gap: 10px;
+      }
+      .copy-email,
+      .newsletter-wrapper {
+        line-height: 1;
+        margin-bottom: 4px;
       }
     }
   </style>
