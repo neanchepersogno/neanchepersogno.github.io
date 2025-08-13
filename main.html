@@ -76,17 +76,18 @@
       background: white;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       padding: 30px 60px;
       z-index: 9998;
     }
 
     .bottom-logo-container {
       display: flex;
+      justify-content: center;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       line-height: 1.2;
-      text-align: left;
+      text-align: center;
     }
 
     .bottom-logo {
@@ -127,13 +128,13 @@
       text-align: left;
       line-height: 0.8;
       max-width: 360px;
+      gap: 12px;
     }
 
     .bottom-links {
       display: flex;
       flex-direction: column;
       gap: 5px;
-      margin-bottom: 8px;
     }
 
     .bottom-links-row {
@@ -169,7 +170,6 @@
     .newsletter-wrapper {
       display: flex;
       flex-direction: column;
-      margin-top: 4px;
       line-height: 0.8;
       text-align: left;
     }
@@ -220,13 +220,12 @@
         max-width: 45vw;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
         line-height: 0.8;
       }
 
       .bottom-logo-container {
         margin-right: auto;
+        justify-content: center;
       }
 
       .bottom-links-container {
@@ -234,7 +233,7 @@
       }
 
       .bottom-logo {
-        max-width: 100px;
+        max-width: 120px;
       }
 
       .logo-credit {
@@ -289,23 +288,46 @@
       }
     }
 
+    @media (max-width: 580px) {
+      .bottom-logo-container{
+        max-width: 100%;
+        margin: 0;
+      }
+      .subscribe-box{
+        justify-content: space-between !important;
+      }
+      .bottom-links-container {
+        max-width: 52vw;
+        margin-left: auto !important;
+        gap: 6px;
+      }
+      .bottom-links-row{
+        gap: 10px 30px !important;
+      }
+      .floating-footer {
+        gap: .75rem;
+        padding: 10px !important;
+        justify-content: space-between;
+      }
+    }
+
     /* --- Modifiche richieste --- */
     @media (min-width: 769px) {
       .bottom-links-container {
-        margin-top: 40px; /* abbassato rispetto al logo */
+        /* margin-top: 40px; /* abbassato rispetto al logo */
         line-height: 0.8; /* spazio più uniforme */
       }
     }
 
     @media (max-width: 768px) {
       .bottom-logo {
-        max-width: 130px; /* logo più grande */
+        max-width: 150px; /* logo più grande */
       }
       .floating-footer {
         align-items: center; /* centratura verticale */
       }
       .bottom-links-container {
-        line-height: 0.3; /* meno spazio verticale */
+        line-height: 0.5; /* meno spazio verticale */
       }
       .bottom-links-row {
         line-height: 1;
@@ -342,8 +364,11 @@
           <a href="mixtapes.html" data-page="mixtapes.html">Mixtape Archive</a>
           <a href="https://nxsrecords.bandcamp.com/merch" target="_blank" rel="noopener noreferrer">Buy</a>
         </div>
-        <div class="copy-email" onclick="copyEmail(this)">neanchepersognorecords@gmail.com</div>
       </div>
+
+      <div class="copy-email" onclick="copyEmail(this)">neanchepersognorecords@gmail.com</div>
+
+      <p class="newsletter-title">Newsletter:</p>
 
       <div class="newsletter-wrapper">
         <form id="newsletter-form" class="subscribe-box">
