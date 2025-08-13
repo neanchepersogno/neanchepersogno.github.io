@@ -7,7 +7,6 @@
   <link rel="icon" href="https://github.com/neanchepersogno/neanchepersogno.github.io/blob/main/favicon.png?raw=true" type="image/png" />
 
   <style>
-    /* (stessi stili che hai già inserito) */
     * {
       margin: 0;
       padding: 0;
@@ -22,7 +21,7 @@
     }
 
     #dynamic-content-container {
-      padding: 40px 20px 200px;
+      padding: 10px 10px 10px;
       max-width: 1000px;
       margin: 0 auto;
       line-height: 0.8;
@@ -207,11 +206,11 @@
     @media (max-width: 768px) {
       .floating-footer {
         bottom: 25px;
-        padding: 10px 20px;
+        padding: 10px 10px;
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
-        gap: 20px;
+        gap: 10px;
         width: 100%;
       }
 
@@ -311,32 +310,14 @@
       }
     }
 
-    /* --- Modifiche richieste --- */
-    @media (min-width: 769px) {
-      .bottom-links-container {
-        /* margin-top: 40px; /* abbassato rispetto al logo */
-        line-height: 0.8; /* spazio più uniforme */
-      }
-    }
-
+    /* Modifiche richieste SOLO per mobile + ABOUT aperto */
     @media (max-width: 768px) {
-      .bottom-logo {
-        max-width: 150px; /* logo più grande */
-      }
-      .floating-footer {
-        align-items: center; /* centratura verticale */
-      }
-      .bottom-links-container {
-        line-height: 0.5; /* meno spazio verticale */
-      }
-      .bottom-links-row {
-        line-height: 1;
-        gap: 10px;
-      }
-      .copy-email,
-      .newsletter-wrapper {
-        line-height: 1;
-        margin-bottom: 4px;
+    body.about-open .floating-footer {
+    padding: 5px;
+  }
+}
+      body.about-open .floating-footer {
+        padding: 5px;
       }
     }
   </style>
@@ -426,6 +407,7 @@
         if (currentPage === page) {
           dynamicContent.innerHTML = '';
           currentPage = null;
+          document.body.classList.remove("about-open");
           return;
         }
 
@@ -441,13 +423,20 @@
           dynamicContent.innerHTML = bodyContent ? bodyContent.innerHTML : tempDiv.innerHTML;
           currentPage = page;
 
+          // Aggiungi/rimuovi classe solo se ABOUT
+          if (page.includes("about")) {
+            document.body.classList.add("about-open");
+          } else {
+            document.body.classList.remove("about-open");
+          }
+
           // Esegui eventuali script nella pagina caricata dinamicamente
           const scripts = dynamicContent.querySelectorAll('script');
           scripts.forEach(oldScript => {
             const newScript = document.createElement('script');
             if (oldScript.src) {
               newScript.src = oldScript.src;
-              newScript.async = false; // per mantenere ordine esecuzione
+              newScript.async = false;
             } else {
               newScript.textContent = oldScript.textContent;
             }
@@ -460,6 +449,7 @@
         } catch (err) {
           dynamicContent.innerHTML = '<p style="color:red;">Errore nel caricamento del contenuto.</p>';
           currentPage = null;
+          document.body.classList.remove("about-open");
         }
       });
     });
