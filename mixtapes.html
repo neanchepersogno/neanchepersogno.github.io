@@ -51,11 +51,10 @@
       transform: scale(1.05);
     }
 
-    /* Colonna in alto a destra (desktop) */
     .contributors-column {
       position: absolute;
-      top: 0; /* allineato alla griglia */
-      right: -220px; /* avvicinato al centro */
+      top: 0;
+      right: -220px;
       width: 200px;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 12px;
@@ -68,7 +67,6 @@
       margin-bottom: 4px;
     }
 
-    /* Desktop: mostra i nomi con andata a capo e senza virgole */
     .contributors-column .name-desktop {
       display: block;
     }
@@ -76,12 +74,24 @@
       display: none;
     }
 
-    /* Versione compatta su mobile */
+    @media (max-width: 1200px) {
+      .contributors-column {
+        right: 0;
+      }
+    }
+
+    /* MOBILE STYLING: testo e immagini full width, zero margini/bordi */
     @media (max-width: 768px) {
+      .content-wrapper {
+        margin: 0;
+        padding: 0;
+      }
+
       .contributors-column {
         position: static;
         width: 100%;
-        margin-bottom: 20px;
+        margin: 0;
+        padding: 0;
         line-height: 1.4;
         text-align: justify;
       }
@@ -97,11 +107,22 @@
       .contributors-column .name-mobile {
         display: inline;
       }
-    }
 
-    @media (max-width: 1200px) {
-      .contributors-column {
-        right: 0; /* su schermi medi si avvicina al bordo */
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .grid-item {
+        width: 100%;
+        aspect-ratio: auto;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
       }
     }
   </style>
@@ -109,10 +130,8 @@
 <body>
 
   <div class="content-wrapper">
-    <!-- Colonna in alto a destra -->
     <div class="contributors-column">
       <strong>Friendly contributors (A–Z):</strong>
-      <!-- Versione desktop: nomi senza virgole -->
       <span class="name-desktop">
         Andrea Marazzi<br>
         Elena Rivoltini<br>
@@ -131,14 +150,12 @@
         Sara Persico<br>
         Zannunzio
       </span>
-      <!-- Versione mobile: nomi separati da virgola -->
       <span class="name-mobile">
         Andrea Marazzi, Elena Rivoltini, Francesco Toninelli, Gaia Ginevra Giorgi, Giulia Rae, Guglielmo Diana, Holy Similaun, iii, Kohlhaas Records, Kratu, kudd, Lefka, Matteo Martino, Maurizio Berta, Sara Persico, Zannunzio
       </span>
     </div>
 
     <div class="grid">
-      <!-- tutte le immagini/link invariati -->
       <div class="grid-item">
         <a href="https://on.soundcloud.com/S2FcElWRgUcINAHJ67" target="_blank"><img src="immagini/ft.png" alt="Francescotoninelli" /></a>
       </div>

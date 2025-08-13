@@ -71,7 +71,6 @@
       margin-bottom: 10px;
     }
 
-    /* Testo corpo con font-size uguale a link main (0.9rem) */
     .release-text {
       font-size: 0.7rem;
       margin-bottom: 10px;
@@ -89,44 +88,6 @@
       font-size: 0.7rem;
     }
 
-    @media (max-width: 768px) {
-      /* Nascondo la scritta in cima */
-      .mobile-header {
-        display: none;
-      }
-
-      /* Riduco margine superiore per far partire subito contenuto */
-      .page-content {
-        margin-top: 0;
-      }
-
-      .release {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .release img {
-        width: 320px;
-        height: 320px;
-        order: 0;
-      }
-
-      .release-info {
-        margin-top: 0px;
-        order: 0;
-      }
-
-      /* Testo corpo su mobile con dimensione 0.9rem */
-      .release-text {
-        font-size: 0.7rem;
-      }
-
-      .release-link a {
-        font-size: 0.7rem;
-      }
-    }
-
     /* MODAL STYLES */
     .modal {
       display: none; /* hidden by default */
@@ -136,7 +97,7 @@
       top: 0;
       width: 100vw;
       height: 100vh;
-      background-color: white; /* <-- qui sfondo bianco */
+      background-color: white;
       justify-content: center;
       align-items: center;
     }
@@ -148,11 +109,61 @@
       cursor: zoom-out;
       object-fit: contain;
     }
+
+    /* MOBILE STYLES */
+    @media (max-width: 768px) {
+      .mobile-header {
+        display: none;
+      }
+
+      .page-content {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .release {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        gap: 0;
+        margin-bottom: 40px;
+      }
+
+      .release img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        order: 0;
+        box-shadow: none;
+      }
+
+      .release-info {
+        width: 100%;
+        margin-top: 10px;
+        order: 0;
+        padding: 0 10px;
+      }
+
+      .release-title {
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      .release-text {
+        font-size: 0.7rem;
+        text-align: left;
+        margin-bottom: 10px;
+        text-align: justify;
+      }
+
+      .release-link a {
+        font-size: 0.7rem;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Barra superiore rimossa -->
 
   <div class="mobile-header">
     <a href="main.html">Neanche Per Sogno</a>
@@ -171,11 +182,10 @@
 
           <p>Released <u>May 24, 2024</u></p>
           <p><strong>Credits</strong><br>
-        
-          <p>Vocals on <em>'How Many Of Us?'</em> by <u>Giulia Impache</u><br>
+          Vocals on <em>'How Many Of Us?'</em> by <u>Giulia Impache</u><br>
           Mastered by Giuseppe Ielasi<br>
           Cover photographs courtesy of Giacomo Bianco<br>
-          Layout by Simone Gottardi and Giacomo Bianco><br>
+          Layout by Simone Gottardi and Giacomo Bianco<br>
           Liner notes by Simone Gottardi</p>
           <p><em>Edition of 50 handmade CDs.</em></p>
           <p>Cat. No. NXS003<br>
@@ -190,20 +200,16 @@
       <div class="release-info">
         <div class="release-title">Martenot - Faceshopping RMX </div>
         <div class="release-text">
-          Originally composed as an acousmatic composition in an extended version for eight channels between 2022 and 2023 during the electroacoustic composition class taught by Professor Stefano Bassanese at the G. Verdi Conservatory of Turin, <em>Faceshopping RMX</em> stemmed from the desire to pay homage to the British producer SOPHIE, a musician who has greatly influenced and inspired Martenot in recent years. The piece consists of a composition that oscillates between a remix and an expanded rework of <em>Faceshopping</em>.</p>
-
-          This work was developed by starting with a matryoshka segmentation of the spectrum of the original track, dividing it vertically, horizontally, or in a hybrid manner into subsections, phrases, fragments, and relevant gestural micro-fragments. Subsequently, after a phase of reverse engineering, numerous related versions were created - at different degrees of proximity - synthesized from scratch using FM and Pulsar synthesis systems, primarily using Supercollider, as well as wavetable synthesis using the Serum plugin. Finally, a significant portion of the obtained signal was manipulated using the Waveset Distortion system, developed in Max/MSP by Marco Marasciuolo, expanding the expressive capacity of each of them in relation to an augmented reformulation of each articulation. </p>
-
+          <p>Originally composed as an acousmatic composition in an extended version for eight channels between 2022 and 2023 during the electroacoustic composition class taught by Professor Stefano Bassanese at the G. Verdi Conservatory of Turin, <em>Faceshopping RMX</em> stemmed from the desire to pay homage to the British producer SOPHIE, a musician who has greatly influenced and inspired Martenot in recent years. The piece consists of a composition that oscillates between a remix and an expanded rework of <em>Faceshopping</em>.</p>
+          <p>This work was developed by starting with a matryoshka segmentation of the spectrum of the original track, dividing it vertically, horizontally, or in a hybrid manner into subsections, phrases, fragments, and relevant gestural micro-fragments. Subsequently, after a phase of reverse engineering, numerous related versions were created - at different degrees of proximity - synthesized from scratch using FM and Pulsar synthesis systems, primarily using Supercollider, as well as wavetable synthesis using the Serum plugin. Finally, a significant portion of the obtained signal was manipulated using the Waveset Distortion system, developed in Max/MSP by Marco Marasciuolo, expanding the expressive capacity of each of them in relation to an augmented reformulation of each articulation. </p>
           <p>Released <u>August 26, 2023</u></p>
           <p><strong>Credits</strong><br>
-          
-          <p>Written and produced by Martenot<br>
+          Written and produced by Martenot<br>
           Mixed by Martenot and Corgiat<br>
           Mastered by Giuseppe Ielasi<br>
-          Artwork Cover and Design by Massimiliano Gottardi
-
-          <br><br>Cat. No. NXS002<br>
-          ℗ & © 2023 Neanche Per Sogno
+          Artwork Cover and Design by Massimiliano Gottardi<br>
+          Cat. No. NXS002<br>
+          ℗ & © 2023 Neanche Per Sogno</p>
         </div>
         <div class="release-link"><a href="https://nxsrecords.bandcamp.com" target="_blank">Listen on Bandcamp</a></div>
       </div>
@@ -214,27 +220,21 @@
       <div class="release-info">
         <div class="release-title">Martenot - Sfilate Spaziali</div>
         <div class="release-text">
-          Italian composer Martenot and founder of Neanche Per Sogno unleashes his debut EP called <em>Sfilate Spaziali</em>, which consists of three pieces entirely based on minimal vocabulary and instrumental apparatus.
-Aiming to exploit the entire musical spectrum, they orbit around a solid sound body, which has as its main source a monophonic synthesizer that he developed in Max/MSP e dà una precisa direzione timbrica con vincoli estetici radicali.
-Ogni traccia dell’EP si distingue dalle altre sia per il concept che per l’architettura compositiva. Ogni pezzo, infatti, ha una forma propria, derivante dal polimorfismo dei processi, dall’incrocio degli stessi e dalla ricerca di un uso sempre nuovo del materiale sonoro iniziale.
-Tuttavia, la caratteristica che unisce le tre Sfilate Spaziali è l’alternanza dicotomica di momenti ritmicamente serrati in contrasto con parti più rarefatte e ariose. Nelle prime, il materiale digitale è compresso in uno schema ritmico solido, quasi claustrofobico, che evoca le strutture molecolari rigide dei materiali plastici e che non lascia spazio all’azione se non la ripetizione delle varie componenti. Nelle sezioni più libere e irregolari, invece, il tessuto musicale si dissolve e si apre a scenari più ampi.
-Questa successione continua di ritmi densi ed espansioni sonore dà vita alle Sfilate Spaziali, infine integrate dai singoli titoli delle tracce, che contribuiscono pienamente alla loro esistenza.</p>
-
-         
+          <p>Italian composer Martenot and founder of Neanche Per Sogno unleashes his debut EP called <em>Sfilate Spaziali</em>, which consists of three pieces entirely based on minimal vocabulary and instrumental apparatus. Aiming to exploit the entire musical spectrum, they orbit around a solid sound body, which has as its main source a monophonic synthesizer that he developed in Max/MSP e dà una precisa direzione timbrica con vincoli estetici radicali.</p>
+          <p>Ogni traccia dell’EP si distingue dalle altre sia per il concept che per l’architettura compositiva. Ogni pezzo, infatti, ha una forma propria, derivante dal polimorfismo dei processi, dall’incrocio degli stessi e dalla ricerca di un uso sempre nuovo del materiale sonoro iniziale. Tuttavia, la caratteristica che unisce le tre Sfilate Spaziali è l’alternanza dicotomica di momenti ritmicamente serrati in contrasto con parti più rarefatte e ariose. Nelle prime, il materiale digitale è compresso in uno schema ritmico solido, quasi claustrofobico, che evoca le strutture molecolari rigide dei materiali plastici e che non lascia spazio all’azione se non la ripetizione delle varie componenti. Nelle sezioni più libere e irregolari, invece, il tessuto musicale si dissolve e si apre a scenari più ampi. Questa successione continua di ritmi densi ed espansioni sonore dà vita alle Sfilate Spaziali, infine integrate dai singoli titoli delle tracce, che contribuiscono pienamente alla loro esistenza.</p>
           <p>Released <u>September 11, 2022</u></p>
           <p><strong>Credits</strong><br>
-
-          <br>Written, produced and mixed by Martenot<br>
+          Written, produced and mixed by Martenot<br>
           Mastered by Giuseppe Ielasi<br>
           Artwork Cover by Massimiliano Gottardi<br>
-          Design by Martenot and Massimiliano Gottardi
-
-          <br><br>Cat. No. NXS001<br>
-          ℗ & © 2022 Neanche Per Sogno
+          Design by Martenot and Massimiliano Gottardi<br>
+          Cat. No. NXS001<br>
+          ℗ & © 2022 Neanche Per Sogno</p>
         </div>
         <div class="release-link"><a href="https://nxsrecords.bandcamp.com" target="_blank">Listen on Bandcamp</a></div>
       </div>
     </div>
+
   </div>
 
   <!-- Modal for zoomed image -->
