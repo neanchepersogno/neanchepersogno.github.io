@@ -99,16 +99,64 @@
       margin-top: 10px;
     }
 
+    /* New compact grid layout for series events */
     .rassegna-sottoeventi {
       margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .rassegna-sottoeventi .evento {
-      flex-direction: row;
-      gap: 20px;
+      flex-direction: column;
+      margin-bottom: 0;
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .rassegna-sottoeventi .evento:hover {
+      background: #f5f5f5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .rassegna-sottoeventi .evento img {
+      max-width: 100%;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .rassegna-sottoeventi .evento-info {
+      margin-top: 0;
+    }
+
+    .rassegna-sottoeventi .evento-title {
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .rassegna-sottoeventi .evento-dati {
+      font-size: 0.65rem;
+      margin-bottom: 8px;
+    }
+
+    .rassegna-sottoeventi .more-info-toggle {
+      font-size: 0.7rem;
+      margin-top: 8px;
+    }
+
+    .rassegna-sottoeventi .evento-descrizione {
+      font-size: 0.65rem;
+      line-height: 1.3;
+    }
+
+    .rassegna-sottoeventi .evento.aperto .evento-descrizione {
+      max-height: 300px;
+      margin-top: 8px;
     }
 
     @media (max-width: 768px) {
@@ -127,9 +175,23 @@
         margin-top: 0px;
       }
 
+      .rassegna-sottoeventi {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
       .rassegna-sottoeventi .evento {
-        flex-direction: column;
-        text-align: center;
+        padding: 12px;
+      }
+
+      .rassegna-sottoeventi .evento img {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rassegna-sottoeventi .evento img {
+        height: 150px;
       }
     }
 
@@ -157,7 +219,9 @@
 </head>
 <body>
 
-  
+  <div class="mobile-header">
+    <a href="index.html">← Back to Home</a>
+  </div>
 
   <div class="page-content">
 
@@ -176,7 +240,7 @@
           <a href="javascript:void(0)">More</a>
         </div>
         <div class="evento-descrizione">
-          <p><strong>de’ Lamperi</strong> is Francesco Toninelli, sound artist from Florence, Italy. His production focuses on the discovery and reinvention of the past and its representations, taking historiographical, literary and vernacular sources as starting points and materializing them in diverse forms: cinema for the ears, sonic theatre, fictional philology. For the occasion he will present a work of multidisciplinary storytelling based on mesopotamic literary motifs and bronze age-inspired self-built acoustic instruments.</p>
+          <p><strong>de' Lamperi</strong> is Francesco Toninelli, sound artist from Florence, Italy. His production focuses on the discovery and reinvention of the past and its representations, taking historiographical, literary and vernacular sources as starting points and materializing them in diverse forms: cinema for the ears, sonic theatre, fictional philology. For the occasion he will present a work of multidisciplinary storytelling based on mesopotamic literary motifs and bronze age-inspired self-built acoustic instruments.</p>
           <p>Opening act by Martenot</p>
           <p>Artwork by Martenot</p>
         </div>
@@ -198,7 +262,7 @@
         <div class="evento-descrizione">
           <p>Seconda edizione della rassegna Neanche Per Sogno. Otto appuntamenti, un unico filo conduttore: suono, performance, immagine e collaborazione trasversale. Di seguito i dettagli dei singoli eventi.</p>
 
-          <!-- Sotto-eventi -->
+          <!-- Sotto-eventi in grid compatta -->
           <div class="rassegna-sottoeventi">
             <!-- Sotto-evento 1 -->
             <div class="evento">
@@ -231,174 +295,7 @@
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Performance di danza contemporanea con musiche originali, in un’atmosfera immersiva.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 3 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento3.png" alt="Evento 3" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Workshop C</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 28 marzo 2025</p>
-                  <p><strong>Orario:</strong> 16:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Laboratorio intensivo di sound design e tecniche di registrazione.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 4 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento4.png" alt="Evento 4" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Incontro D</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 4 aprile 2025</p>
-                  <p><strong>Orario:</strong> 20:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Talk e discussione con artisti e curatori sulla scena indipendente italiana.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 5 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento5.png" alt="Evento 5" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Concerto E</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 11 aprile 2025</p>
-                  <p><strong>Orario:</strong> 21:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Concerto acustico con ospiti internazionali e presentazione del nuovo album.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 6 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento6.png" alt="Evento 6" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Mostra F</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 18 aprile 2025</p>
-                  <p><strong>Orario:</strong> 17:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Esposizione di installazioni sonore e video art a cura di giovani artisti.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 7 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento7.png" alt="Evento 7" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">DJ Set G</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 25 aprile 2025</p>
-                  <p><strong>Orario:</strong> 22:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Set musicale con selezioni tra elettronica, techno e house underground.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 8 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento8.png" alt="Evento 8" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Chiusura H</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 2 maggio 2025</p>
-                  <p><strong>Orario:</strong> 19:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Serata conclusiva con performance e DJ set, festeggiamenti e saluti.</p>
-                </div>
-              </div>
-            </div>
-          </div> <!-- /rassegna-sottoeventi -->
-        </div>
-      </div>
-    </div>
-
- 
-
-  <!-- Rassegna principale -->
-    <div class="evento">
-      <img src="immagini/nxs-vol.1-main.png" alt="Poster rassegna" class="zoomable" />
-      <div class="evento-info">
-        <div class="evento-title">Neanche Per Sogno Vol.1</div>
-        <div class="evento-dati">
-          <p><strong>Luogo:</strong> Spazio XYZ, Roma</p>
-          <p><strong>Periodo:</strong> Marzo – Aprile 2025</p>
-        </div>
-        <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-          <a href="javascript:void(0)">more info</a>
-        </div>
-        <div class="evento-descrizione">
-          <p>Seconda edizione della rassegna Neanche Per Sogno. Otto appuntamenti, un unico filo conduttore: suono, performance, immagine e collaborazione trasversale. Di seguito i dettagli dei singoli eventi.</p>
-
-          <!-- Sotto-eventi -->
-          <div class="rassegna-sottoeventi">
-            <!-- Sotto-evento 1 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento1.png" alt="Evento 1" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Concerto A</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 14 marzo 2025</p>
-                  <p><strong>Orario:</strong> 19:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Descrizione approfondita del concerto A. Un evento che spazia tra elettronica e suoni sperimentali.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 2 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento2.png" alt="Evento 2" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Performance B</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 21 marzo 2025</p>
-                  <p><strong>Orario:</strong> 18:30</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Performance di danza contemporanea con musiche originali, in un’atmosfera immersiva.</p>
+                  <p>Performance di danza contemporanea con musiche originali, in un'atmosfera immersiva.</p>
                 </div>
               </div>
             </div>
@@ -517,9 +414,9 @@
 
     <!-- Rassegna principale -->
     <div class="evento">
-      <img src="immagini/nxs-vol.0-main.png" alt="Poster rassegna" class="zoomable" />
+      <img src="immagini/nxs-vol.1-main.png" alt="Poster rassegna" class="zoomable" />
       <div class="evento-info">
-        <div class="evento-title">Neanche Per Sogno Vol.0</div>
+        <div class="evento-title">Neanche Per Sogno Vol.1</div>
         <div class="evento-dati">
           <p><strong>Luogo:</strong> Spazio XYZ, Roma</p>
           <p><strong>Periodo:</strong> Marzo – Aprile 2025</p>
@@ -528,150 +425,171 @@
           <a href="javascript:void(0)">more info</a>
         </div>
         <div class="evento-descrizione">
-          <p>Seconda edizione della rassegna Neanche Per Sogno. Otto appuntamenti, un unico filo conduttore: suono, performance, immagine e collaborazione trasversale. Di seguito i dettagli dei singoli eventi.</p>
+          <p>Prima edizione della rassegna Neanche Per Sogno. Otto appuntamenti, un unico filo conduttore: suono, performance, immagine e collaborazione trasversale. Di seguito i dettagli dei singoli eventi.</p>
 
-          <!-- Sotto-eventi -->
+          <!-- Sotto-eventi in grid compatta -->
           <div class="rassegna-sottoeventi">
             <!-- Sotto-evento 1 -->
             <div class="evento">
-              <img src="immagini/vol2-evento1.png" alt="Evento 1" class="zoomable" />
+              <img src="immagini/vol1-evento1.png" alt="Evento 1" class="zoomable" />
               <div class="evento-info">
-                <div class="evento-title">Concerto A</div>
+                <div class="evento-title">Apertura A</div>
                 <div class="evento-dati">
-                  <p><strong>Data:</strong> 14 marzo 2025</p>
+                  <p><strong>Data:</strong> 10 marzo 2024</p>
                   <p><strong>Orario:</strong> 19:00</p>
                 </div>
                 <div class="more-info-toggle" onclick="toggleDescrizione(this)">
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Descrizione approfondita del concerto A. Un evento che spazia tra elettronica e suoni sperimentali.</p>
+                  <p>Evento di apertura della prima edizione con performance inaugurale.</p>
                 </div>
               </div>
             </div>
 
             <!-- Sotto-evento 2 -->
             <div class="evento">
-              <img src="immagini/vol2-evento2.png" alt="Evento 2" class="zoomable" />
+              <img src="immagini/vol1-evento2.png" alt="Evento 2" class="zoomable" />
               <div class="evento-info">
-                <div class="evento-title">Performance B</div>
+                <div class="evento-title">Sound Art B</div>
                 <div class="evento-dati">
-                  <p><strong>Data:</strong> 21 marzo 2025</p>
+                  <p><strong>Data:</strong> 17 marzo 2024</p>
                   <p><strong>Orario:</strong> 18:30</p>
                 </div>
                 <div class="more-info-toggle" onclick="toggleDescrizione(this)">
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Performance di danza contemporanea con musiche originali, in un’atmosfera immersiva.</p>
+                  <p>Installazione sonora interattiva con artisti emergenti.</p>
                 </div>
               </div>
             </div>
 
             <!-- Sotto-evento 3 -->
             <div class="evento">
-              <img src="immagini/vol2-evento3.png" alt="Evento 3" class="zoomable" />
+              <img src="immagini/vol1-evento3.png" alt="Evento 3" class="zoomable" />
               <div class="evento-info">
-                <div class="evento-title">Workshop C</div>
+                <div class="evento-title">Live C</div>
                 <div class="evento-dati">
-                  <p><strong>Data:</strong> 28 marzo 2025</p>
-                  <p><strong>Orario:</strong> 16:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Laboratorio intensivo di sound design e tecniche di registrazione.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 4 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento4.png" alt="Evento 4" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Incontro D</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 4 aprile 2025</p>
+                  <p><strong>Data:</strong> 24 marzo 2024</p>
                   <p><strong>Orario:</strong> 20:00</p>
                 </div>
                 <div class="more-info-toggle" onclick="toggleDescrizione(this)">
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Talk e discussione con artisti e curatori sulla scena indipendente italiana.</p>
+                  <p>Concerto dal vivo con musicisti sperimentali.</p>
                 </div>
               </div>
             </div>
 
-            <!-- Sotto-evento 5 -->
+            <!-- Sotto-evento 4 -->
             <div class="evento">
-              <img src="immagini/vol2-evento5.png" alt="Evento 5" class="zoomable" />
+              <img src="immagini/vol1-evento4.png" alt="Evento 4" class="zoomable" />
               <div class="evento-info">
-                <div class="evento-title">Concerto E</div>
+                <div class="evento-title">Talk D</div>
                 <div class="evento-dati">
-                  <p><strong>Data:</strong> 11 aprile 2025</p>
-                  <p><strong>Orario:</strong> 21:00</p>
-                </div>
-                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-                  <a href="javascript:void(0)">more info</a>
-                </div>
-                <div class="evento-descrizione">
-                  <p>Concerto acustico con ospiti internazionali e presentazione del nuovo album.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Sotto-evento 6 -->
-            <div class="evento">
-              <img src="immagini/vol2-evento6.png" alt="Evento 6" class="zoomable" />
-              <div class="evento-info">
-                <div class="evento-title">Mostra F</div>
-                <div class="evento-dati">
-                  <p><strong>Data:</strong> 18 aprile 2025</p>
+                  <p><strong>Data:</strong> 31 marzo 2024</p>
                   <p><strong>Orario:</strong> 17:00</p>
                 </div>
                 <div class="more-info-toggle" onclick="toggleDescrizione(this)">
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Esposizione di installazioni sonore e video art a cura di giovani artisti.</p>
+                  <p>Conversazione sulla musica contemporanea e nuove tecnologie.</p>
                 </div>
               </div>
             </div>
+          </div> <!-- /rassegna-sottoeventi -->
+        </div>
+      </div>
+    </div>
 
-            <!-- Sotto-evento 7 -->
+    <!-- Rassegna principale -->
+    <div class="evento">
+      <img src="immagini/nxs-vol.0-main.png" alt="Poster rassegna" class="zoomable" />
+      <div class="evento-info">
+        <div class="evento-title">Neanche Per Sogno Vol.0</div>
+        <div class="evento-dati">
+          <p><strong>Luogo:</strong> Spazio XYZ, Roma</p>
+          <p><strong>Periodo:</strong> Settembre – Ottobre 2023</p>
+        </div>
+        <div class="more-info-toggle" onclick="toggleDescrizione(this)">
+          <a href="javascript:void(0)">more info</a>
+        </div>
+        <div class="evento-descrizione">
+          <p>Edizione zero della rassegna Neanche Per Sogno. Quattro appuntamenti pilota per testare il format e creare la community. Di seguito i dettagli dei singoli eventi.</p>
+
+          <!-- Sotto-eventi in grid compatta -->
+          <div class="rassegna-sottoeventi">
+            <!-- Sotto-evento 1 -->
             <div class="evento">
-              <img src="immagini/vol2-evento7.png" alt="Evento 7" class="zoomable" />
+              <img src="immagini/vol0-evento1.png" alt="Evento 1" class="zoomable" />
               <div class="evento-info">
-                <div class="evento-title">DJ Set G</div>
+                <div class="evento-title">Prototipo A</div>
                 <div class="evento-dati">
-                  <p><strong>Data:</strong> 25 aprile 2025</p>
-                  <p><strong>Orario:</strong> 22:00</p>
+                  <p><strong>Data:</strong> 15 settembre 2023</p>
+                  <p><strong>Orario:</strong> 19:30</p>
                 </div>
                 <div class="more-info-toggle" onclick="toggleDescrizione(this)">
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Set musicale con selezioni tra elettronica, techno e house underground.</p>
+                  <p>Primo esperimento della serie, performance audiovisiva sperimentale.</p>
                 </div>
               </div>
             </div>
 
-            <!-- Sotto-evento 8 -->
+            <!-- Sotto-evento 2 -->
             <div class="evento">
-              <img src="immagini/vol2-evento8.png" alt="Evento 8" class="zoomable" />
+              <img src="immagini/vol0-evento2.png" alt="Evento 2" class="zoomable" />
               <div class="evento-info">
-                <div class="evento-title">Chiusura H</div>
+                <div class="evento-title">Test B</div>
                 <div class="evento-dati">
-                  <p><strong>Data:</strong> 2 maggio 2025</p>
+                  <p><strong>Data:</strong> 29 settembre 2023</p>
+                  <p><strong>Orario:</strong> 20:00</p>
+                </div>
+                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
+                  <a href="javascript:void(0)">more info</a>
+                </div>
+                <div class="evento-descrizione">
+                  <p>Secondo test con focus su improvvisazione e interazione col pubblico.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sotto-evento 3 -->
+            <div class="evento">
+              <img src="immagini/vol0-evento3.png" alt="Evento 3" class="zoomable" />
+              <div class="evento-info">
+                <div class="evento-title">Beta C</div>
+                <div class="evento-dati">
+                  <p><strong>Data:</strong> 13 ottobre 2023</p>
+                  <p><strong>Orario:</strong> 18:00</p>
+                </div>
+                <div class="more-info-toggle" onclick="toggleDescrizione(this)">
+                  <a href="javascript:void(0)">more info</a>
+                </div>
+                <div class="evento-descrizione">
+                  <p>Versione beta del format con workshop partecipativo.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sotto-evento 4 -->
+            <div class="evento">
+              <img src="immagini/vol0-evento4.png" alt="Evento 4" class="zoomable" />
+              <div class="evento-info">
+                <div class="evento-title">Release D</div>
+                <div class="evento-dati">
+                  <p><strong>Data:</strong> 27 ottobre 2023</p>
                   <p><strong>Orario:</strong> 19:00</p>
                 </div>
                 <div class="more-info-toggle" onclick="toggleDescrizione(this)">
                   <a href="javascript:void(0)">more info</a>
                 </div>
                 <div class="evento-descrizione">
-                  <p>Serata conclusiva con performance e DJ set, festeggiamenti e saluti.</p>
+                  <p>Evento conclusivo della fase sperimentale con festa di chiusura.</p>
                 </div>
               </div>
             </div>
@@ -681,7 +599,6 @@
     </div>
 
   </div> <!-- /page-content -->
-
 
   <div id="modal" class="modal" onclick="closeModal()">
     <img id="modal-img" class="modal-content" src="" alt="Zoom immagine" />
