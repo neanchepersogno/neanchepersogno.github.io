@@ -163,12 +163,15 @@ body {
         transform: none !important;  /* niente hover su mobile */
       }
 
-      /* solo immagini: nascondi tutto il testo e decorazioni */
+      /* solo immagini: nascondi tutto il testo e decorazioni (mobile view principale) */
+      /* ma l'overlay mobile mostrerà i testi quando richiesto */
       .evento-info,
       .evento-title,
       .evento-dati,
       .more-info-toggle,
       .evento-descrizione {
+        /* non forziamo qui l'hide globale: l'overlay gestirà la lettura mobile.
+           Manteniamo lo stesso comportamento che avevi: nasconde le info nella list view */
         display: none !important;
       }
 
@@ -288,7 +291,54 @@ body {
   text-align: justify;
 }
 
-/* quando aperto, JS imposterà max-height inline per animazione */
+/* overlay mobile per leggere i testi premendo l'immagine */
+#mobileOverlay {
+  display: none;
+  position: fixed;
+  z-index: 15000;
+  inset: 0;
+  background: #fff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 22px;
+}
+
+/* inner container con un massimo di larghezza per leggibilità */
+#mobileOverlay .inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* close button overlay */
+#mobileOverlay .close {
+  position: fixed;
+  right: 14px;
+  top: 14px;
+  z-index: 16000;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* style per l'immagine in overlay (se presente) */
+#mobileOverlay img.overlay-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  object-fit: cover;
+}
+
+/* piccolo style per il titolo dentro overlay */
+#mobileOverlay .evento-title {
+  margin-bottom: 8px;
+}
+
+/* ruoli visivi per il pulsante close su mobile */
+@media (max-width: 420px) {
+  #mobileOverlay { padding: 14px; }
+  #mobileOverlay .close { right: 8px; top: 8px; font-size: 24px; }
+}
 </style>
 </head>
 <body>
@@ -321,8 +371,9 @@ body {
     </div>
 
 
-  <!-- Rassegna principale -->
-  <div class="evento">
+  <!-- Rassegna principale (modificata: titoli sottoeventi visibili di default; NO "More" principale) -->
+  <!-- aggiungo la classe "aperto" per mostrare la descrizione della rassegna di default -->
+  <div class="evento aperto">
     <a class="img-link" href="rassegne/vol-2.html">
       <img src="immagini/nxs-vol.2-main.png" alt="Poster rassegna" class="zoomable" />
     </a>
@@ -334,93 +385,90 @@ body {
         <p>Val di Cembra & Trento</p>
         <p>Powered by <i>Sorgente '90</i> with the support of <i>PGZ</i></p>
       </div>
-      <div class="more-info-toggle" onclick="toggleDescrizione(this)">
-        <a href="javascript:void(0)">More</a>
-      </div>
 
-      <!-- evento-descrizione: qui mostriamo testo + LISTA COMPATTA DEI TITOLI -->
-      <div class="evento-descrizione">
+      <!-- evento-descrizione: testo + LISTA COMPATTA DEI TITOLI (visibile di default) -->
+      <div class="evento-descrizione" style="max-height:1000px;">
         <p>Seconda edizione della rassegna Neanche Per Sogno. Otto appuntamenti, un unico filo conduttore: suono, performance, immagine e collaborazione trasversale. Di seguito i dettagli dei singoli eventi.</p>
 
-        <!-- LISTA COMPATTA (solo titoli visibili di default) -->
+        <!-- LISTA COMPATTA (titoli visibili di default, ogni voce ha il proprio More/Less) -->
         <div class="lista-sottoeventi">
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">DIY Screen Printing Workshop with Angelica Stimpfl</div>
+              <div class="evento-title">DIY Screen Printing Workshop. With Angelica Stimpfl</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
-              Through the workshop led by Angelica Stimpfl, participants will explore and share their own sound experiences, transforming them into matrices suitable for printing. The technique used will be “last-minute” screen printing, designed to teach a simple and quick way to reproduce images. All participants will receive tote bags on which they can create their own personalized prints for the Neanche Per Sogno Vol.2 exhibition. They are also encouraged to bring their own items (hoodies, t-shirts) to print on and will contribute to a large-scale collective artwork to be displayed during subsequent exhibition activities.
-              <p>Angelica Stimpfl is a creative practitioner specializing in graphic design and artisanal printing. She primarily uses screen printing as a means of expression and, through exploring its potential, has collaborated with numerous musicians, artists, illustrators, and festivals, bringing their projects to life through customized products and printed graphics on paper. She experiments with multiple printing techniques to develop small workshops and personal projects. Her base is currently in Vervò, in the province of Trento, where she leads the collective residency project Mugma, collaborating with various initiatives both locally and beyond.</p>
+            <div class="sotto-desc" aria-hidden="true">
+              Through the workshop led by <strong>Angelica Stimpfl</strong>, participants will explore and share their own sound experiences, transforming them into matrices suitable for printing. The technique used will be “last-minute” screen printing, designed to teach a simple and quick way to reproduce images. All participants will receive tote bags on which they can create their own personalized prints for the Neanche Per Sogno Vol.2 exhibition. They are also encouraged to bring their own items (hoodies, t-shirts) to print on and will contribute to a large-scale collective artwork to be displayed during subsequent exhibition activities.
+              <p><strong>Angelica Stimpfl</strong> is a creative practitioner specializing in graphic design and artisanal printing. She primarily uses screen printing as a means of expression and, through exploring its potential, has collaborated with numerous musicians, artists, illustrators, and festivals, bringing their projects to life through customized products and printed graphics on paper. She experiments with multiple printing techniques to develop small workshops and personal projects. Her base is currently in Vervò, in the province of Trento, where she leads the collective residency project Mugma, collaborating with various initiatives both locally and beyond.</p>
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">Mercury Hall</div>
+              <div class="evento-title">Dark Listening Session I: Mercury Hall live</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
-              Matteo Castro is a musician (magnetic tapes, field recordings, and electronics) and music producer, who emerged in the 2000s from the prolific independent scene of Vittorio Veneto, culminating with the Codalunga experience. By filtering the anarchic extremity of noise through the tight grids of disciplined, almost academic electroacoustics, he has created an extraordinary aesthetic and sonic universe, notable for its coherence and personality. Castro operates like the architect of a virtual sound space—unstable yet direct, formless, and constantly evocative. Previously active under the names Kam Hassah and Endless Sea, his recent solo project Mercury Hall marks a new chapter in one of Italy’s most stimulating musical journeys. Lettera 22, Primorje, and Casa Di Caccia are among his group experiences. He is also the founder of the labels Second Sleep—active since 2007—and Musica Moderna.
+            <div class="sotto-desc" aria-hidden="true">
+              <strong>Mercury Hall</strong> is a musician (magnetic tapes, field recordings, and electronics) and music producer, who emerged in the 2000s from the prolific independent scene of Vittorio Veneto, culminating with the Codalunga experience. By filtering the anarchic extremity of noise through the tight grids of disciplined, almost academic electroacoustics, he has created an extraordinary aesthetic and sonic universe, notable for its coherence and personality. Castro operates like the architect of a virtual sound space—unstable yet direct, formless, and constantly evocative. Previously active under the names Kam Hassah and Endless Sea, his recent solo project Mercury Hall marks a new chapter in one of Italy’s most stimulating musical journeys. <i>Lettera 22</i>, <i>Primorje</i>, and <i>Casa Di Caccia</i> are among his group experiences. He is also the founder of the labels <i>Second Sleep</i>, active since 2007, and <i>Musica Moderna</i>.
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">Workshop C</div>
+              <div class="evento-title">A Little Music Workshop for Kids. With Giordano Reggè.</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
+            <div class="sotto-desc" aria-hidden="true">
               Laboratorio intensivo di sound design e tecniche di registrazione.
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">Incontro D</div>
+              <div class="evento-title">Bassa Fedeltà. Musica lo-fi e fuga dal capitalismo. Talk with Enrico Monacelli</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
+            <div class="sotto-desc" aria-hidden="true">
               Talk e discussione con artisti e curatori sulla scena indipendente italiana.
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">Concerto E</div>
+              <div class="evento-title">Sisters With Transistors. Electronic music's unsung heroines</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
+            <div class="sotto-desc" aria-hidden="true">
               Concerto acustico con ospiti internazionali e presentazione del nuovo album.
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">Mostra F</div>
+              <div class="evento-title">A Little Music Workshop for Kids. With Giordano Reggè.</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
+            <div class="sotto-desc" aria-hidden="true">
               Esposizione di installazioni sonore e video art a cura di giovani artisti.
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">DJ Set G</div>
+              <div class="evento-title">A Little Music Workshop for Kids. With Gaia Melillo.</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
+            <div class="sotto-desc" aria-hidden="true">
               Set musicale con selezioni tra elettronica, techno e house underground.
             </div>
           </div>
 
           <div class="lista-item">
             <div class="title-row">
-              <div class="evento-title">Chiusura H</div>
+              <div class="evento-title">Dark Listening Session II: Heith, VIBRISSE, Angel Anger</div>
               <button class="sotto-toggle" onclick="toggleSottoevento(this)">More</button>
             </div>
-            <div class="sotto-desc">
+            <div class="sotto-desc" aria-hidden="true">
               Serata conclusiva con performance e DJ set, festeggiamenti e saluti.
             </div>
           </div>
@@ -434,12 +482,18 @@ body {
 </div>
 
 <!-- Modal per immagini desktop -->
-<div id="imgModal" class="modal">
-  <img class="modal-content" id="modalImg">
+<div id="imgModal" class="modal" aria-hidden="true">
+  <img class="modal-content" id="modalImg" alt="">
+</div>
+
+<!-- Overlay mobile per mostrare i testi dell'evento cliccato -->
+<div id="mobileOverlay" aria-hidden="true">
+  <button class="close" aria-label="Chiudi overlay" onclick="closeMobileOverlay()">✕</button>
+  <div class="inner" id="mobileOverlayInner"></div>
 </div>
 
 <script>
-/* Toggle principale (mantiene la logica originale, aggiunge cambio testo More/Less) */
+/* Toggle principale (lasciata per gli altri eventi che usano ancora il main More) */
 function toggleDescrizione(toggleLink) {
   const parentEvento = toggleLink.closest('.evento');
   const anchor = toggleLink.querySelector('a');
@@ -452,47 +506,159 @@ function toggleDescrizione(toggleLink) {
   }
 }
 
-/* Toggle specifico per i sottoeventi nella lista compatta:
-   apre/chiude SOLO la descrizione della voce cliccata e cambia il testo del pulsante */
+/* Toggle specifico per i sottoeventi (lista compatta)
+   Apre/chiude SOLO la descrizione della voce cliccata e cambia il testo del pulsante.
+   Usa max-height dinamico per animazione. */
 function toggleSottoevento(btn) {
   const item = btn.closest('.lista-item');
   const desc = item.querySelector('.sotto-desc');
   const isOpen = item.classList.toggle('aperto');
 
-  // testo del pulsante
   btn.textContent = isOpen ? 'Less' : 'More';
-
-  // per animare l'altezza: impostiamo max-height dinamicamente
   if (isOpen) {
-    // forza un repaint prima di settare l'altezza (smoother)
+    // prepara l'animazione
     desc.style.maxHeight = '0px';
-    // small timeout to allow transition start
+    desc.setAttribute('aria-hidden', 'false');
+    // dopo un tick, imposta la vera altezza
     setTimeout(() => {
       desc.style.maxHeight = desc.scrollHeight + 'px';
     }, 10);
   } else {
-    // chiudi
     desc.style.maxHeight = '0px';
+    desc.setAttribute('aria-hidden', 'true');
   }
 }
 
-/* Modal per immagini zoom (comportamento invariato rispetto a prima) */
+/* ---------- Modal immagine desktop ---------- */
 const modal = document.getElementById("imgModal");
 const modalImg = document.getElementById("modalImg");
 
-document.querySelectorAll(".zoomable").forEach(img => {
-  img.addEventListener("click", function(e) {
-    // solo desktop (>768px)
-    if (window.innerWidth > 768) {
-      e.preventDefault();
-      modal.style.display = "flex";
-      modalImg.src = this.src;
-    }
-  });
-});
+function openImageModal(src, alt) {
+  modal.style.display = "flex";
+  modal.setAttribute('aria-hidden', 'false');
+  modalImg.src = src;
+  modalImg.alt = alt || '';
+  // blocca scroll background
+  document.body.style.overflow = 'hidden';
+}
+function closeImageModal() {
+  modal.style.display = "none";
+  modal.setAttribute('aria-hidden', 'true');
+  modalImg.src = '';
+  document.body.style.overflow = '';
+}
 
 modal.addEventListener("click", function() {
-  modal.style.display = "none";
+  closeImageModal();
+});
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    // esc chiude modal immagine e overlay mobile
+    closeImageModal();
+    closeMobileOverlay();
+  }
+});
+
+/* ---------- Overlay mobile per leggere i testi interni dell'evento ---------- */
+const mobileOverlay = document.getElementById('mobileOverlay');
+const mobileOverlayInner = document.getElementById('mobileOverlayInner');
+
+function openMobileOverlayFromEvento(eventoElement) {
+  // pulisci
+  mobileOverlayInner.innerHTML = '';
+
+  // se l'evento ha immagine, clonala in cima
+  const imgLink = eventoElement.querySelector('a.img-link');
+  if (imgLink) {
+    const img = imgLink.querySelector('img');
+    if (img) {
+      const imgClone = document.createElement('img');
+      imgClone.className = 'overlay-img';
+      imgClone.src = img.src;
+      imgClone.alt = img.alt || '';
+      mobileOverlayInner.appendChild(imgClone);
+    }
+  }
+
+  // clona .evento-info (testi)
+  const info = eventoElement.querySelector('.evento-info');
+  if (info) {
+    const clone = info.cloneNode(true);
+    // rimuovo eventuali inline style o classi che potrebbero nascondere elementi
+    // e assicuro che le descrizioni siano visibili nella overlay (non usare max-height=0)
+    clone.querySelectorAll('.evento-descrizione').forEach(d => {
+      d.style.maxHeight = 'none';
+    });
+    // aggiungo il clone all'inner
+    mobileOverlayInner.appendChild(clone);
+
+    // attacco i listener ai pulsanti sotto-toggle dentro l'overlay (clone)
+    mobileOverlayInner.querySelectorAll('.sotto-toggle').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // usa la stessa funzione toggleSottoevento adattata: qui la descrizione è nel clone
+        const item = this.closest('.lista-item');
+        const desc = item.querySelector('.sotto-desc');
+        const isOpen = item.classList.toggle('aperto');
+        this.textContent = isOpen ? 'Less' : 'More';
+        if (isOpen) {
+          desc.style.maxHeight = '0px';
+          setTimeout(() => { desc.style.maxHeight = desc.scrollHeight + 'px'; }, 10);
+        } else {
+          desc.style.maxHeight = '0px';
+        }
+      });
+    });
+  }
+
+  // mostra overlay
+  mobileOverlay.style.display = 'block';
+  mobileOverlay.setAttribute('aria-hidden','false');
+  // blocca scroll background
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileOverlay() {
+  mobileOverlay.style.display = 'none';
+  mobileOverlay.setAttribute('aria-hidden','true');
+  mobileOverlayInner.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+/* ---------- Event wiring: immagini (desktop vs mobile) ---------- */
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a.img-link').forEach(a => {
+    const img = a.querySelector('img');
+    a.addEventListener('click', function(e) {
+      // se mobile, apri overlay con i testi dell'evento (prevent navigation)
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        e.preventDefault();
+        const eventoElem = a.closest('.evento');
+        if (eventoElem) {
+          openMobileOverlayFromEvento(eventoElem);
+        }
+      } else {
+        // desktop: apri modal immagine (prevent navigation)
+        if (img) {
+          e.preventDefault();
+          openImageModal(img.src, img.alt || '');
+        }
+      }
+    });
+  });
+
+  // In overlay: chiudi cliccando fuori inner (se l'utente clicca background)
+  mobileOverlay.addEventListener('click', function(e) {
+    if (e.target === mobileOverlay) closeMobileOverlay();
+  });
+
+  // Assicuriamo che i bottoni .sotto-toggle sulla pagina principale funzionino
+  document.querySelectorAll('.lista-item .sotto-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleSottoevento(this);
+    });
+  });
 });
 </script>
 </body>
