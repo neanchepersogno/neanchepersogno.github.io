@@ -18,17 +18,7 @@
       color: black;
     }
 
-    .mobile-header {
-      display: block;
-      padding: 15px 20px 0;
-    }
-
-    .mobile-header a {
-      font-size: 0.7rem;
-      font-weight: bold;
-      color: black;
-      text-decoration: underline;
-    }
+    /* (RIMOSSA la mobile-header) */
 
     .page-content {
       max-width: 1000px;
@@ -43,6 +33,11 @@
       margin-bottom: 60px;
       align-items: flex-start;
       justify-content: space-between;
+    }
+
+    .evento a.img-link {
+      display: inline-block;
+      line-height: 0;
     }
 
     .evento img {
@@ -99,7 +94,7 @@
       margin-top: 10px;
     }
 
-    /* New compact grid layout for series events */
+    /* Grid rassegna (desktop invariato) */
     .rassegna-sottoeventi {
       margin-top: 20px;
       display: grid;
@@ -159,42 +154,65 @@
       margin-top: 8px;
     }
 
+    /* ======= Smartphone: SOLO IMMAGINI FULL WIDTH ======= */
     @media (max-width: 768px) {
+      /* layout a filo bordo */
+      .page-content {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 0 40px !important; /* un po' di respiro prima del footer della MAIN */
+      }
+
       .evento {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: stretch;
+        gap: 0;
+        margin-bottom: 6px; /* “filo” di spazio tra immagini */
       }
 
-      .evento img {
+      .evento a.img-link {
+        display: block;
         width: 100%;
-        height: auto;
       }
 
-      .evento-info {
-        margin-top: 0px;
+      .evento img,
+      .rassegna-sottoeventi .evento img {
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        object-fit: cover;
+        display: block;
+        margin: 0;
+        box-shadow: none !important; /* zero bordi/ombre */
+        border: none !important;     /* zero bordi */
+        cursor: pointer;             /* tap */
+        transform: none !important;  /* niente hover su mobile */
       }
 
+      /* solo immagini: nascondi tutto il testo e decorazioni */
+      .evento-info,
+      .evento-title,
+      .evento-dati,
+      .more-info-toggle,
+      .evento-descrizione {
+        display: none !important;
+      }
+
+      /* la griglia dei sotto-eventi diventa uno stack di immagini full width */
       .rassegna-sottoeventi {
-        grid-template-columns: 1fr;
-        gap: 15px;
+        display: block !important;
+        margin-top: 0 !important;
       }
 
       .rassegna-sottoeventi .evento {
-        padding: 12px;
-      }
-
-      .rassegna-sottoeventi .evento img {
-        height: 180px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .rassegna-sottoeventi .evento img {
-        height: 150px;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        margin-bottom: 6px !important;
       }
     }
 
+    /* Modal immagine (desktop) */
     .modal {
       display: none;
       position: fixed;
@@ -219,15 +237,13 @@
 </head>
 <body>
 
-  <div class="mobile-header">
-    <a href="index.html">← Back to Home</a>
-  </div>
-
   <div class="page-content">
 
     <!-- Evento singolo -->
     <div class="evento">
-      <img src="immagini/13-03-25.png" alt="Poster evento" class="zoomable" />
+      <a class="img-link" href="eventi/de-lamperi-martenot.html">
+        <img src="immagini/13-03-25.png" alt="Poster evento" class="zoomable" />
+      </a>
       <div class="evento-info">
         <div class="evento-title">de' Lamperi + Martenot</div>
         <div class="evento-dati">
@@ -249,7 +265,9 @@
 
     <!-- Rassegna principale -->
     <div class="evento">
-      <img src="immagini/nxs-vol.2-main.png" alt="Poster rassegna" class="zoomable" />
+      <a class="img-link" href="rassegne/vol-2.html">
+        <img src="immagini/nxs-vol.2-main.png" alt="Poster rassegna" class="zoomable" />
+      </a>
       <div class="evento-info">
         <div class="evento-title">Neanche Per Sogno Vol.2</div>
         <div class="evento-dati">
@@ -266,7 +284,9 @@
           <div class="rassegna-sottoeventi">
             <!-- Sotto-evento 1 -->
             <div class="evento">
-              <img src="immagini/vol2-evento1.png" alt="Evento 1" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/concerto-a.html">
+                <img src="immagini/vol2-evento1.png" alt="Evento 1" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Concerto A</div>
                 <div class="evento-dati">
@@ -284,7 +304,9 @@
 
             <!-- Sotto-evento 2 -->
             <div class="evento">
-              <img src="immagini/vol2-evento2.png" alt="Evento 2" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/performance-b.html">
+                <img src="immagini/vol2-evento2.png" alt="Evento 2" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Performance B</div>
                 <div class="evento-dati">
@@ -302,7 +324,9 @@
 
             <!-- Sotto-evento 3 -->
             <div class="evento">
-              <img src="immagini/vol2-evento3.png" alt="Evento 3" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/workshop-c.html">
+                <img src="immagini/vol2-evento3.png" alt="Evento 3" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Workshop C</div>
                 <div class="evento-dati">
@@ -320,7 +344,9 @@
 
             <!-- Sotto-evento 4 -->
             <div class="evento">
-              <img src="immagini/vol2-evento4.png" alt="Evento 4" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/incontro-d.html">
+                <img src="immagini/vol2-evento4.png" alt="Evento 4" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Incontro D</div>
                 <div class="evento-dati">
@@ -338,7 +364,9 @@
 
             <!-- Sotto-evento 5 -->
             <div class="evento">
-              <img src="immagini/vol2-evento5.png" alt="Evento 5" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/concerto-e.html">
+                <img src="immagini/vol2-evento5.png" alt="Evento 5" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Concerto E</div>
                 <div class="evento-dati">
@@ -356,7 +384,9 @@
 
             <!-- Sotto-evento 6 -->
             <div class="evento">
-              <img src="immagini/vol2-evento6.png" alt="Evento 6" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/mostra-f.html">
+                <img src="immagini/vol2-evento6.png" alt="Evento 6" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Mostra F</div>
                 <div class="evento-dati">
@@ -374,7 +404,9 @@
 
             <!-- Sotto-evento 7 -->
             <div class="evento">
-              <img src="immagini/vol2-evento7.png" alt="Evento 7" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/djset-g.html">
+                <img src="immagini/vol2-evento7.png" alt="Evento 7" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">DJ Set G</div>
                 <div class="evento-dati">
@@ -392,7 +424,9 @@
 
             <!-- Sotto-evento 8 -->
             <div class="evento">
-              <img src="immagini/vol2-evento8.png" alt="Evento 8" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-2/chiusura-h.html">
+                <img src="immagini/vol2-evento8.png" alt="Evento 8" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Chiusura H</div>
                 <div class="evento-dati">
@@ -414,7 +448,9 @@
 
     <!-- Rassegna principale -->
     <div class="evento">
-      <img src="immagini/nxs-vol.1-main.png" alt="Poster rassegna" class="zoomable" />
+      <a class="img-link" href="rassegne/vol-1.html">
+        <img src="immagini/nxs-vol.1-main.png" alt="Poster rassegna" class="zoomable" />
+      </a>
       <div class="evento-info">
         <div class="evento-title">Neanche Per Sogno Vol.1</div>
         <div class="evento-dati">
@@ -431,7 +467,9 @@
           <div class="rassegna-sottoeventi">
             <!-- Sotto-evento 1 -->
             <div class="evento">
-              <img src="immagini/vol1-evento1.png" alt="Evento 1" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-1/apertura-a.html">
+                <img src="immagini/vol1-evento1.png" alt="Evento 1" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Apertura A</div>
                 <div class="evento-dati">
@@ -449,7 +487,9 @@
 
             <!-- Sotto-evento 2 -->
             <div class="evento">
-              <img src="immagini/vol1-evento2.png" alt="Evento 2" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-1/sound-art-b.html">
+                <img src="immagini/vol1-evento2.png" alt="Evento 2" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Sound Art B</div>
                 <div class="evento-dati">
@@ -467,7 +507,9 @@
 
             <!-- Sotto-evento 3 -->
             <div class="evento">
-              <img src="immagini/vol1-evento3.png" alt="Evento 3" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-1/live-c.html">
+                <img src="immagini/vol1-evento3.png" alt="Evento 3" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Live C</div>
                 <div class="evento-dati">
@@ -485,7 +527,9 @@
 
             <!-- Sotto-evento 4 -->
             <div class="evento">
-              <img src="immagini/vol1-evento4.png" alt="Evento 4" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-1/talk-d.html">
+                <img src="immagini/vol1-evento4.png" alt="Evento 4" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Talk D</div>
                 <div class="evento-dati">
@@ -507,7 +551,9 @@
 
     <!-- Rassegna principale -->
     <div class="evento">
-      <img src="immagini/nxs-vol.0-main.png" alt="Poster rassegna" class="zoomable" />
+      <a class="img-link" href="rassegne/vol-0.html">
+        <img src="immagini/nxs-vol.0-main.png" alt="Poster rassegna" class="zoomable" />
+      </a>
       <div class="evento-info">
         <div class="evento-title">Neanche Per Sogno Vol.0</div>
         <div class="evento-dati">
@@ -524,7 +570,9 @@
           <div class="rassegna-sottoeventi">
             <!-- Sotto-evento 1 -->
             <div class="evento">
-              <img src="immagini/vol0-evento1.png" alt="Evento 1" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-0/prototipo-a.html">
+                <img src="immagini/vol0-evento1.png" alt="Evento 1" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Prototipo A</div>
                 <div class="evento-dati">
@@ -542,7 +590,9 @@
 
             <!-- Sotto-evento 2 -->
             <div class="evento">
-              <img src="immagini/vol0-evento2.png" alt="Evento 2" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-0/test-b.html">
+                <img src="immagini/vol0-evento2.png" alt="Evento 2" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Test B</div>
                 <div class="evento-dati">
@@ -560,7 +610,9 @@
 
             <!-- Sotto-evento 3 -->
             <div class="evento">
-              <img src="immagini/vol0-evento3.png" alt="Evento 3" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-0/beta-c.html">
+                <img src="immagini/vol0-evento3.png" alt="Evento 3" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Beta C</div>
                 <div class="evento-dati">
@@ -578,7 +630,9 @@
 
             <!-- Sotto-evento 4 -->
             <div class="evento">
-              <img src="immagini/vol0-evento4.png" alt="Evento 4" class="zoomable" />
+              <a class="img-link" href="rassegne/vol-0/release-d.html">
+                <img src="immagini/vol0-evento4.png" alt="Evento 4" class="zoomable" />
+              </a>
               <div class="evento-info">
                 <div class="evento-title">Release D</div>
                 <div class="evento-dati">
@@ -611,13 +665,27 @@
       evento.classList.toggle('aperto');
     }
 
-    document.querySelectorAll('.zoomable').forEach(img => {
-      img.addEventListener('click', () => {
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modal-img');
-        modal.style.display = 'flex';
-        modalImg.src = img.src;
-      });
+    // Desktop: mantieni zoom in modal e blocca la navigazione dei link immagine
+    // Mobile: nessuna modal; il tap sui link apre la nuova pagina
+    document.addEventListener('DOMContentLoaded', function () {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+      if (!isMobile) {
+        // Previeni la navigazione dei link immagine su desktop e usa la modal
+        document.querySelectorAll('a.img-link').forEach(a => {
+          const img = a.querySelector('img.zoomable');
+          a.addEventListener('click', (e) => e.preventDefault());
+          if (img) {
+            img.addEventListener('click', (e) => {
+              e.preventDefault();
+              const modal = document.getElementById('modal');
+              const modalImg = document.getElementById('modal-img');
+              modal.style.display = 'flex';
+              modalImg.src = img.src;
+            });
+          }
+        });
+      }
     });
 
     function closeModal() {
