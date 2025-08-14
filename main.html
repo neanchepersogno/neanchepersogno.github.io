@@ -496,11 +496,14 @@ const footer = document.querySelector('.floating-footer');
 footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
 
 window.addEventListener('scroll', function() {
+  // Controlla larghezza schermo (ad esempio max 768px per mobile)
+  if (window.innerWidth > 768) return;
+
   const st = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (st > lastScrollTop + 5) { // soglia di 5px per evitare flickering
+  if (st > lastScrollTop + 5) {
     // Scroll verso il basso → nascondi footer
-    footer.style.transform = 'translateY(100%)'; // 100% è più sicuro
+    footer.style.transform = 'translateY(100%)';
     footer.style.opacity = '0';
     footer.style.pointerEvents = 'none';
   } else if (st < lastScrollTop - 5) {
