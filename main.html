@@ -489,25 +489,23 @@
       }
     });
 
-    let lastScrollTop = 0;
-const footer = document.querySelector('.floating-footer');
-
-// Imposta la transizione subito
+    const footer = document.querySelector('.floating-footer');
 footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
 
-window.addEventListener('scroll', function() {
-  // Controlla larghezza schermo (ad esempio max 768px per mobile)
-  if (window.innerWidth > 768) return;
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+  if (window.innerWidth > 768) return; // solo mobile
 
   const st = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (st > lastScrollTop + 5) {
-    // Scroll verso il basso → nascondi footer
+  if (st > lastScrollTop) {
+    // Scroll verso il basso → nascondi footer subito
     footer.style.transform = 'translateY(100%)';
     footer.style.opacity = '0';
     footer.style.pointerEvents = 'none';
-  } else if (st < lastScrollTop - 5) {
-    // Scroll verso l'alto → mostra footer
+  } else if (st < lastScrollTop) {
+    // Scroll verso l'alto → mostra footer subito
     footer.style.transform = 'translateY(0)';
     footer.style.opacity = '1';
     footer.style.pointerEvents = 'auto';
