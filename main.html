@@ -488,6 +488,31 @@
         statusText.style.color = 'red';
       }
     });
+
+    let lastScrollTop = 0;
+const footer = document.querySelector('.floating-footer');
+
+// Imposta la transizione subito
+footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+window.addEventListener('scroll', function() {
+  const st = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (st > lastScrollTop + 5) { // soglia di 5px per evitare flickering
+    // Scroll verso il basso → nascondi footer
+    footer.style.transform = 'translateY(100%)'; // 100% è più sicuro
+    footer.style.opacity = '0';
+    footer.style.pointerEvents = 'none';
+  } else if (st < lastScrollTop - 5) {
+    // Scroll verso l'alto → mostra footer
+    footer.style.transform = 'translateY(0)';
+    footer.style.opacity = '1';
+    footer.style.pointerEvents = 'auto';
+  }
+
+  lastScrollTop = st <= 0 ? 0 : st;
+});
+
   </script>
 </body>
 </html>
