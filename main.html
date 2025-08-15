@@ -443,12 +443,6 @@
             document.body.removeChild(newScript);
           });
 
-          // --- SOLO MOBILE: evita che lo scroll programmatico nasconda il footer
-          ignoreUntil = Date.now() + 800;       // finestra di tolleranza per scrollIntoView
-          footer.style.transform = 'translateY(0)';
-          footer.style.opacity = '1';
-          footer.style.pointerEvents = 'auto';
-
           dynamicContainer.scrollIntoView({ behavior: 'smooth' });
 
         } catch (err) {
@@ -495,44 +489,31 @@
       }
     });
 
-    // --- SOLO MOBILE: nascondi/mostra footer in base allo scroll dell'utente ---
     const footer = document.querySelector('.floating-footer');
-    footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
 
-    let lastScrollTop = 0;
-    let ignoreUntil = 0;              // per ignorare scroll programmati (es. scrollIntoView)
-    const THRESHOLD = 8;              // evita tremolii con tocchi minimi
+let lastScrollTop = 0;
 
-    window.addEventListener('scroll', () => {
-      if (window.innerWidth > 768) return;           // desktop: NON cambiare nulla
-      if (Date.now() < ignoreUntil) return;          // ignora scroll non “umani”
+window.addEventListener('scroll', () => {
+  if (window.innerWidth > 768) return; // solo mobile
 
-      const st = window.pageYOffset || document.documentElement.scrollTop;
-      const delta = st - lastScrollTop;
+  const st = window.pageYOffset || document.documentElement.scrollTop;
 
-      if (delta > THRESHOLD) {
-        // Scroll verso il basso → nascondi
-        footer.style.transform = 'translateY(100%)';
-        footer.style.opacity = '0';
-        footer.style.pointerEvents = 'none';
-      } else if (delta < -THRESHOLD) {
-        // Scroll verso l'alto → mostra
-        footer.style.transform = 'translateY(0)';
-        footer.style.opacity = '1';
-        footer.style.pointerEvents = 'auto';
-      }
+  if (st > lastScrollTop) {
+    // Scroll verso il basso → nascondi footer subito
+    footer.style.transform = 'translateY(100%)';
+    footer.style.opacity = '0';
+    footer.style.pointerEvents = 'none';
+  } else if (st < lastScrollTop) {
+    // Scroll verso l'alto → mostra footer subito
+    footer.style.transform = 'translateY(0)';
+    footer.style.opacity = '1';
+    footer.style.pointerEvents = 'auto';
+  }
 
-      lastScrollTop = st <= 0 ? 0 : st;
-    }, { passive: true });
+  lastScrollTop = st <= 0 ? 0 : st;
+});
 
-    // Se torni a desktop, assicurati che il footer sia visibile
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        footer.style.transform = 'translateY(0)';
-        footer.style.opacity = '1';
-        footer.style.pointerEvents = 'auto';
-      }
-    });
   </script>
 </body>
 </html>
