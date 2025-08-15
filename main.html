@@ -406,32 +406,6 @@
     const dynamicContent = document.getElementById('dynamic-content');
     let currentPage = null;
 
-    /* --- FOOTER MOBILE: helper --- */
-    const footer = document.querySelector('.floating-footer');
-    footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-
-    const MOBILE_MAX = 768;
-    let lastScrollTop = 0;
-    let ignoreUntil = 0;       // per ignorare scroll programmatici (es. scrollIntoView)
-    const THRESHOLD = 8;       // piccola soglia per evitare tremolii
-
-    function showFooter() {
-      footer.style.transform = 'translateY(0)';
-      footer.style.opacity = '1';
-      footer.style.pointerEvents = 'auto';
-    }
-
-    function hideFooter() {
-      footer.style.transform = 'translateY(100%)';
-      footer.style.opacity = '0';
-      footer.style.pointerEvents = 'none';
-    }
-
-    function suppressAutoHide(ms = 700) {
-      ignoreUntil = Date.now() + ms;
-    }
-
-    /* --- CLICK NAV: caricamento dinamico --- */
     document.querySelectorAll('.bottom-links a[data-page]').forEach(link => {
       link.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -469,9 +443,12 @@
             document.body.removeChild(newScript);
           });
 
-          // Evita che lo scroll programmatico nasconda il footer su mobile
-          suppressAutoHide(750);
-          showFooter();
+          // --- SOLO MOBILE: evita che lo scroll programmatico nasconda il footer
+          ignoreUntil = Date.now() + 800;       // finestra di tolleranza per scrollIntoView
+          footer.style.transform = 'translateY(0)';
+          footer.style.opacity = '1';
+          footer.style.pointerEvents = 'auto';
+
           dynamicContainer.scrollIntoView({ behavior: 'smooth' });
 
         } catch (err) {
@@ -481,7 +458,6 @@
       });
     });
 
-    /* --- FORM NEWSLETTER --- */
     const form = document.getElementById('newsletter-form');
     const statusText = document.getElementById('form-status');
 
@@ -519,28 +495,43 @@
       }
     });
 
-    /* --- SCROLL HANDLER SOLO MOBILE: nascondi/mostra con gesto utente --- */
+    // --- SOLO MOBILE: nascondi/mostra footer in base allo scroll dell'utente ---
+    const footer = document.querySelector('.floating-footer');
+    footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+    let lastScrollTop = 0;
+    let ignoreUntil = 0;              // per ignorare scroll programmati (es. scrollIntoView)
+    const THRESHOLD = 8;              // evita tremolii con tocchi minimi
+
     window.addEventListener('scroll', () => {
-      if (window.innerWidth > MOBILE_MAX) return;          // solo mobile
-      if (Date.now() < ignoreUntil) return;                // ignora scroll programmati
+      if (window.innerWidth > 768) return;           // desktop: NON cambiare nulla
+      if (Date.now() < ignoreUntil) return;          // ignora scroll non “umani”
 
       const st = window.pageYOffset || document.documentElement.scrollTop;
       const delta = st - lastScrollTop;
 
       if (delta > THRESHOLD) {
-        // scroll verso il basso
-        hideFooter();
+        // Scroll verso il basso → nascondi
+        footer.style.transform = 'translateY(100%)';
+        footer.style.opacity = '0';
+        footer.style.pointerEvents = 'none';
       } else if (delta < -THRESHOLD) {
-        // scroll verso l'alto
-        showFooter();
+        // Scroll verso l'alto → mostra
+        footer.style.transform = 'translateY(0)';
+        footer.style.opacity = '1';
+        footer.style.pointerEvents = 'auto';
       }
 
       lastScrollTop = st <= 0 ? 0 : st;
     }, { passive: true });
 
-    // Se si passa a desktop, assicura footer visibile
+    // Se torni a desktop, assicurati che il footer sia visibile
     window.addEventListener('resize', () => {
-      if (window.innerWidth > MOBILE_MAX) showFooter();
+      if (window.innerWidth > 768) {
+        footer.style.transform = 'translateY(0)';
+        footer.style.opacity = '1';
+        footer.style.pointerEvents = 'auto';
+      }
     });
   </script>
 </body>
