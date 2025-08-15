@@ -406,6 +406,32 @@
     const dynamicContent = document.getElementById('dynamic-content');
     let currentPage = null;
 
+    /* --- FOOTER MOBILE: helper --- */
+    const footer = document.querySelector('.floating-footer');
+    footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+    const MOBILE_MAX = 768;
+    let lastScrollTop = 0;
+    let ignoreUntil = 0;       // per ignorare scroll programmatici (es. scrollIntoView)
+    const THRESHOLD = 8;       // piccola soglia per evitare tremolii
+
+    function showFooter() {
+      footer.style.transform = 'translateY(0)';
+      footer.style.opacity = '1';
+      footer.style.pointerEvents = 'auto';
+    }
+
+    function hideFooter() {
+      footer.style.transform = 'translateY(100%)';
+      footer.style.opacity = '0';
+      footer.style.pointerEvents = 'none';
+    }
+
+    function suppressAutoHide(ms = 700) {
+      ignoreUntil = Date.now() + ms;
+    }
+
+    /* --- CLICK NAV: caricamento dinamico --- */
     document.querySelectorAll('.bottom-links a[data-page]').forEach(link => {
       link.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -443,6 +469,9 @@
             document.body.removeChild(newScript);
           });
 
+          // Evita che lo scroll programmatico nasconda il footer su mobile
+          suppressAutoHide(750);
+          showFooter();
           dynamicContainer.scrollIntoView({ behavior: 'smooth' });
 
         } catch (err) {
@@ -452,6 +481,7 @@
       });
     });
 
+    /* --- FORM NEWSLETTER --- */
     const form = document.getElementById('newsletter-form');
     const statusText = document.getElementById('form-status');
 
@@ -489,31 +519,29 @@
       }
     });
 
-    const footer = document.querySelector('.floating-footer');
-footer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+    /* --- SCROLL HANDLER SOLO MOBILE: nascondi/mostra con gesto utente --- */
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth > MOBILE_MAX) return;          // solo mobile
+      if (Date.now() < ignoreUntil) return;                // ignora scroll programmati
 
-let lastScrollTop = 0;
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      const delta = st - lastScrollTop;
 
-window.addEventListener('scroll', () => {
-  if (window.innerWidth > 768) return; // solo mobile
+      if (delta > THRESHOLD) {
+        // scroll verso il basso
+        hideFooter();
+      } else if (delta < -THRESHOLD) {
+        // scroll verso l'alto
+        showFooter();
+      }
 
-  const st = window.pageYOffset || document.documentElement.scrollTop;
+      lastScrollTop = st <= 0 ? 0 : st;
+    }, { passive: true });
 
-  if (st > lastScrollTop) {
-    // Scroll verso il basso → nascondi footer subito
-    footer.style.transform = 'translateY(100%)';
-    footer.style.opacity = '0';
-    footer.style.pointerEvents = 'none';
-  } else if (st < lastScrollTop) {
-    // Scroll verso l'alto → mostra footer subito
-    footer.style.transform = 'translateY(0)';
-    footer.style.opacity = '1';
-    footer.style.pointerEvents = 'auto';
-  }
-
-  lastScrollTop = st <= 0 ? 0 : st;
-});
-
+    // Se si passa a desktop, assicura footer visibile
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > MOBILE_MAX) showFooter();
+    });
   </script>
 </body>
 </html>
