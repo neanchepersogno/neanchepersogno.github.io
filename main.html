@@ -407,50 +407,56 @@
     let currentPage = null;
 
     document.querySelectorAll('.bottom-links a[data-page]').forEach(link => {
-      link.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const page = link.getAttribute('data-page');
+  link.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const page = link.getAttribute('data-page');
 
-        if (currentPage === page) {
-          dynamicContent.innerHTML = '';
-          currentPage = null;
-          return;
+    if (currentPage === page) {
+      dynamicContent.innerHTML = '';
+      currentPage = null;
+      return;
+    }
+
+    try {
+      const response = await fetch(page, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Errore HTTP ${response.status}`);
+
+      const html = await response.text();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+
+      const bodyContent = tempDiv.querySelector('body');
+      dynamicContent.innerHTML = bodyContent ? bodyContent.innerHTML : tempDiv.innerHTML;
+      currentPage = page;
+
+      // Esegui eventuali script nella pagina caricata dinamicamente
+      const scripts = dynamicContent.querySelectorAll('script');
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+
+        // Copia attributi importanti
+        if (oldScript.src) {
+          newScript.src = oldScript.src;
+          newScript.async = false;
+        } else {
+          newScript.textContent = oldScript.textContent;
         }
 
-        try {
-          const response = await fetch(page);
-          if (!response.ok) throw new Error('Errore nel caricamento');
+        if (oldScript.type) newScript.type = oldScript.type;
 
-          const html = await response.text();
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = html;
-
-          const bodyContent = tempDiv.querySelector('body');
-          dynamicContent.innerHTML = bodyContent ? bodyContent.innerHTML : tempDiv.innerHTML;
-          currentPage = page;
-
-          // Esegui eventuali script nella pagina caricata dinamicamente
-          const scripts = dynamicContent.querySelectorAll('script');
-          scripts.forEach(oldScript => {
-            const newScript = document.createElement('script');
-            if (oldScript.src) {
-              newScript.src = oldScript.src;
-              newScript.async = false; // per mantenere ordine esecuzione
-            } else {
-              newScript.textContent = oldScript.textContent;
-            }
-            document.body.appendChild(newScript);
-            document.body.removeChild(newScript);
-          });
-
-          dynamicContainer.scrollIntoView({ behavior: 'smooth' });
-
-        } catch (err) {
-          dynamicContent.innerHTML = '<p style="color:red;">Errore nel caricamento del contenuto.</p>';
-          currentPage = null;
-        }
+        document.head.appendChild(newScript);
+        document.head.removeChild(newScript);
       });
-    });
+
+      dynamicContainer.scrollIntoView({ behavior: 'smooth' });
+
+    } catch (err) {
+      console.error("Errore nel caricamento della pagina:", page, err);
+      dynamicContent.innerHTML = `<p style="color:red;">Errore nel caricamento del contenuto: ${err.message}</p>`;
+      currentPage = null;
+    }
+  });
+});
 
     const form = document.getElementById('newsletter-form');
     const statusText = document.getElementById('form-status');
